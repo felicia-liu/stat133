@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="data:text/css,%0A%40font%2Dface%20%7B%0Afont%2Dfamily%3A%20octicons%2Dlink%3B%0Asrc%3A%20url%28data%3Afont%2Fwoff%3Bcharset%3Dutf%2D8%3Bbase64%2Cd09GRgABAAAAAAZwABAAAAAACFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEU0lHAAAGaAAAAAgAAAAIAAAAAUdTVUIAAAZcAAAACgAAAAoAAQAAT1MvMgAAAyQAAABJAAAAYFYEU3RjbWFwAAADcAAAAEUAAACAAJThvmN2dCAAAATkAAAABAAAAAQAAAAAZnBnbQAAA7gAAACyAAABCUM%2B8IhnYXNwAAAGTAAAABAAAAAQABoAI2dseWYAAAFsAAABPAAAAZwcEq9taGVhZAAAAsgAAAA0AAAANgh4a91oaGVhAAADCAAAABoAAAAkCA8DRGhtdHgAAAL8AAAADAAAAAwGAACfbG9jYQAAAsAAAAAIAAAACABiATBtYXhwAAACqAAAABgAAAAgAA8ASm5hbWUAAAToAAABQgAAAlXu73sOcG9zdAAABiwAAAAeAAAAME3QpOBwcmVwAAAEbAAAAHYAAAB%2FaFGpk3jaTY6xa8JAGMW%2FO62BDi0tJLYQincXEypYIiGJjSgHniQ6umTsUEyLm5BV6NDBP8Tpts6F0v%2Bk%2F0an2i%2BitHDw3v2%2B9%2BDBKTzsJNnWJNTgHEy4BgG3EMI9DCEDOGEXzDADU5hBKMIgNPZqoD3SilVaXZCER3%2FI7AtxEJLtzzuZfI%2BVVkprxTlXShWKb3TBecG11rwoNlmmn1P2WYcJczl32etSpKnziC7lQyWe1smVPy%2FLt7Kc%2B0vWY%2FgAgIIEqAN9we0pwKXreiMasxvabDQMM4riO%2BqxM2ogwDGOZTXxwxDiycQIcoYFBLj5K3EIaSctAq2kTYiw%2Bymhce7vwM9jSqO8JyVd5RH9gyTt2%2BJ%2FyUmYlIR0s04n6%2B7Vm1ozezUeLEaUjhaDSuXHwVRgvLJn1tQ7xiuVv%2FocTRF42mNgZGBgYGbwZOBiAAFGJBIMAAizAFoAAABiAGIAznjaY2BkYGAA4in8zwXi%2BW2%2BMjCzMIDApSwvXzC97Z4Ig8N%2FBxYGZgcgl52BCSQKAA3jCV8CAABfAAAAAAQAAEB42mNgZGBg4f3vACQZQABIMjKgAmYAKEgBXgAAeNpjYGY6wTiBgZWBg2kmUxoDA4MPhGZMYzBi1AHygVLYQUCaawqDA4PChxhmh%2F8ODDEsvAwHgMKMIDnGL0x7gJQCAwMAJd4MFwAAAHjaY2BgYGaA4DAGRgYQkAHyGMF8NgYrIM3JIAGVYYDT%2BAEjAwuDFpBmA9KMDEwMCh9i%2Fv8H8sH0%2F4dQc1iAmAkALaUKLgAAAHjaTY9LDsIgEIbtgqHUPpDi3gPoBVyRTmTddOmqTXThEXqrob2gQ1FjwpDvfwCBdmdXC5AVKFu3e5MfNFJ29KTQT48Ob9%2FlqYwOGZxeUelN2U2R6%2BcArgtCJpauW7UQBqnFkUsjAY%2FkOU1cP%2BDAgvxwn1chZDwUbd6CFimGXwzwF6tPbFIcjEl%2BvvmM%2FbyA48e6tWrKArm4ZJlCbdsrxksL1AwWn%2FyBSJKpYbq8AXaaTb8AAHja28jAwOC00ZrBeQNDQOWO%2F%2FsdBBgYGRiYWYAEELEwMTE4uzo5Zzo5b2BxdnFOcALxNjA6b2ByTswC8jYwg0VlNuoCTWAMqNzMzsoK1rEhNqByEyerg5PMJlYuVueETKcd%2F89uBpnpvIEVomeHLoMsAAe1Id4AAAAAAAB42oWQT07CQBTGv0JBhagk7HQzKxca2sJCE1hDt4QF%2B9JOS0nbaaYDCQfwCJ7Au3AHj%2BLO13FMmm6cl7785vven0kBjHCBhfpYuNa5Ph1c0e2Xu3jEvWG7UdPDLZ4N92nOm%2BEBXuAbHmIMSRMs%2B4aUEd4Nd3CHD8NdvOLTsA2GL8M9PODbcL%2BhD7C1xoaHeLJSEao0FEW14ckxC%2BTU8TxvsY6X0eLPmRhry2WVioLpkrbp84LLQPGI7c6sOiUzpWIWS5GzlSgUzzLBSikOPFTOXqly7rqx0Z1Q5BAIoZBSFihQYQOOBEdkCOgXTOHA07HAGjGWiIjaPZNW13%2F%2Blm6S9FT7rLHFJ6fQbkATOG1j2OFMucKJJsxIVfQORl%2B9Jyda6Sl1dUYhSCm1dyClfoeDve4qMYdLEbfqHf3O%2FAdDumsjAAB42mNgYoAAZQYjBmyAGYQZmdhL8zLdDEydARfoAqIAAAABAAMABwAKABMAB%2F%2F%2FAA8AAQAAAAAAAAAAAAAAAAABAAAAAA%3D%3D%29%20format%28%27woff%27%29%3B%0A%7D%0Abody%20%7B%0A%2Dwebkit%2Dtext%2Dsize%2Dadjust%3A%20100%25%3B%0Atext%2Dsize%2Dadjust%3A%20100%25%3B%0Acolor%3A%20%23333%3B%0Afont%2Dfamily%3A%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20%22Segoe%20UI%22%2C%20Arial%2C%20freesans%2C%20sans%2Dserif%2C%20%22Apple%20Color%20Emoji%22%2C%20%22Segoe%20UI%20Emoji%22%2C%20%22Segoe%20UI%20Symbol%22%3B%0Afont%2Dsize%3A%2016px%3B%0Aline%2Dheight%3A%201%2E6%3B%0Aword%2Dwrap%3A%20break%2Dword%3B%0A%7D%0Aa%20%7B%0Abackground%2Dcolor%3A%20transparent%3B%0A%7D%0Aa%3Aactive%2C%0Aa%3Ahover%20%7B%0Aoutline%3A%200%3B%0A%7D%0Astrong%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Ah1%20%7B%0Afont%2Dsize%3A%202em%3B%0Amargin%3A%200%2E67em%200%3B%0A%7D%0Aimg%20%7B%0Aborder%3A%200%3B%0A%7D%0Ahr%20%7B%0Abox%2Dsizing%3A%20content%2Dbox%3B%0Aheight%3A%200%3B%0A%7D%0Apre%20%7B%0Aoverflow%3A%20auto%3B%0A%7D%0Acode%2C%0Akbd%2C%0Apre%20%7B%0Afont%2Dfamily%3A%20monospace%2C%20monospace%3B%0Afont%2Dsize%3A%201em%3B%0A%7D%0Ainput%20%7B%0Acolor%3A%20inherit%3B%0Afont%3A%20inherit%3B%0Amargin%3A%200%3B%0A%7D%0Ahtml%20input%5Bdisabled%5D%20%7B%0Acursor%3A%20default%3B%0A%7D%0Ainput%20%7B%0Aline%2Dheight%3A%20normal%3B%0A%7D%0Ainput%5Btype%3D%22checkbox%22%5D%20%7B%0Abox%2Dsizing%3A%20border%2Dbox%3B%0Apadding%3A%200%3B%0A%7D%0Atable%20%7B%0Aborder%2Dcollapse%3A%20collapse%3B%0Aborder%2Dspacing%3A%200%3B%0A%7D%0Atd%2C%0Ath%20%7B%0Apadding%3A%200%3B%0A%7D%0A%2A%20%7B%0Abox%2Dsizing%3A%20border%2Dbox%3B%0A%7D%0Ainput%20%7B%0Afont%3A%2013px%20%2F%201%2E4%20Helvetica%2C%20arial%2C%20nimbussansl%2C%20liberationsans%2C%20freesans%2C%20clean%2C%20sans%2Dserif%2C%20%22Apple%20Color%20Emoji%22%2C%20%22Segoe%20UI%20Emoji%22%2C%20%22Segoe%20UI%20Symbol%22%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%234078c0%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%2C%0Aa%3Aactive%20%7B%0Atext%2Ddecoration%3A%20underline%3B%0A%7D%0Ahr%20%7B%0Aheight%3A%200%3B%0Amargin%3A%2015px%200%3B%0Aoverflow%3A%20hidden%3B%0Abackground%3A%20transparent%3B%0Aborder%3A%200%3B%0Aborder%2Dbottom%3A%201px%20solid%20%23ddd%3B%0A%7D%0Ahr%3Abefore%20%7B%0Adisplay%3A%20table%3B%0Acontent%3A%20%22%22%3B%0A%7D%0Ahr%3Aafter%20%7B%0Adisplay%3A%20table%3B%0Aclear%3A%20both%3B%0Acontent%3A%20%22%22%3B%0A%7D%0Ah1%2C%0Ah2%2C%0Ah3%2C%0Ah4%2C%0Ah5%2C%0Ah6%20%7B%0Amargin%2Dtop%3A%2015px%3B%0Amargin%2Dbottom%3A%2015px%3B%0Aline%2Dheight%3A%201%2E1%3B%0A%7D%0Ah1%20%7B%0Afont%2Dsize%3A%2030px%3B%0A%7D%0Ah2%20%7B%0Afont%2Dsize%3A%2021px%3B%0A%7D%0Ah3%20%7B%0Afont%2Dsize%3A%2016px%3B%0A%7D%0Ah4%20%7B%0Afont%2Dsize%3A%2014px%3B%0A%7D%0Ah5%20%7B%0Afont%2Dsize%3A%2012px%3B%0A%7D%0Ah6%20%7B%0Afont%2Dsize%3A%2011px%3B%0A%7D%0Ablockquote%20%7B%0Amargin%3A%200%3B%0A%7D%0Aul%2C%0Aol%20%7B%0Apadding%3A%200%3B%0Amargin%2Dtop%3A%200%3B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Aol%20ol%2C%0Aul%20ol%20%7B%0Alist%2Dstyle%2Dtype%3A%20lower%2Droman%3B%0A%7D%0Aul%20ul%20ol%2C%0Aul%20ol%20ol%2C%0Aol%20ul%20ol%2C%0Aol%20ol%20ol%20%7B%0Alist%2Dstyle%2Dtype%3A%20lower%2Dalpha%3B%0A%7D%0Add%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20%22Liberation%20Mono%22%2C%20Menlo%2C%20Courier%2C%20monospace%3B%0Afont%2Dsize%3A%2012px%3B%0A%7D%0Apre%20%7B%0Amargin%2Dtop%3A%200%3B%0Amargin%2Dbottom%3A%200%3B%0Afont%3A%2012px%20Consolas%2C%20%22Liberation%20Mono%22%2C%20Menlo%2C%20Courier%2C%20monospace%3B%0A%7D%0A%2Eselect%3A%3A%2Dms%2Dexpand%20%7B%0Aopacity%3A%200%3B%0A%7D%0A%2Eocticon%20%7B%0Afont%3A%20normal%20normal%20normal%2016px%2F1%20octicons%2Dlink%3B%0Adisplay%3A%20inline%2Dblock%3B%0Atext%2Ddecoration%3A%20none%3B%0Atext%2Drendering%3A%20auto%3B%0A%2Dwebkit%2Dfont%2Dsmoothing%3A%20antialiased%3B%0A%2Dmoz%2Dosx%2Dfont%2Dsmoothing%3A%20grayscale%3B%0A%2Dwebkit%2Duser%2Dselect%3A%20none%3B%0A%2Dmoz%2Duser%2Dselect%3A%20none%3B%0A%2Dms%2Duser%2Dselect%3A%20none%3B%0Auser%2Dselect%3A%20none%3B%0A%7D%0A%2Eocticon%2Dlink%3Abefore%20%7B%0Acontent%3A%20%27%5Cf05c%27%3B%0A%7D%0A%2Emarkdown%2Dbody%3Abefore%20%7B%0Adisplay%3A%20table%3B%0Acontent%3A%20%22%22%3B%0A%7D%0A%2Emarkdown%2Dbody%3Aafter%20%7B%0Adisplay%3A%20table%3B%0Aclear%3A%20both%3B%0Acontent%3A%20%22%22%3B%0A%7D%0A%2Emarkdown%2Dbody%3E%2A%3Afirst%2Dchild%20%7B%0Amargin%2Dtop%3A%200%20%21important%3B%0A%7D%0A%2Emarkdown%2Dbody%3E%2A%3Alast%2Dchild%20%7B%0Amargin%2Dbottom%3A%200%20%21important%3B%0A%7D%0Aa%3Anot%28%5Bhref%5D%29%20%7B%0Acolor%3A%20inherit%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0A%2Eanchor%20%7B%0Adisplay%3A%20inline%2Dblock%3B%0Apadding%2Dright%3A%202px%3B%0Amargin%2Dleft%3A%20%2D18px%3B%0A%7D%0A%2Eanchor%3Afocus%20%7B%0Aoutline%3A%20none%3B%0A%7D%0Ah1%2C%0Ah2%2C%0Ah3%2C%0Ah4%2C%0Ah5%2C%0Ah6%20%7B%0Amargin%2Dtop%3A%201em%3B%0Amargin%2Dbottom%3A%2016px%3B%0Afont%2Dweight%3A%20bold%3B%0Aline%2Dheight%3A%201%2E4%3B%0A%7D%0Ah1%20%2Eocticon%2Dlink%2C%0Ah2%20%2Eocticon%2Dlink%2C%0Ah3%20%2Eocticon%2Dlink%2C%0Ah4%20%2Eocticon%2Dlink%2C%0Ah5%20%2Eocticon%2Dlink%2C%0Ah6%20%2Eocticon%2Dlink%20%7B%0Acolor%3A%20%23000%3B%0Avertical%2Dalign%3A%20middle%3B%0Avisibility%3A%20hidden%3B%0A%7D%0Ah1%3Ahover%20%2Eanchor%2C%0Ah2%3Ahover%20%2Eanchor%2C%0Ah3%3Ahover%20%2Eanchor%2C%0Ah4%3Ahover%20%2Eanchor%2C%0Ah5%3Ahover%20%2Eanchor%2C%0Ah6%3Ahover%20%2Eanchor%20%7B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Ah1%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%2C%0Ah2%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%2C%0Ah3%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%2C%0Ah4%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%2C%0Ah5%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%2C%0Ah6%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%20%7B%0Avisibility%3A%20visible%3B%0A%7D%0Ah1%20%7B%0Apadding%2Dbottom%3A%200%2E3em%3B%0Afont%2Dsize%3A%202%2E25em%3B%0Aline%2Dheight%3A%201%2E2%3B%0Aborder%2Dbottom%3A%201px%20solid%20%23eee%3B%0A%7D%0Ah1%20%2Eanchor%20%7B%0Aline%2Dheight%3A%201%3B%0A%7D%0Ah2%20%7B%0Apadding%2Dbottom%3A%200%2E3em%3B%0Afont%2Dsize%3A%201%2E75em%3B%0Aline%2Dheight%3A%201%2E225%3B%0Aborder%2Dbottom%3A%201px%20solid%20%23eee%3B%0A%7D%0Ah2%20%2Eanchor%20%7B%0Aline%2Dheight%3A%201%3B%0A%7D%0Ah3%20%7B%0Afont%2Dsize%3A%201%2E5em%3B%0Aline%2Dheight%3A%201%2E43%3B%0A%7D%0Ah3%20%2Eanchor%20%7B%0Aline%2Dheight%3A%201%2E2%3B%0A%7D%0Ah4%20%7B%0Afont%2Dsize%3A%201%2E25em%3B%0A%7D%0Ah4%20%2Eanchor%20%7B%0Aline%2Dheight%3A%201%2E2%3B%0A%7D%0Ah5%20%7B%0Afont%2Dsize%3A%201em%3B%0A%7D%0Ah5%20%2Eanchor%20%7B%0Aline%2Dheight%3A%201%2E1%3B%0A%7D%0Ah6%20%7B%0Afont%2Dsize%3A%201em%3B%0Acolor%3A%20%23777%3B%0A%7D%0Ah6%20%2Eanchor%20%7B%0Aline%2Dheight%3A%201%2E1%3B%0A%7D%0Ap%2C%0Ablockquote%2C%0Aul%2C%0Aol%2C%0Adl%2C%0Atable%2C%0Apre%20%7B%0Amargin%2Dtop%3A%200%3B%0Amargin%2Dbottom%3A%2016px%3B%0A%7D%0Ahr%20%7B%0Aheight%3A%204px%3B%0Apadding%3A%200%3B%0Amargin%3A%2016px%200%3B%0Abackground%2Dcolor%3A%20%23e7e7e7%3B%0Aborder%3A%200%20none%3B%0A%7D%0Aul%2C%0Aol%20%7B%0Apadding%2Dleft%3A%202em%3B%0A%7D%0Aul%20ul%2C%0Aul%20ol%2C%0Aol%20ol%2C%0Aol%20ul%20%7B%0Amargin%2Dtop%3A%200%3B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Ali%3Ep%20%7B%0Amargin%2Dtop%3A%2016px%3B%0A%7D%0Adl%20%7B%0Apadding%3A%200%3B%0A%7D%0Adl%20dt%20%7B%0Apadding%3A%200%3B%0Amargin%2Dtop%3A%2016px%3B%0Afont%2Dsize%3A%201em%3B%0Afont%2Dstyle%3A%20italic%3B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Adl%20dd%20%7B%0Apadding%3A%200%2016px%3B%0Amargin%2Dbottom%3A%2016px%3B%0A%7D%0Ablockquote%20%7B%0Apadding%3A%200%2015px%3B%0Acolor%3A%20%23777%3B%0Aborder%2Dleft%3A%204px%20solid%20%23ddd%3B%0A%7D%0Ablockquote%3E%3Afirst%2Dchild%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Ablockquote%3E%3Alast%2Dchild%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Atable%20%7B%0Adisplay%3A%20block%3B%0Awidth%3A%20100%25%3B%0Aoverflow%3A%20auto%3B%0Aword%2Dbreak%3A%20normal%3B%0Aword%2Dbreak%3A%20keep%2Dall%3B%0A%7D%0Atable%20th%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Atable%20th%2C%0Atable%20td%20%7B%0Apadding%3A%206px%2013px%3B%0Aborder%3A%201px%20solid%20%23ddd%3B%0A%7D%0Atable%20tr%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Aborder%2Dtop%3A%201px%20solid%20%23ccc%3B%0A%7D%0Atable%20tr%3Anth%2Dchild%282n%29%20%7B%0Abackground%2Dcolor%3A%20%23f8f8f8%3B%0A%7D%0Aimg%20%7B%0Amax%2Dwidth%3A%20100%25%3B%0Abox%2Dsizing%3A%20content%2Dbox%3B%0Abackground%2Dcolor%3A%20%23fff%3B%0A%7D%0Acode%20%7B%0Apadding%3A%200%3B%0Apadding%2Dtop%3A%200%2E2em%3B%0Apadding%2Dbottom%3A%200%2E2em%3B%0Amargin%3A%200%3B%0Afont%2Dsize%3A%2085%25%3B%0Abackground%2Dcolor%3A%20rgba%280%2C0%2C0%2C0%2E04%29%3B%0Aborder%2Dradius%3A%203px%3B%0A%7D%0Acode%3Abefore%2C%0Acode%3Aafter%20%7B%0Aletter%2Dspacing%3A%20%2D0%2E2em%3B%0Acontent%3A%20%22%5C00a0%22%3B%0A%7D%0Apre%3Ecode%20%7B%0Apadding%3A%200%3B%0Amargin%3A%200%3B%0Afont%2Dsize%3A%20100%25%3B%0Aword%2Dbreak%3A%20normal%3B%0Awhite%2Dspace%3A%20pre%3B%0Abackground%3A%20transparent%3B%0Aborder%3A%200%3B%0A%7D%0A%2Ehighlight%20%7B%0Amargin%2Dbottom%3A%2016px%3B%0A%7D%0A%2Ehighlight%20pre%2C%0Apre%20%7B%0Apadding%3A%2016px%3B%0Aoverflow%3A%20auto%3B%0Afont%2Dsize%3A%2085%25%3B%0Aline%2Dheight%3A%201%2E45%3B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0A%7D%0A%2Ehighlight%20pre%20%7B%0Amargin%2Dbottom%3A%200%3B%0Aword%2Dbreak%3A%20normal%3B%0A%7D%0Apre%20%7B%0Aword%2Dwrap%3A%20normal%3B%0A%7D%0Apre%20code%20%7B%0Adisplay%3A%20inline%3B%0Amax%2Dwidth%3A%20initial%3B%0Apadding%3A%200%3B%0Amargin%3A%200%3B%0Aoverflow%3A%20initial%3B%0Aline%2Dheight%3A%20inherit%3B%0Aword%2Dwrap%3A%20normal%3B%0Abackground%2Dcolor%3A%20transparent%3B%0Aborder%3A%200%3B%0A%7D%0Apre%20code%3Abefore%2C%0Apre%20code%3Aafter%20%7B%0Acontent%3A%20normal%3B%0A%7D%0Akbd%20%7B%0Adisplay%3A%20inline%2Dblock%3B%0Apadding%3A%203px%205px%3B%0Afont%2Dsize%3A%2011px%3B%0Aline%2Dheight%3A%2010px%3B%0Acolor%3A%20%23555%3B%0Avertical%2Dalign%3A%20middle%3B%0Abackground%2Dcolor%3A%20%23fcfcfc%3B%0Aborder%3A%20solid%201px%20%23ccc%3B%0Aborder%2Dbottom%2Dcolor%3A%20%23bbb%3B%0Aborder%2Dradius%3A%203px%3B%0Abox%2Dshadow%3A%20inset%200%20%2D1px%200%20%23bbb%3B%0A%7D%0A%2Epl%2Dc%20%7B%0Acolor%3A%20%23969896%3B%0A%7D%0A%2Epl%2Dc1%2C%0A%2Epl%2Ds%20%2Epl%2Dv%20%7B%0Acolor%3A%20%230086b3%3B%0A%7D%0A%2Epl%2De%2C%0A%2Epl%2Den%20%7B%0Acolor%3A%20%23795da3%3B%0A%7D%0A%2Epl%2Ds%20%2Epl%2Ds1%2C%0A%2Epl%2Dsmi%20%7B%0Acolor%3A%20%23333%3B%0A%7D%0A%2Epl%2Dent%20%7B%0Acolor%3A%20%2363a35c%3B%0A%7D%0A%2Epl%2Dk%20%7B%0Acolor%3A%20%23a71d5d%3B%0A%7D%0A%2Epl%2Dpds%2C%0A%2Epl%2Ds%2C%0A%2Epl%2Ds%20%2Epl%2Dpse%20%2Epl%2Ds1%2C%0A%2Epl%2Dsr%2C%0A%2Epl%2Dsr%20%2Epl%2Dcce%2C%0A%2Epl%2Dsr%20%2Epl%2Dsra%2C%0A%2Epl%2Dsr%20%2Epl%2Dsre%20%7B%0Acolor%3A%20%23183691%3B%0A%7D%0A%2Epl%2Dv%20%7B%0Acolor%3A%20%23ed6a43%3B%0A%7D%0A%2Epl%2Did%20%7B%0Acolor%3A%20%23b52a1d%3B%0A%7D%0A%2Epl%2Dii%20%7B%0Abackground%2Dcolor%3A%20%23b52a1d%3B%0Acolor%3A%20%23f8f8f8%3B%0A%7D%0A%2Epl%2Dsr%20%2Epl%2Dcce%20%7B%0Acolor%3A%20%2363a35c%3B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0A%2Epl%2Dml%20%7B%0Acolor%3A%20%23693a17%3B%0A%7D%0A%2Epl%2Dmh%2C%0A%2Epl%2Dmh%20%2Epl%2Den%2C%0A%2Epl%2Dms%20%7B%0Acolor%3A%20%231d3e81%3B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0A%2Epl%2Dmq%20%7B%0Acolor%3A%20%23008080%3B%0A%7D%0A%2Epl%2Dmi%20%7B%0Acolor%3A%20%23333%3B%0Afont%2Dstyle%3A%20italic%3B%0A%7D%0A%2Epl%2Dmb%20%7B%0Acolor%3A%20%23333%3B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0A%2Epl%2Dmd%20%7B%0Abackground%2Dcolor%3A%20%23ffecec%3B%0Acolor%3A%20%23bd2c00%3B%0A%7D%0A%2Epl%2Dmi1%20%7B%0Abackground%2Dcolor%3A%20%23eaffea%3B%0Acolor%3A%20%2355a532%3B%0A%7D%0A%2Epl%2Dmdr%20%7B%0Acolor%3A%20%23795da3%3B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0A%2Epl%2Dmo%20%7B%0Acolor%3A%20%231d3e81%3B%0A%7D%0Akbd%20%7B%0Adisplay%3A%20inline%2Dblock%3B%0Apadding%3A%203px%205px%3B%0Afont%3A%2011px%20Consolas%2C%20%22Liberation%20Mono%22%2C%20Menlo%2C%20Courier%2C%20monospace%3B%0Aline%2Dheight%3A%2010px%3B%0Acolor%3A%20%23555%3B%0Avertical%2Dalign%3A%20middle%3B%0Abackground%2Dcolor%3A%20%23fcfcfc%3B%0Aborder%3A%20solid%201px%20%23ccc%3B%0Aborder%2Dbottom%2Dcolor%3A%20%23bbb%3B%0Aborder%2Dradius%3A%203px%3B%0Abox%2Dshadow%3A%20inset%200%20%2D1px%200%20%23bbb%3B%0A%7D%0A%2Etask%2Dlist%2Ditem%20%7B%0Alist%2Dstyle%2Dtype%3A%20none%3B%0A%7D%0A%2Etask%2Dlist%2Ditem%2B%2Etask%2Dlist%2Ditem%20%7B%0Amargin%2Dtop%3A%203px%3B%0A%7D%0A%2Etask%2Dlist%2Ditem%20input%20%7B%0Amargin%3A%200%200%2E35em%200%2E25em%20%2D1%2E6em%3B%0Avertical%2Dalign%3A%20middle%3B%0A%7D%0A%3Achecked%2B%2Eradio%2Dlabel%20%7B%0Az%2Dindex%3A%201%3B%0Aposition%3A%20relative%3B%0Aborder%2Dcolor%3A%20%234078c0%3B%0A%7D%0A%2EsourceLine%20%7B%0Adisplay%3A%20inline%2Dblock%3B%0A%7D%0Acode%20%2Ekw%20%7B%20color%3A%20%23000000%3B%20%7D%0Acode%20%2Edt%20%7B%20color%3A%20%23ed6a43%3B%20%7D%0Acode%20%2Edv%20%7B%20color%3A%20%23009999%3B%20%7D%0Acode%20%2Ebn%20%7B%20color%3A%20%23009999%3B%20%7D%0Acode%20%2Efl%20%7B%20color%3A%20%23009999%3B%20%7D%0Acode%20%2Ech%20%7B%20color%3A%20%23009999%3B%20%7D%0Acode%20%2Est%20%7B%20color%3A%20%23183691%3B%20%7D%0Acode%20%2Eco%20%7B%20color%3A%20%23969896%3B%20%7D%0Acode%20%2Eot%20%7B%20color%3A%20%230086b3%3B%20%7D%0Acode%20%2Eal%20%7B%20color%3A%20%23a61717%3B%20%7D%0Acode%20%2Efu%20%7B%20color%3A%20%2363a35c%3B%20%7D%0Acode%20%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%0Acode%20%2Ewa%20%7B%20color%3A%20%23000000%3B%20%7D%0Acode%20%2Ecn%20%7B%20color%3A%20%23008080%3B%20%7D%0Acode%20%2Esc%20%7B%20color%3A%20%23008080%3B%20%7D%0Acode%20%2Evs%20%7B%20color%3A%20%23183691%3B%20%7D%0Acode%20%2Ess%20%7B%20color%3A%20%23183691%3B%20%7D%0Acode%20%2Eim%20%7B%20color%3A%20%23000000%3B%20%7D%0Acode%20%2Eva%20%7Bcolor%3A%20%23008080%3B%20%7D%0Acode%20%2Ecf%20%7B%20color%3A%20%23000000%3B%20%7D%0Acode%20%2Eop%20%7B%20color%3A%20%23000000%3B%20%7D%0Acode%20%2Ebu%20%7B%20color%3A%20%23000000%3B%20%7D%0Acode%20%2Eex%20%7B%20color%3A%20%23000000%3B%20%7D%0Acode%20%2Epp%20%7B%20color%3A%20%23999999%3B%20%7D%0Acode%20%2Eat%20%7B%20color%3A%20%23008080%3B%20%7D%0Acode%20%2Edo%20%7B%20color%3A%20%23969896%3B%20%7D%0Acode%20%2Ean%20%7B%20color%3A%20%23008080%3B%20%7D%0Acode%20%2Ecv%20%7B%20color%3A%20%23008080%3B%20%7D%0Acode%20%2Ein%20%7B%20color%3A%20%23008080%3B%20%7D%0A">
+<style>
+body {
+  box-sizing: border-box;
+  min-width: 200px;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 45px;
+  padding-top: 0px;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1 id="lab-10-regular-expressions-1">Lab 10: Regular Expressions 1</h1>
+<blockquote>
+<h3 id="learning-objectives">Learning Objectives:</h3>
+<ul>
+<li>Get started with <code>stringi</code> and <code>stringr</code></li>
+<li>Get to know the basics of Regex :</li>
+<li><code>Anchors</code></li>
+<li><code>Character classes</code></li>
+<li><code>Quantifiers</code></li>
+<li><code>Symbols</code></li>
+<li>Use regex with dataframes</li>
+</ul>
+</blockquote>
+<h3 id="general-instructions">General Instructions</h3>
+<ul>
+<li>Write your descriptions and code in an <code>Rmd</code> (R markdown) file.</li>
+<li>Name this file as <code>lab10-first-last.Rmd</code>, where <code>first</code> and <code>last</code> are your first and last names (e.g. <code>lab10-gaston-sanchez.Rmd</code>).</li>
+<li>Knit your <code>Rmd</code> file as an html document (default option).</li>
+<li>Submit your <code>Rmd</code> and <code>html</code> files to bCourses, in the corresponding lab assignment.</li>
+</ul>
+<h2 id="1-introduction">1) Introduction</h2>
+<p><strong>Regular expression</strong> also known as <strong>Regex</strong> is a tool for describing patterns in strings. The package associated with regex in R are stringr and stringi. Regex is also commonly used in other languages with perhaps slight syntactic changes.</p>
+<p>But before we introduce you to regex, let’s work with string functions in R.</p>
+<h3 id="11-stringi-and-stringr-functions">1.1) stringi and stringr functions</h3>
+<blockquote>
+<p><code>str_detect()</code> helps detect string patterns in a string. Ensure you have installed stringi and stringr packages.</p>
+</blockquote>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>city <span class="ot">=</span> <span class="st">&quot;Berkeley&quot;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(city, <span class="st">&quot;kele&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>We could pass a vector of cities as an arguement.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>city <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;Berkeley&quot;</span>, <span class="st">&quot;New York City&quot;</span>, <span class="st">&quot;Palo Alto&quot;</span>, <span class="st">&quot;New Delhi&quot;</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(city, <span class="st">&quot;New&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] FALSE  TRUE FALSE  TRUE</code></pre>
+<blockquote>
+<p>str_extract() helps extract a substring from a string and str_locate() helps with the start and end points of a pattern.</p>
+</blockquote>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>city <span class="ot">=</span> <span class="st">&quot;Berkeley&quot;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(city, <span class="st">&quot;ley&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;ley&quot;</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_locate</span>(city, <span class="st">&#39;ley&#39;</span>)</span></code></pre></div>
+<pre><code>##      start end
+## [1,]     6   8</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>city <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;Berkeley&quot;</span>, <span class="st">&quot;New York City&quot;</span>, <span class="st">&quot;Palo Alto&quot;</span>, <span class="st">&quot;New Delhi&quot;</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(city, <span class="st">&quot;el&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;el&quot; NA   NA   &quot;el&quot;</code></pre>
+<blockquote>
+<p>str_sub() returns a substring of a string given start and end position.</p>
+</blockquote>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>city <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;Berkeley&quot;</span>, <span class="st">&quot;New York City&quot;</span>, <span class="st">&quot;Palo Alto&quot;</span>, <span class="st">&quot;New Delhi&quot;</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_sub</span>(city, <span class="at">start =</span> <span class="dv">6</span>, <span class="at">end =</span> <span class="dv">8</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;ley&quot; &quot;ork&quot; &quot;Alt&quot; &quot;elh&quot;</code></pre>
+<h3 id="12-your-turn">1.2) Your turn</h3>
+<h4 id="12a">1.2.a)</h4>
+<p>Print only those cities that start with <code>&quot;New&quot;</code> from <code>city</code>. Hint: Using <code>str_detect()</code>, we could create a mask (a vector of <code>TRUE</code> and <code>FALSE</code>) that could then be subsetted to get the city names starting with <code>&quot;New&quot;</code>.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>city <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;Berkeley&quot;</span>, <span class="st">&quot;New York City&quot;</span>, <span class="st">&quot;Palo Alto&quot;</span>, <span class="st">&quot;New Delhi&quot;</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>city[<span class="fu">str_detect</span>(city, <span class="st">&quot;New&quot;</span>)]</span></code></pre></div>
+<pre><code>## [1] &quot;New York City&quot; &quot;New Delhi&quot;</code></pre>
+<h4 id="12b">1.2.b)</h4>
+<p>Using <code>str_match()</code> explained in cheatsheet, check if <code>city</code> has any matches for <code>Berkeley</code>.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>city <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;Berkeley&quot;</span>, <span class="st">&quot;New York City&quot;</span>, <span class="st">&quot;Palo Alto&quot;</span>, <span class="st">&quot;New Delhi&quot;</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str_match</span>(city, <span class="st">&quot;Berkeley&quot;</span>)</span></code></pre></div>
+<pre><code>##      [,1]      
+## [1,] &quot;Berkeley&quot;
+## [2,] NA        
+## [3,] NA        
+## [4,] NA</code></pre>
+<h2 id="2-using-regex">2) Using regex</h2>
+<p>Consider the question above where we printed cities starting with <code>&quot;New&quot;</code>. Using regex, we could do it more directly.</p>
+<p>To let R know that we are passing regex instead of a substring, we use <code>regex()</code>.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(city, <span class="fu">regex</span>(<span class="st">&quot;el&quot;</span>))</span></code></pre></div>
+<pre><code>## [1] &quot;el&quot; NA   NA   &quot;el&quot;</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(city, <span class="fu">regex</span>(<span class="st">&quot;^New [a-zA-Z]*&quot;</span>))</span></code></pre></div>
+<pre><code>## [1] NA          &quot;New York&quot;  NA          &quot;New Delhi&quot;</code></pre>
+<blockquote>
+<p>In the second example, <code>^</code> symbol is an anchor that matches any string starting with <code>&quot;New&quot;</code>. <code>[a-zA-Z]</code> is a set of characters that could appear and <code>*</code> is the quantifier, which specifies how many of those characters in square bracket appear.</p>
+</blockquote>
+<h3 id="21-anchors">2.1) Anchors</h3>
+<p>Anchors help us assert the position, i.e., the beginning or end of the string.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Anchor</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>^</code></td>
+<td>Matches any string starting with a substring</td>
+<td><code>^New</code></td>
+</tr>
+<tr class="even">
+<td><code>$</code></td>
+<td>Matches any string ending with a substring</td>
+<td><code>y$</code></td>
+</tr>
+<tr class="odd">
+<td>Exact Match <code>^$</code></td>
+<td>Matches the string that starts and ends with substring</td>
+<td><code>^Hi There$</code></td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>banks <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;Bank of America&quot;</span>, <span class="st">&quot;Bank of the West&quot;</span>, <span class="st">&quot;Citibank&quot;</span>, </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;TD Bank&quot;</span>, <span class="st">&quot;Bank of England&quot;</span>, <span class="st">&quot;People</span><span class="sc">\&#39;</span><span class="st">s United Bank&quot;</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co">#banks starting with Bank</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(banks, <span class="fu">regex</span>(<span class="st">&quot;^Bank&quot;</span>))</span></code></pre></div>
+<pre><code>## [1]  TRUE  TRUE FALSE FALSE  TRUE FALSE</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#banks ending with Bank (note: citibank is False as b is lowercase)</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(banks, <span class="fu">regex</span>(<span class="st">&quot;Bank$&quot;</span>))</span></code></pre></div>
+<pre><code>## [1] FALSE FALSE FALSE  TRUE FALSE  TRUE</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#bank called &quot;TD Bank&quot;</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(banks, <span class="fu">regex</span>(<span class="st">&quot;^TD Bank$&quot;</span>))</span></code></pre></div>
+<pre><code>## [1] FALSE FALSE FALSE  TRUE FALSE FALSE</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(banks, <span class="st">&quot;TD Bank&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] FALSE FALSE FALSE  TRUE FALSE FALSE</code></pre>
+<h3 id="22-character-classes">2.2) Character Classes</h3>
+<p>Character classes match any characters given a class</p>
+<table>
+<thead>
+<tr class="header">
+<th>Character Class</th>
+<th>Match</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>[aeiou]</code></td>
+<td>Matches vowels</td>
+</tr>
+<tr class="even">
+<td><code>[0-9]</code></td>
+<td>Matches digits</td>
+</tr>
+<tr class="odd">
+<td><code>[a-z]</code></td>
+<td>Matches lower case letters</td>
+</tr>
+<tr class="even">
+<td><code>[A-Z]</code></td>
+<td>Matches upper case letters</td>
+</tr>
+<tr class="odd">
+<td><code>[a-zA-Z]</code></td>
+<td>Matches both lower and upper case letters</td>
+</tr>
+<tr class="even">
+<td><code>[a-g]</code></td>
+<td>Matches characters a through g</td>
+</tr>
+</tbody>
+</table>
+<p>In this example, we will try to print the names of banks starting with <code>&quot;Bank&quot;</code></p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Note the whitespace after Z in the regular expression</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(banks, <span class="fu">regex</span>(<span class="st">&quot;^Bank[a-zA-Z ]*&quot;</span>))</span></code></pre></div>
+<pre><code>## [1] &quot;Bank of America&quot;  &quot;Bank of the West&quot; NA                 NA                
+## [5] &quot;Bank of England&quot;  NA</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Without the whitespace after Z, it will not give us the desired output</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(banks, <span class="fu">regex</span>(<span class="st">&quot;^Bank[a-zA-Z]*&quot;</span>))</span></code></pre></div>
+<pre><code>## [1] &quot;Bank&quot; &quot;Bank&quot; NA     NA     &quot;Bank&quot; NA</code></pre>
+<blockquote>
+<p>In the previous example, <code>*</code> acted as a quantifier. It means any number of the group within square brackets could appear after <code>&quot;Bank&quot;</code>. Refer next section on quantifiers.</p>
+</blockquote>
+<h3 id="23-quantifiers">2.3) Quantifiers</h3>
+<p>Quantifiers quantify the number of instances of a character, group or character class. Your quantifier should be placed after the character/group/character class that is being quantified.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Quantifier</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>P*</code></td>
+<td>0 or more instances of P</td>
+</tr>
+<tr class="even">
+<td><code>P+</code></td>
+<td>1 or more instances of P</td>
+</tr>
+<tr class="odd">
+<td><code>P?</code></td>
+<td>0 or 1 instance of P</td>
+</tr>
+<tr class="even">
+<td><code>P{m}</code></td>
+<td>Exactly m instances of P</td>
+</tr>
+<tr class="odd">
+<td><code>P{m,}</code></td>
+<td>At least m instances of P</td>
+</tr>
+<tr class="even">
+<td><code>P{m,n}</code></td>
+<td>Between m and n instances of P</td>
+</tr>
+</tbody>
+</table>
+<p>Let us try to print bank names that have less than 10 characters in them.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(banks,<span class="fu">regex</span>(<span class="st">&quot;^[a-zA-Z ]{1,9}$&quot;</span>))</span></code></pre></div>
+<pre><code>## [1] NA         NA         &quot;Citibank&quot; &quot;TD Bank&quot;  NA         NA</code></pre>
+<blockquote>
+<p>Notice that white space is included after <code>A-Z</code> Also note that we need to use anchors <code>^ $</code>, otherwise the first 10 characters of all banks will be printed.</p>
+</blockquote>
+<h3 id="24-logical-operators">2.4) Logical Operators</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Operator</th>
+<th>Usage</th>
+<th>Example</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>^</code></td>
+<td>Not</td>
+<td><code>[^A-Za-z0-9]</code></td>
+<td>Identifies characters that are not alphanumeric</td>
+</tr>
+<tr class="even">
+<td><code>|</code></td>
+<td>Or</td>
+<td><code>(Apple|Orange)</code></td>
+<td>Identifies cases that have Apple or Oranges or both</td>
+</tr>
+</tbody>
+</table>
+<p>There is no AND operation in regex.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(banks)</span></code></pre></div>
+<pre><code>## [1] &quot;Bank of America&quot;      &quot;Bank of the West&quot;     &quot;Citibank&quot;            
+## [4] &quot;TD Bank&quot;              &quot;Bank of England&quot;      &quot;People&#39;s United Bank&quot;</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Detect all bank names containing Bank or bank</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(banks, <span class="fu">regex</span>(<span class="st">&quot;Bank|bank&quot;</span>))</span></code></pre></div>
+<pre><code>## [1] TRUE TRUE TRUE TRUE TRUE TRUE</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Detect all bank names containg special characters excluding whitespace</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(banks, <span class="fu">regex</span>(<span class="st">&quot;[^A-z0-9 ]&quot;</span>))</span></code></pre></div>
+<pre><code>## [1] FALSE FALSE FALSE FALSE FALSE  TRUE</code></pre>
+<h2 id="3-more-examples">3) More examples</h2>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cities ending with y</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(city, <span class="fu">regex</span>(<span class="st">&quot;y$&quot;</span>))</span></code></pre></div>
+<pre><code>## [1]  TRUE  TRUE FALSE FALSE</code></pre>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co">#List the names of first 10 nba players </span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="co"># with college name starting with &quot;University&quot;</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;
+
+## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag
+
+## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>nba <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;C:/Users/felic/nba2018-players.csv&quot;</span>)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>nba <span class="sc">%&gt;%</span> </span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(college, <span class="fu">regex</span>(<span class="st">&quot;^University&quot;</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(player) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##              player
+## 1  Alfonzo McKinnie
+## 2      Delon Wright
+## 3     DeMar DeRozan
+## 4      Jakob Poeltl
+## 5       Nigel Hayes
+## 6     Norman Powell
+## 7        Al Horford
+## 8       Jabari Bird
+## 9      Jaylen Brown
+## 10     Kadeem Allen</code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List the names of colleges of nba players containing </span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="co"># special characters (don&#39;t consider whitespace and , </span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="co"># as special character here)</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>nba <span class="sc">%&gt;%</span> </span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(college, <span class="fu">regex</span>(<span class="st">&quot;[^A-Za-z, ]&quot;</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(college)</span></code></pre></div>
+<pre><code>##                                              college
+## 1                  University of Wisconsin-Green Bay
+## 2  Indiana University-Purdue University Indianapolis
+## 3                               Texas A&amp;M University
+## 4                 Saint Mary&#39;s College of California
+## 5                          Saint Joseph&#39;s University
+## 6                          Saint Joseph&#39;s University
+## 7                          Saint Joseph&#39;s University
+## 8                               Alabama - Huntsville
+## 9                              St. John&#39;s University
+## 10        University of Illinois at Urbana-Champaign
+## 11        University of Illinois at Urbana-Champaign
+## 12                Saint Mary&#39;s College of California
+## 13                              Texas A&amp;M University
+## 14                              Texas A&amp;M University
+## 15                             St. John&#39;s University
+## 16                              Texas A&amp;M University
+## 17                              Texas A&amp;M University</code></pre>
+<p>Let us try to print bank names with 3 words in them. We create groups for each word and make them repeat 3 times.</p>
+<blockquote>
+<p>The first group is ([a-zA-Z’]* ){2}. Here {2} refers to the number of times the group is repeated. [a-zA-Z’]* means characters and ’ can appear any number of times. A whitespace is included because after the first two words, a whitespace appears. the second group is ([a-zA-Z]*){1}. We repeat this group only once. Note that we don’t have whitespace in this group.</p>
+</blockquote>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(banks, <span class="fu">regex</span>(<span class="st">&quot;^([a-zA-Z&#39;]* ){2}([a-zA-Z]*){1}$&quot;</span>))</span></code></pre></div>
+<pre><code>## [1] &quot;Bank of America&quot;      NA                     NA                    
+## [4] NA                     &quot;Bank of England&quot;      &quot;People&#39;s United Bank&quot;</code></pre>
+<h3 id="31-your-turn">3.1) Your turn</h3>
+<h4 id="31a">3.1.a)</h4>
+<p>Using <code>nba</code> dataframe, print names of Players containing <code>Marcus</code></p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>nba <span class="sc">%&gt;%</span> </span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(player, <span class="fu">regex</span>(<span class="st">&quot;Marcus&quot;</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(player)</span></code></pre></div>
+<pre><code>##                player
+## 1       Marcus Morris
+## 2        Marcus Smart
+## 3        Marcus Paige
+## 4    DeMarcus Cousins
+## 5   LaMarcus Aldridge
+## 6 Marcus Georges-Hunt</code></pre>
+<h4 id="31b">3.1.b)</h4>
+<p>Using <code>nba</code> dataframe, print names of Universities that contain <code>California</code> or <code>Los Angeles</code> in them.</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>nba <span class="sc">%&gt;%</span> </span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(college, <span class="fu">regex</span>(<span class="st">&quot;California|Los Angeles&quot;</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(college) </span></code></pre></div>
+<pre><code>##                                                                college
+## 1                                    University of Southern California
+## 2                                University of California, Los Angeles
+## 3                                             University of California
+## 4                                             University of California
+## 5  University of North Carolina, University of California, Los Angeles
+## 6                                University of California, Los Angeles
+## 7                                University of California, Los Angeles
+## 8                                University of California, Los Angeles
+## 9                                University of California, Los Angeles
+## 10                                 California State University, Fresno
+## 11                                  Saint Mary&#39;s College of California
+## 12                               University of California, Los Angeles
+## 13                             California State University, Long Beach
+## 14                                            University of California
+## 15            California Polytechnic State University, San Luis Obispo
+## 16                               University of California, Los Angeles
+## 17                               University of California, Los Angeles
+## 18                                   University of Southern California
+## 19                                   University of Southern California
+## 20                              California State University, Fullerton
+## 21                               University of California, Los Angeles
+## 22                                            University of California
+## 23                               University of California, Los Angeles
+## 24                               University of California, Los Angeles
+## 25                                   University of Southern California
+## 26                                 California State University, Fresno
+## 27                               University of California, Los Angeles
+## 28                               University of California, Los Angeles
+## 29                               University of California, Los Angeles
+## 30                                  Saint Mary&#39;s College of California
+## 31                                   University of Southern California
+## 32                                            University of California
+## 33                               University of California, Los Angeles
+## 34 University of North Carolina, University of California, Los Angeles
+## 35                                            University of California
+## 36                             University of California, Santa Barbara</code></pre>
+<h4 id="31c">3.1.c)</h4>
+<p>Consider the variable below <code>myVar</code>. Using str_detect and regular expression, detect those strings that contain at least one <code>z</code> and a maximum of three <code>z</code>. Your output should be <code>TRUE TRUE TRUE FALSE</code></p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>myVar <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;bizarre&quot;</span>, <span class="st">&quot;bizzarre&quot;</span>, <span class="st">&quot;bizzzarrre&quot;</span>, <span class="st">&quot;bizzzzare&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(myVar, <span class="fu">regex</span>(<span class="st">&quot;[z]{1,3}[^z]{4,}&quot;</span>))</span></code></pre></div>
+<pre><code>## [1]  TRUE  TRUE  TRUE FALSE</code></pre>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(myVar, <span class="fu">regex</span>(<span class="st">&quot;biz{1,3}a&quot;</span>))</span></code></pre></div>
+<pre><code>## [1]  TRUE  TRUE  TRUE FALSE</code></pre>
+<h4 id="31d">3.1.d)</h4>
+<p>Consider the output of ls statement from command line. We have stored it in <code>file_names</code>, a vector containing file names. Detect file names that start with <code>STAT154</code> and have extension <code>.csv</code><br />
+Expected Output: <code>TRUE FALSE FALSE TRUE FALSE TRUE</code></p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>file_names <span class="ot">=</span> <span class="fu">c</span>(</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;STAT154nba.csv&quot;</span>, </span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;test0102_STAT154.csv&quot;</span>, </span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;STAT154myfile.csv.tmp&quot;</span>, </span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;STAT154_lab.csv&quot;</span>, </span>
+<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;STAT154_HW.pdf&quot;</span>, </span>
+<span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;STAT154_test0102.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(file_names,</span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>           <span class="fu">regex</span>(<span class="st">&quot;^([STAT154]){1,}([a-zA-Z0-9|[:punct:]]*)[.csv]$&quot;</span>))</span></code></pre></div>
+<pre><code>## [1]  TRUE FALSE FALSE  TRUE FALSE  TRUE</code></pre>
+<h4 id="31e">3.1.e)</h4>
+<p>For the variable <code>newVar</code>, identify strings that start with a number. Your output should be <code>TRUE FALSE TRUE TRUE FALSE</code>.</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>newVar <span class="ot">=</span> <span class="fu">c</span>(</span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;1 Student(s)&quot;</span>, </span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;None but 1 Student(s)&quot;</span>, </span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;5 Students&quot;</span>, </span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;120! Students&quot;</span>, </span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Two Students&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(newVar, <span class="fu">regex</span>(<span class="st">&quot;^[0-9]&quot;</span>))</span></code></pre></div>
+<pre><code>## [1]  TRUE FALSE  TRUE  TRUE FALSE</code></pre>
+<h4 id="31f">3.1.f)</h4>
+<p>Detect phone numbers from a given list. Note that these won’t have international codes. Your output for given test case should be <code>TRUE TRUE TRUE TRUE FALSE FALSE</code> Hint: The last string in the vector has more than 10 digits.</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>phone_num <span class="ot">=</span> <span class="fu">c</span>(</span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;401-501-1111&quot;</span>, </span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;(401)501-1111&quot;</span>, </span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;401 501 1111&quot;</span>, </span>
+<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;4015011111&quot;</span>, </span>
+<span id="cb66-6"><a href="#cb66-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;+408-501-1111&quot;</span>, </span>
+<span id="cb66-7"><a href="#cb66-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;40850211111&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(phone_num, <span class="fu">regex</span>(<span class="st">&quot;^([1-9|</span><span class="sc">\\</span><span class="st">(]){1}[0-9{9}|[:punct:]{2,3}]&quot;</span>))</span></code></pre></div>
+<pre><code>## [1]  TRUE  TRUE  TRUE  TRUE FALSE  TRUE</code></pre>
+<h4 id="31g">3.1.g)</h4>
+<p>In the solution you gave above, can you think of cases where your expression would fail to detect an incorrect phone number? If yes, how could you improve it?</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># No code, but some text</span></span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Yes, one example would be that a phone number with the format (xxx)-xxx-xxxx would have 4 punctuations (2 parenthesis and 2 dashes) and therefore would not work with my current code. In order to improve it, I could expand the current quantifier {2,3} to include 4.</span></span></code></pre></div>
+<h4 id="31h">3.1.h)</h4>
+<p>In column of a dataframe, we have stored strings that tell us if someone likes orange juice, apple juice etc. Extract the names of students who like orange juice or oranges. Expected Output: Annie Harry Hint: Use <code>str_detect</code> before using <code>str_extract()</code></p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>myVar <span class="ot">=</span> <span class="fu">c</span>(</span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Annie likes Orange juice&quot;</span>, <span class="st">&quot;Sonny likes Apple juice&quot;</span>, </span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Katy dislikes Orange juice&quot;</span>, <span class="st">&quot;Harry likes Oranges&quot;</span>, </span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Charlie likes Apple juice&quot;</span>, <span class="st">&quot;Margo like Orange Pie&quot;</span>)</span>
+<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-6"><a href="#cb70-6" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(myVar)</span>
+<span id="cb70-7"><a href="#cb70-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-8"><a href="#cb70-8" aria-hidden="true" tabindex="-1"></a>mask <span class="ot">&lt;-</span> <span class="fu">str_detect</span>(df[, <span class="dv">1</span>], <span class="fu">regex</span>(<span class="st">&quot; likes Orange&quot;</span>))</span>
+<span id="cb70-9"><a href="#cb70-9" aria-hidden="true" tabindex="-1"></a><span class="co">#mask &lt;- c(TRUE, FALSE, FALSE, TRUE, FALSE, FALSE)</span></span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(df[mask, ], <span class="fu">regex</span>(<span class="st">&quot;[A-z]+&quot;</span>))</span></code></pre></div>
+<pre><code>## [1] &quot;Annie&quot; &quot;Harry&quot;</code></pre>
+<h2 id="4-using-apply">4) Using Apply</h2>
+<p>Apply functions are useful when you want to apply a certain operation to all the rows of a list or dataframe. In the example below, we will only consider the case of a data frame. Note that this idea would be useful for your next lab. Here we apply <code>str_locate()</code> to locate area code from phone numbers. Using the output of <code>str_locate()</code>, we could then extract the area code.</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>phone_num <span class="ot">=</span> <span class="fu">c</span>(</span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;401-501-1111&quot;</span>, </span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;(401)501-1111&quot;</span>, </span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;401 501 1111&quot;</span>, </span>
+<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;401-5011111&quot;</span>, </span>
+<span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;+408-501-1111&quot;</span>)</span>
+<span id="cb73-7"><a href="#cb73-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-8"><a href="#cb73-8" aria-hidden="true" tabindex="-1"></a>code_pos <span class="ot">=</span> <span class="fu">lapply</span>(</span>
+<span id="cb73-9"><a href="#cb73-9" aria-hidden="true" tabindex="-1"></a>  phone_num, </span>
+<span id="cb73-10"><a href="#cb73-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">function</span>(x) <span class="fu">str_locate</span>(x, <span class="at">pattern =</span> <span class="fu">regex</span>(<span class="st">&#39;[0-9]{3}[- )]*&#39;</span>)))</span>
+<span id="cb73-11"><a href="#cb73-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-12"><a href="#cb73-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Use substring() to extract the area code by sharing the start </span></span>
+<span id="cb73-13"><a href="#cb73-13" aria-hidden="true" tabindex="-1"></a><span class="co"># and end position with the function as arguments.</span></span>
+<span id="cb73-14"><a href="#cb73-14" aria-hidden="true" tabindex="-1"></a>code_pos <span class="ot">=</span> <span class="fu">do.call</span>(rbind, code_pos)</span>
+<span id="cb73-15"><a href="#cb73-15" aria-hidden="true" tabindex="-1"></a><span class="fu">substring</span>(phone_num, code_pos[,<span class="dv">1</span>], code_pos[,<span class="dv">2</span>]<span class="sc">-</span><span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;401&quot; &quot;401&quot; &quot;401&quot; &quot;401&quot; &quot;408&quot;</code></pre>
+<h3 id="41-your-turn">4.1) Your Turn</h3>
+<p>Using the idea above, from the <code>nba</code> dataframe, pull the last names of all NBA players. Find the frequencies of all the last names. <em>Hint:</em> Use <code>str_locate()</code> and <code>substring()</code>. Eg: str_locate(nba$player, …). Alternatively, you may choose to try this with lapply() but this is slightly tricky.</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>location_last_name <span class="ot">&lt;-</span> <span class="fu">str_locate</span>(nba<span class="sc">$</span>player, <span class="fu">regex</span>(<span class="st">&quot;(?&lt;=</span><span class="sc">\\</span><span class="st">s)[:alpha:]&quot;</span>)) </span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>last_names <span class="ot">&lt;-</span> <span class="fu">str_sub</span>(nba<span class="sc">$</span>player, location_last_name[ , <span class="dv">1</span>])</span>
+<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a>frequencies <span class="ot">&lt;-</span> <span class="fu">table</span>(last_names)</span>
+<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a>frequencies</span></code></pre></div>
+<pre><code>## last_names
+##          Abrines              Acy            Adams          Adebayo 
+##                1                1                1                1 
+##          Afflalo          Aldrich         Aldridge            Allen 
+##                1                1                1                2 
+##            Aminu         Anderson         Anigbogu    Antetokounmpo 
+##                1                3                1                1 
+##          Anthony          Anunoby      Arcidiacono            Ariza 
+##                1                1                1                1 
+##           Arthur            Artis             Asik         Augustin 
+##                1                1                1                1 
+##          Babbitt            Bacon            Baker          Baldwin 
+##                1                1                1                1 
+##             Ball            Barea           Barnes           Barton 
+##                1                1                1                1 
+##            Batum          Bayless           Baynes         Bazemore 
+##                1                1                1                1 
+##             Beal          Beasley        Belinelli             Bell 
+##                1                2                1                1 
+##           Bembry           Bender          Bertans         Beverley 
+##                1                1                1                1 
+##            Birch             Bird          Biyombo          Bjelica 
+##                1                1                1                1 
+##            Black         Blakeney          Bledsoe             Blue 
+##                1                1                1                1 
+##       Bogdanovic            Bogut         Bolomboy           Booker 
+##                2                1                1                2 
+##          Boucher          Bradley           Brewer          Brogdon 
+##                1                2                1                1 
+##           Brooks            Brown         Brussino           Bryant 
+##                3                6                1                1 
+##          Bullock            Burke            Burks           Butler 
+##                1                1                1                1 
+##           Buycks          Caboclo         Calderon    Caldwell-Pope 
+##                1                1                1                1 
+##           Canaan           Capela          Carroll           Carter 
+##                1                1                1                1 
+##  Carter-Williams           Caruso           Casspi     Cauley-Stein 
+##                1                1                1                1 
+##        Cavanaugh         Chalmers         Chandler           Chriss 
+##                1                1                2                1 
+##            Clark         Clarkson          Clavell        Cleveland 
+##                1                1                1                1 
+##          Collins     Collinsworth         Collison           Conley 
+##                2                1                2                1 
+##      Connaughton             Cook            Cooke           Cooley 
+##                1                1                1                1 
+##         Costello          Cousins        Covington           Crabbe 
+##                1                1                1                1 
+##            Craig         Crawford          Crowder       Cunningham 
+##                1                2                1                1 
+##            Curry          Daniels            Davis           Dedmon 
+##                1                1                3                1 
+##           Dekker          Delaney      Dellavedova             Deng 
+##                1                1                1                1 
+##          DeRozan           Diallo            Dieng        Dinwiddie 
+##                1                1                1                1 
+##           Dorsey           Dotson            Doyle           Dozier 
+##                1                1                1                1 
+##           Dragic             Drew         Drummond           Dudley 
+##                1                1                1                1 
+##             Dunn           Durant            Eddie         Ellenson 
+##                1                1                1                1 
+##        Ellington           Embiid            Ennis            Evans 
+##                1                1                2                3 
+##             Exum           Faried           Favors           Felder 
+##                1                1                1                1 
+##          Felicio           Felton         Ferguson          Ferrell 
+##                1                1                1                1 
+##     Finney-Smith           Forbes         Fournier              Fox 
+##                1                1                1                1 
+##          Frazier             Frye            Fultz        Gallinari 
+##                1                1                1                1 
+##         Galloway            Gasol              Gay           George 
+##                1                2                1                1 
+##     Georges-Hunt           Gibson         Ginobili           Gobert 
+##                1                2                1                1 
+##           Gordon           Gortat           Graham            Grant 
+##                2                1                1                2 
+##             Gray            Green          Griffin         Hamilton 
+##                1                5                1                1 
+##         Hardaway           Harden         Harkless          Harrell 
+##                1                1                1                1 
+##           Harris         Harrison             Hart           Haslem 
+##                4                3                1                1 
+##            Hayes          Hayward            Hearn            Henry 
+##                1                1                1                1 
+##           Henson      Hernangomez          Hezonja            Hicks 
+##                1                2                1                1 
+##            Hield          Hilario             Hill         Hilliard 
+##                1                1                2                1 
+##          Holiday          Holland Hollis-Jefferson           Holmes 
+##                2                1                1                1 
+##             Hood           Hopson          Horford            House 
+##                1                1                1                1 
+##           Howard          Huestis           Hunter            Ibaka 
+##                1                1                2                1 
+##         Iguodala         Ilyasova           Ingles           Ingram 
+##                1                1                1                2 
+##           Irving            Isaac           Iwundu             Jack 
+##                1                1                1                1 
+##          Jackson            James        Jefferson         Jennings 
+##                5                2                2                1 
+##          Jerebko          Johnson            Jokic            Jones 
+##                1                9                1                4 
+##           Jordan           Joseph         Kaminsky           Kanter 
+##                1                1                1                1 
+##          Kennard   Kidd-Gilchrist       Kilpatrick           Kleber 
+##                1                1                1                1 
+##          Korkmaz           Kornet           Korver           Koufos 
+##                1                1                1                1 
+##            Kuzma       Kuzminskas       Labissiere             Lamb 
+##                1                1                1                1 
+##           Larkin        Lauvergne           LaVine           Layman 
+##                1                1                1                1 
+##             Leaf              Lee       Lemon, Jr.              Len 
+##                1                2                1                1 
+##          Leonard            Leuer           LeVert          Liggins 
+##                2                1                1                1 
+##          Lillard              Lin       Livingston           Looney 
+##                1                1                1                1 
+##            Lopez             Love            Lowry  Luwawu-Cabarrot 
+##                2                1                1                1 
+##            Lydon            Lyles             Mack          Magette 
+##                1                1                1                1 
+##          Mahinmi            Maker       Marjanovic        Markkanen 
+##                1                1                1                1 
+##           Martin            Mason         Mathiang         Matthews 
+##                1                1                1                1 
+##     Mbah a Moute            McCaw         McCollum        McConnell 
+##                1                1                1                1 
+##           McCree       McCullough        McDermott            McGee 
+##                1                1                1                1 
+##         McGruder   McKinney-Jones         McKinnie         McLemore 
+##                1                1                1                1 
+##        McRoberts            Meeks            Mejri   Michael McAdoo 
+##                1                1                1                1 
+##           Mickey        Middleton            Miles           Miller 
+##                1                1                1                2 
+##            Mills          Millsap          Mirotic         Mitchell 
+##                1                1                1                1 
+##      Mitrou-Long             Monk           Monroe          Montero 
+##                1                1                1                1 
+##            Moore         Moreland           Morris           Motley 
+##                2                1                4                1 
+##           Mozgov           Mudiay         Muhammad          Munford 
+##                1                1                1                1 
+##           Murray          Muscala            Nader            Nance 
+##                2                1                1                1 
+##           Napier           Nelson             Neto            Niang 
+##                1                1                1                1 
+##             Noah             Noel         Nogueira         Nowitzki 
+##                1                1                1                1 
+##        Ntilikina           Nurkic            Nwaba          O&#39;Neale 
+##                1                1                1                1 
+##          O&#39;Quinn          Ojeleye           Okafor          Oladipo 
+##                1                1                2                1 
+##           Olynyk           Onuaku            Osman            Oubre 
+##                1                1                1                1 
+##         Pachulia            Paige      Papagiannis           Parker 
+##                1                1                1                2 
+##          Parsons        Patterson           Patton             Paul 
+##                1                1                1                2 
+##            Payne           Payton          Perkins        Perrantes 
+##                2                2                1                1 
+##           Peters          Plumlee           Poeltl        Pondexter 
+##                1                3                1                1 
+##           Porter           Portis        Porzingis           Powell 
+##                1                1                1                2 
+##        Poythress           Pullen           Purvis               Qi 
+##                1                1                1                1 
+##       Quarterman             Rabb           Randle         Randolph 
+##                1                1                1                1 
+##     Rathan-Mayes           Redick             Reed       Richardson 
+##                1                1                1                2 
+##           Rivers         Roberson         Robinson            Rondo 
+##                1                1                2                1 
+##             Rose             Ross           Rozier            Rubio 
+##                1                1                1                1 
+##          Russell          Sabonis          Sampson            Saric 
+##                1                1                1                1 
+##       Satoransky         Schroder            Scott        Sefolosha 
+##                1                1                1                1 
+##           Selden         Sessions           Siakam            Silas 
+##                1                1                1                1 
+##          Simmons          Singler            Smart            Smith 
+##                3                1                1                5 
+##            Snell         Speights         Stauskas       Stephenson 
+##                1                1                1                1 
+##         Stockton            Stone           Sumner         Swanigan 
+##                1                1                1                1 
+##            Tatum           Taylor           Teague        Teletovic 
+##                1                1                2                1 
+##           Temple         Teodosic            Terry            Theis 
+##                1                1                1                1 
+##           Thomas         Thompson        Thornwell         Tolliver 
+##                2                2                1                1 
+##            Towns           Tucker           Turner             Udoh 
+##                1                1                2                1 
+##             Ulis      Valanciunas        Valentine         VanVleet 
+##                1                1                1                1 
+##           Vaughn           Vonleh          Vucevic             Wade 
+##                1                1                1                1 
+##          Waiters           Walker             Wall          Wallace 
+##                1                1                1                1 
+##    Waller-Prince           Walton           Warney           Warren 
+##                1                1                1                1 
+##             Wear             Webb            Weber             West 
+##                1                1                1                1 
+##        Westbrook            White        Whitehead        Whiteside 
+##                1                2                1                1 
+##          Wiggins            Wiley          Wilkins         Williams 
+##                1                1                1                7 
+##           Wilson          Winslow           Withey          Wolters 
+##                2                1                1                1 
+##           Wright         Yabusele            Young           Zeller 
+##                2                1                4                2 
+##           Zipser            Zizic            Zubac 
+##                1                1                1</code></pre>
+
+</body>
+</html>

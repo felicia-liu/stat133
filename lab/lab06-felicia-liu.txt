@@ -1,0 +1,66 @@
+Lab 06: Unix Filters and Pipes
+Felicia Liu
+March 5, 2021
+
+Your Turn Questions
+
+1.4) Modify the previous pipe to get the names (of the first 5 tents) sorted alphabetically in decreasing order
+$ cut -f 1 -d "," tents.csv | tail +2 | head -n 5 | sort -r
+
+1.5) Write a pipe to get the names of the last 5 tents (no sorting required)
+$ cut -f 1 -d "," tents.csv | tail -n 5 | head -n 5 
+
+1.6) Write a pipe to get the name and brand of the first 5 tents
+$ cut -f 1,2 -d "," tents.csv | tail +2 | head -n 5
+
+1.7) Write a pipe to get the name, bestuse, and capacity of the last 5 tents
+$ cut -f 1,6,8 -d "," tents.csv | tail -n 5 | head -n 5
+
+2.3) Take the previous command and pipe it again with sort in order to display the categories (and their counts) in increasing order
+$ cut -f 6 -d "," tents.csv | tail +2 | sort | uniq -c | sort
+
+2.4) Write a pipe to list (i.e. display) the unique categories of seasons
+$ cut -f 7 -d "," tents.csv | tail +2 | sort | uniq
+
+2.5) Write a pipe to list (i.e. display) the unique categories of seasons and their counts
+$ cut -f 7 -d "," tents.csv | tail +2 | sort | uniq -c
+
+2.6) Now let's make things a bit more interesting: cut both bestuse and seasons, and pipe them to sort and uniq to get the counts for all possible combinations of categories from bestuse and seasons
+$ cut -f 6,7 -d "," tents.csv | tail +2 | sort | uniq -c
+
+3.3) Pipe grep with wc to count the number of tents from brand rei
+$ grep "rei" tents.csv | wc
+
+3.4) Write a similar pipe to the one above to find how many Backpacking tents are in tents.csv
+$ grep "Backpacking" tents.csv | wc
+
+3.5) Write a pipe to create a file big-agnes-tents.csv containing the data for tents of brand big-agnes:
+$ grep "big-agnes" tents.csv > big-agnes-tents.csv
+
+3.6) Write commands to create a file kelty-tents.csv containing the data for tents of brand kelty, arranged by name alphabetically. This file should have column names in the first line (i.e. first row).
+$ grep "kelty" tents.csv | sort > kelty-tents.csv
+
+4.1) Write a pipeline to obtain the unique categories of bestuse (column 6). The output of the pipeline should contain only the categories (NOT the counts). HINT: cut, sort, and uniq are your friends.
+$ cut -f 6 -d "," tents.csv | tail +2 | sort | uniq
+
+4.2) Write a pipeline to obtain the counts (i.e. frequencies) of the different bestuse values (column 6), displayed from largest to smallest (i.e. descending order). The first column corresponds to count, the second column corresponds to experience. Redirect the output to a text file bestuse-counts.txt. A HINT: cut, tail, sort, uniq; and redirection > operator, are your friends.
+$ cut -f 6 -d "," tents.csv | tail +2 | sort | uniq -c > bestuse-counts
+
+4.3) Use output redirection commands to create a CSV file msr-tents.csv containing data for the msr brand. Your CSV file should include column names in the first row. HINT: redirection operators > and >>, as well as head and grep are your friends.
+$ grep "msr" tents.csv > msr-tents
+$ head -n 1 tents.csv > msr-tents.csv
+$ grep "msr" tents.csv >> msr-tents.csv
+
+4.4) Use the previously created file msr-tents.csv to select, separately, the columns name, weight, and price. Store each column in a text file: name.txt, weight.txt, and price.txt
+$ cut -f 1 -d "," msr-tents.csv | tail +2 > names.txt
+$ cut -f 4 -d "," msr-tents.csv | tail +2 > weight.txt
+$ cut -f 3 -d "," msr-tents.csv | tail +2 > price.txt
+
+4.5) Use the previously created files name.txt, weight.txt, and price.txt to paste them (i.e. merge them), in that order, into a new CSV file msr-prices.csv (comma separated values!!!).
+$ paste -d "," names.txt weight.txt price.txt > msr-prices.csv
+
+4.6) Write a pipeline to list (display) the five largest prices in decreasing order.
+$ cut -f 3 -d "," tents.csv | tail +2 | head -n 5 | sort -r
+
+4.7) Write pipelines to create a file top10-tents.csv containing the top10 tents by price from largest to smallest. Your CSV file should include tent name, brand, price.
+$ cut -f 1,2,3 -d "," tents.csv | tail +2 | head -n 10 | sort -k 3 > top1-tents.csv

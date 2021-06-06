@@ -1,0 +1,81 @@
+---
+title: "Lab 9: Simulations"
+author: "Felicia Liu"
+date: "3/30/2021"
+output: html_document
+---
+
+# Part 1) Computing Probabilities
+# Your Turn
+
+1.
+```{r}
+# boxes 
+box1 <- c('blue', 'blue', 'red')
+box2 <- c('blue', 'blue', 'red', 'red', 'red', 'white')
+```
+
+2.
+```{r}
+n <- runif(1, min = 0, max = 1)
+
+if (n > 0.5) {
+  sample(box1, size = 4, replace = TRUE)
+} else {
+  sample(box2, size = 4, replace = TRUE)
+}
+  
+```
+
+3.
+```{r}
+times <- 1000
+drawn_balls <- matrix(NA, nrow = 1000, ncol = 4)
+
+for (i in 1:times) {
+  n <- runif(1, min = 0, max = 1)
+  if (n > 0.5) {
+    draw <- sample(box1, size = 4, replace = TRUE)
+    drawn_balls[i, ] <- draw
+  } else {
+    draw <- sample(box2, size = 4, replace = TRUE)
+    drawn_balls[i, ] <- draw
+  }
+}
+
+head(drawn_balls)
+```
+
+4.
+```{r}
+count_blue <- rowSums(drawn_balls == "blue")
+num_blue <- cbind(count_blue)
+
+prop_zero_blue <- (sum(num_blue == 0))/times
+prop_zero_blue
+
+prop_one_blue <- (sum(num_blue == 1))/times
+prop_one_blue
+
+prop_two_blue <- (sum(num_blue == 2))/times
+prop_two_blue
+
+prop_three_blue <- (sum(num_blue == 3))/times
+prop_three_blue
+
+prop_four_blue <- (sum(num_blue == 4))/times
+prop_four_blue
+
+```
+
+5.
+```{r}
+histogram <- hist(num_blue, breaks = 100, plot = FALSE)
+histogram$density = histogram$counts/sum(histogram$counts) 
+plot(histogram, main = "Relative frequencies of number of blue balls",
+     xlab = "number of blue balls",
+     ylab = "freqs",
+     freq = FALSE)
+
+```
+

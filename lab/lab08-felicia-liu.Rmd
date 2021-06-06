@@ -1,0 +1,315 @@
+---
+title: "Lab 8: Functions and Loops"
+subtitle: "Stat 133, Fall 2020"
+output: html_document
+urlcolor: blue
+---
+
+> ### Learning Objectives
+>
+> - Get familiar with the syntax of a `for` loop
+> - Get familiar with the syntax of a `while` loop
+> - Get familiar with the syntax of a `repeat` loop
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### General Instructions
+
+- Write your descriptions, explanations, and code in an `Rmd` (R markdown) file.
+- Name this file as `lab08-first-last.Rmd`, where `first` and `last` are your
+first and last names (e.g. `lab08-gaston-sanchez.Rmd`).
+- Knit your `Rmd` file as an html document (default option).
+- Submit your `Rmd` and `html` files to bCourses, in the corresponding lab assignment.
+
+
+
+## About Loops
+
+- Many times we need to perform a procedure several times
+- In other words, we have to perform the same operation several times as long as some condition is fulfilled
+- For this purpose we use loops
+- The main idea is that of __iteration__ or __repetition__
+- R provides three basic paradigms to handle this situations: `for`, `repeat`, `while`
+
+
+
+
+### 1) Your Turn: Summation Series
+
+Write a for loop to compute the following two series. Your loop should start at step $k=0$ and stop at step $n$. Test your code with
+different values for $n$. And store each k-th term at each iteration.
+Does the series converge as $n$ increase?
+
+#### 1.a) summation series
+
+$$
+\sum_{k=0}^{n} \frac{1}{2^k} = 1 + \frac{1}{2} + \frac{1}{4} + \frac{1}{8} + \dots + \frac{1}{2^n}
+$$
+```{r}
+n <- 3 #example value for n
+sum <- 0
+k <- 0
+while (k <= n){
+  sum <- sum + 1/(2**k)
+  k <- k + 1
+}
+print(sum)
+
+```
+The series converges as n increases.
+
+
+#### 1.b) summation series
+
+
+$$
+\sum_{k=0}^{n} \frac{1}{9^k} =1 + \frac{1}{9} + \frac{1}{81} + \dots + \frac{1}{9^n}
+$$
+
+```{r}
+n <- 3 #example value for n
+sum <- 0
+k <- 0
+while (k <= n){
+  sum <- sum + 1/(9**k)
+  k <- k + 1
+}
+print(sum)
+```
+The series converges as n increases.
+
+### 2) Your Turn: Arithmetic Series
+
+Write a for loop to compute the following arithmetic series $a_n = a_1 + (n-1)d$ when $a_1 = 3$, and $d = 3$. For instance: 3 + 6 + 9 + 12 + 15 + ...
+
+$$
+a_n = a_1 + (n-1)d
+$$
+
+ 
+Test your code with different values for $n$. And store each n-th term at each iteration.
+Does the series converge as $n$ increase?
+
+```{r}
+n <- 4 #example value for n
+arith_series <- 0
+a1 <- 3
+d <- 3
+for (pos in 1:n){
+  arith_series <- arith_series + a1 + (n - 1)*d
+  n <- n - 1
+}
+print(arith_series)
+```
+The series does not converge as n increases.
+
+### 3) Your Turn: Geometric Sequence
+
+A sequence such as $3, 6, 12, 24, 48$ is an example of a geometric sequence. 
+In this type of sequence, the $n$-th term is obtained as: 
+
+$$
+a_n = a_1 \times r^{n-1}
+$$
+
+where: $a_1$ is the first term, $r$ is the common ratio, and $n$ is the number of 
+terms.
+
+Write a for loop to compute the sum of the first $n$ terms of:
+3 + 6 + 12 + 24 + ... 
+Test your code with different values for $n$. Does the series converge as $n$ 
+increase?
+
+```{r}
+n <- 3 #example value for n
+geom_seq <- 0
+a1 <- 3
+ratio <- 6/3
+for (pos in 1:n){
+  geom_seq <- geom_seq + a1*(ratio**(n-1))
+  n <- n - 1
+}
+print(geom_seq)
+```
+The series does not converge as n increases.
+
+
+### 4) Your Turn: Sine Approximation
+
+Consider the following series that is used to approximate the function $sin(x)$:
+
+$$
+sin(x) \approx x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \dots
+$$
+
+Write a `for` loop  to approximate $sin(x)$. Try different number of terms, 
+$n = 5, 10, 50, 100$. Compare your results with those of `sin()` function.
+
+```{r}
+x <- 5 #example value for x
+sin_func <- 0
+degree <- 1
+degree2 <- 3 
+for (pos in 1:x){
+  sin_func <- sin_func + ((x**degree)/factorial(degree) - (x**degree2)/factorial(degree2)) 
+  degree <- degree + 4
+  degree2 <- degree2 + 4
+}
+print(sin_func)
+
+sin(5)
+```
+
+
+### 5) Your Turn: Average
+
+The average of $n$ numbers $x_1, x_2, \dots, x_n$ is given by the following 
+formula:
+
+$$
+\bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i = \frac{x_1 + x_2 + \dots + x_n}{n}
+$$
+
+Write R code, using each type of loop (e.g. `for`, `while`, `repeat`) to 
+implement the arithmetic mean of the vector `x = 1:100`
+
+```{r}
+#for loop
+sum <- 0
+for (pos in 1:100){
+  sum <- sum + pos
+  avg <- sum/100
+}
+print(avg)
+```
+```{r}
+#while loop
+sum <- 0
+x = 1
+while (x < 101){
+  sum <- sum + x
+  avg <- sum/100
+  x <- x + 1
+}
+print(avg)
+```
+
+```{r}
+#repeat loop
+sum <- 0
+x = 1
+repeat{
+  sum <- sum + x
+  avg <- sum/100
+  x <- x + 1
+  if (x > 100) {
+    break
+  }
+}
+print(avg)
+```
+
+
+### 6) Your Turn: Standard Deviation
+
+The sample standard deviation of a list of $n$ numbers $x_1, x_2, \dots, x_n$ 
+is given by the following formula:
+
+$$
+SD = \sqrt{ \frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})^2 }
+$$
+
+Write R code, using each type of loop (e.g. `for`, `while`, `repeat`) to 
+implement the sample standard deviation of the vector `x = 1:100`
+
+```{r}
+#for loop
+avg <- 50.5 #average of the vector 1 to 100
+sum_diff <- 0 
+for (pos in 1:100){
+  sum_diff <- sum_diff + (pos - avg)**2
+  sd <- ((1/(100-1))*sum_diff)**0.5
+}
+print(sd)
+```
+```{r}
+#while loop
+avg <- 50.5 #average of the vector 1 to 100
+sum_diff <- 0
+x = 1
+while (x <= 100){
+  sum_diff <- sum_diff + (x - avg)**2
+  sd <- ((1/(100-1))*sum_diff)**0.5
+  x <- x + 1
+}
+print(sd)
+```
+```{r}
+#repeat loop
+avg <- 50.5 #average of the vector 1 to 100
+sum_diff <- 0
+x = 1
+repeat{
+  sum_diff <- sum_diff + (x - avg)**2
+  x <- x + 1
+  sd <- ((1/(100-1))*sum_diff)**0.5
+  if (x > 100) {
+    break
+  }
+}
+print(sd)
+```
+
+
+### 7) Your Turn: Geometric Mean
+
+The geometric mean of $n$ numbers $x_1, x_2, \dots, x_n$ is given by the 
+following formula:
+
+$$
+\bar{x} = \left ( \prod_{i=1}^{n} x_i \right )^{1/n}
+$$
+
+Write R code, using each type of loop (e.g. `for`, `while`, `repeat`) to 
+implement the geometric mean of the vector `x = 1:50`
+
+```{r}
+#for loop
+product <- 1
+for (pos in 1:50){
+  product <- product * pos
+  geom_mean <- product**(1/pos)
+}
+print(geom_mean)
+```
+
+```{r}
+#while loop
+product <- 1
+x = 1
+while (x <= 50){
+  product <- product * x
+  geom_mean <- product**(1/x)
+  x <- x + 1
+}
+print(geom_mean)
+```
+
+```{r}
+#repeat loop
+product <- 1
+x = 1
+repeat{
+  product <- product * x
+  geom_mean <- product**(1/x)
+  x <- x + 1
+  if (x > 50) {
+    break
+  }
+}
+print(geom_mean)
+```
+

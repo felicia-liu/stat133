@@ -1,0 +1,463 @@
+---
+title: "Lab 11: More Regular Expressions"
+subtitle: "Stat 133, Spring 2021"
+author: "Felicia Liu"
+output: html_document
+---
+
+```{r}
+library(stringr)
+library(dplyr)
+```
+
+In this lab, we cover more topics about regular expressions, namely:
+
+**(1) Look Around**
+\
+- `Positive look-ahead`
+\
+- `Positive look-behind`
+\
+- `Negative look-ahead`
+\
+- `Negative look-behind`
+\
+**(2) Additional Metacharacters**
+
+
+## 1) Look Around
+
+As the name suggests, it helps look around the string. `Look Arounds` indicate 
+positions just like anchors, `$`, `^`, that we learnt in previous lab. 
+
+
+### 1.1) Look Aheads
+
+The expression `A(?=B)` for look-ahead means "look for A, but match only if 
+followed by B". There may be any pattern instead of A and B. 
+
+
+#### 1.1a) Example
+
+To find the amount of precipitation in this string `myVar`, we could look for 
+numbers using character class `[0-9]` followed by quantifier `+`. 
+
+```{r}
+myVar = "7 days of 10mm rainfall in Ohio and 2 nights of 15mm rainfall in NYC"
+
+str_extract_all(myVar, regex('[0-9]+'))
+```
+
+However, this gives us all numbers in the string. We could use `look-ahead` to 
+look for `mm`. If a number is followed by `mm`, we know with certainty (in this 
+case), that it refers to rainfall.
+
+```{r}
+myVar = "7 days of 10mm rainfall in Ohio and 2 nights of 15mm rainfall in NYC"
+
+str_extract_all(myVar, regex('[0-9]+(?=mm)'))
+```
+
+Note that `(?=...)` traces the position of look-ahead pattern. Hence, `(?=mm)` 
+looks for the position of `mm` after a matched string `[0-9]+`. The output is 
+the matched string `[0-9]+` that is followed by `mm`.
+
+
+#### 1.1b) Example
+
+In the above case, lets try to match all other numbers except for those 
+preeceding `mm`. In other words, lets try to extract numbers that are not 
+rainfall values.
+
+We use negative look-ahead `(?!...)`. The pattern within negative look-ahead 
+expression is `mm`, i.e, match locations that don't preceed `mm`.
+
+```{r}
+myVar = "7 days of 10mm rainfall in Ohio and 2 nights of 15mm rainfall in NYC"
+
+str_extract_all(myVar, regex('[0-9]+ (?!mm)'))
+```
+
+
+#### 1.1c) Summary of Look-ahead
+
+|Type|Syntax|Description|
+|---|-----|-----------|
+|Positive Look Ahead| `(?=pattern)`	| Look-ahead	Asserts that what immediately follows the current position in the string is pattern|
+|Negative Look Ahead| `(?!pattern)`	| Negative Look-ahead	Asserts that what immediately follows the current position in the string is not pattern|
+
+
+### 1.2) Look Behinds
+
+Look Behind allows to match a pattern only if there’s something before it. This 
+is contrary to lookahead which allows to assert for "what follows". The 
+expression `(?<=B)A` matches A, but only if there’s B before it.
+
+
+#### 1.2a) Example
+
+In the string `myVar`, extract all price information, i.e, numbers following 
+`$` symbol.
+
+Here, considering the expression for look-behind, `(?<=B)A`, B is `[$]{1}` and 
+A is number that follows `[0-9.]`.
+
+```{r}
+myVar = '1 apple costs $1.50 and 2 apples cost $3'
+
+str_extract_all(myVar, regex('(?<=[$]{1})[0-9.]+'))
+```
+
+Let's consider another example where we try to extract all price information, 
+given multiple currencies.
+
+```{r}
+myVar = '1 apple costs $1.50 in USA and 2 apples cost £3 elsewhere'
+
+str_extract_all(myVar, regex('(?<=[$£]{1})[0-9.]+'))
+```
+
+Lets consider a case where currency symbol follows the price information. In 
+this case we can use logical OR `|`.
+
+```{r}
+myVar = '1 apple costs $1.50 in USA, 2 apples cost £3 elsewhere and 5€ in France'
+
+str_extract_all(myVar, regex('((?<=[$£]{1})[0-9.]+)|([0-9.]+(?=[€]{1}))'))
+```
+
+In the above example, we created two patterns for each of:
+
+- currency symbols that preceed `(?<=[$£]{1})[0-9.]+)` using positive look-behind
+
+- currency symbols that follow `([0-9.]+(?=[€]{1}))` using positive look-ahead
+
+and we merged the two expressions using OR.
+
+The above example is more typical of what you would encounter in a real life scenario.
+
+
+#### 1.2b) Example
+
+In the following example for negative look-behind `(?<!...)`, we extract numbers 
+that are NOT price information.
+
+```{r}
+myVar = '1 apple costs $1 and 2 apples cost $2'
+
+str_extract_all(myVar, regex('(?<![$]{1})[0-9]+'))
+```
+
+
+#### 1.2c) Summary of Look-behind
+
+|Type|Syntax|Description|
+|---|-----|-----------|
+|Positive Look Behind| `(?<=pattern)` | Look-behind	Asserts that what immediately precedes the current position in the string is pattern|
+|Negative Look Behind| `(?<!pattern)` | Negative Look-behind	Asserts that what immediately precedes the current position in the string is not pattern|
+
+
+#### 1.2d) Example
+
+In the example from previous lab, let's try to use look-around to solve the 
+same question. Detect all strings that contain atleast 1 and a maximum of 3 z.
+
+```{r}
+myVar = c("bizarre", "bizzarre", "bizzzarrre", "bizzzzare", "zzz")
+
+str_detect(myVar, regex('(?=iz{1,3}a)'))
+```
+
+To detect string `zzz` as TRUE, using `|` could be helpful.
+
+```{r}
+str_detect(myVar, regex('(?=iz{1,3}a)|^zzz$'))
+```
+
+
+### 1.3) AND Operation using Look-around
+
+Let's look at an example that detects strings with a minimum of five characters.
+
+In this example, we use a positive look ahead to test the minimum length.
+
+```{r}
+text = c("Hello", "Mango", "sunshine", "125Joker","Bella!")
+
+str_detect(text, regex('(?=.{6,})'))
+```
+
+Continuing with the previous example, let's look at a case where the strings 
+have a minimum of 6 letters **AND** do not contain any numbers. 
+
+```{r}
+str_detect(text, regex('(?![0-9]+)(?=.{6,})'))
+```
+
+Note that we have demonstrated the idea of **AND** operation using look aheads 
+here. 
+
+
+#### 1.3a) Example
+
+Using the `nba2018-players.csv`, print unique names of colleges that contain 
+both strings `California` and `Los Angeles` in them. Use **positive look-behind**.
+
+```{r}
+nba = read.csv("C:/Users/felic/nba2018-players.csv")
+
+mask = str_detect(unlist(nba['college']), regex('(?=(.*Los Angeles))(?=(.*California))'))
+unique(nba[mask, 'college'])
+```
+
+-----
+
+## Your Turn
+
+## 2) Data Wrangling
+
+In these examples, lets try to extract the second university listed for every 
+player in `sample_college` variable, a subset of the `nba` dataset we used earlier.
+
+```{r}
+sample_college = nba[c(1,4,14,18,37,51,56,245,254:256,274:276,291),'college']
+sample_college
+```
+
+In case our input string is `University of Memphis, University of Kansas`, we 
+should get output as `University of Kansas`, i.e., print the second university 
+name listed.
+
+#### Step 1:
+
+Explain why this is wrong? Print the output and compare with correct results to 
+explain this case.
+
+```{r}
+str_extract(sample_college, regex('(?<=(University), )[A-z ]*'))
+```
+This code automatically takes whatever is preceded by "University," and calls it the name of the second university. However, not all university names end with "University," for example, if the University of Memphis came first, then this code would not be able to detect the university that  comes after it. Also, "California State University, Fullerton" would be wrongly split as "California State University" (first university) and "Fullerton" (second university).
+
+
+#### Step 2:
+
+Explain why this syntax is not perfect?
+
+```{r}
+str_extract(sample_college, regex('(?<=(University), )[A-z ]*(University){1}[A-z ]*'))
+
+```
+
+This code returns the second universities in lists where the first university ends in "University." Essentially, any row that has "... University, " followed by a second name that has the word University. This eliminates the problem we had in the previous problem where "Fullerton" was extracted as its own college name. However, this code is still problematic because it limits the first college names to only those that end in "University." This is not true for all college names; they can very well begin with "University of ..." and this code does not account for that.
+
+#### Step 3:
+
+Provide the correct code to perform this operation. Your output for input 
+`sample_college` should be 
+\
+\ [1] NA  
+\ [2] NA                                     
+\ [3] NA                                     
+\ [4] "Iowa State University"                
+\ [5] "Northern Illinois University"         
+\ [6] "University of California, Los Angeles"
+\
+\ [7] "University of Arizona"                
+\ [8] "University of Nevada, Las Vegas"      
+\ [9] "Syracuse University"                  
+\ [10] NA                                     
+\ [11] "University of Louisville"             
+\ [12] NA                                     
+\ [13] NA                                     
+\ [14] NA                                     
+\ [15] "University of Kansas"
+
+Hint: Instead of using `University` as the string in look-behind, think of a 
+simpler option that is suited for this case. Your solution need not be 
+generalized but should work perfectly for this sample case only.
+
+```{r}
+str_extract(sample_college, 
+            regex('(?<=(,){1} )[A-z ]*(University){1}[A-z, ]*'))
+
+```
+
+
+Now try to extract last names from `nba` dataset using the concept of positive 
+look-behind. Print the output of first 10 players.
+
+```{r}
+str_extract(nba$player, regex('(?=( ){1})[A-z ]*'))
+
+```
+
+
+Using the expressions developed so far, write a function that returns a dataframe with two columns, last name of player and the name of second university that we extracted in last questions. The input to the function would be a subset of nba players. You only need to populate the function definition.
+
+```{r}
+myfunc = function(df) {
+  last_name <- str_extract(df$player, regex('(?=( ){1})[A-z ]*'))
+  second_university <- str_extract(df$college, 
+            regex('(?<=(,){1} )[A-z ]*(University){1}[A-z, ]*'))
+  return(data.frame(last_name, second_university))
+}
+
+myfunc(nba[c(1,4,14,18,37,51,56,245,254:256,274:276,291),])
+```
+
+Hint: On running the above chunk, your output should be (for first five lines):
+
+|  |Last_name  | Second_Univ|
+|---|-----|-----|
+|1 | McKinnie |      <NA>|
+|2 |  DeRozan |      <NA>|
+|3   |  Powell  |    <NA>|
+|4   |   Nader   |   Iowa State University|
+|5 |     Silas  |   Northern Illinois University|
+
+
+
+## 3) Cleaning Webscrapped data
+
+Consider a chunk of webscrapped data (a topic you will learn in your next lab). In webscrapped content, one could retrieve desired content by looking for tags. In this case we would like to retrieve `firstHeading`. 
+
+Example: `<h1 id="firstHeading" class="firstHeading" lang="en">University of California, Berkeley</h1>`
+
+Here **University of Berkeley** is the content we need to retrieve, i.e. our `firstHeading`. First headings are always enclosed between 
+
+(a) `<h1 id="firstHeading" class="firstHeading" lang="en">`
+(b) `</h1>`
+
+Write code to extract all occurrences of First Headings in variable `text`. Use positive look ahead and positive look behind to capture the content between (a) and (b) given above.
+
+```{r}
+text = '<h1 id="firstHeading" class="firstHeading" lang="en">University of California, Berkeley</h1><h1 id="firstHeading" class="firstHeading" lang="en">Chicken soup1<h1 id="firstHeading" class="firstHeading" lang="en">Yoshua Bengio</h1><h1 id="firstHeading" class="firstHeading" lang="en">Turing Award</h1><meta name="generator" content="MediaWiki 1.35.0-wmf.27"/><div id="siteSub" class="noprint">From Wikipedia, the free encyclopedia</div><div id="bodyContent" class="mw-body-content"><h1 id="firstHeading">Page as on Today</h1><h1 id="firstHeading" class="firstHeading" lang="en">University of Manchester</h1><h1 id="firstHeading" class="firstHeading" lang="en">Chicken soup</h1>'
+
+str_extract_all(text, regex('(?<=(<h1 id="firstHeading" 
+                        class="firstHeading" lang="en">))
+                        [A-z ]+(?=(</h1>))'))
+
+```
+
+
+Your output should be:
+
+```
+[[1]]
+[1] "Yoshua Bengio"            "Turing Award"            
+[3] "University of Manchester" "Chicken soup"
+```
+
+
+## 4) Some Metacharacters
+
+|Expression|Description|
+|----|------|
+| `\\d` | match any digit (same as `[0-9]`)|
+| `\\s` | match any whitespace (space, tab)|
+| `\\t` | match only tab|
+| `\\b` | match a word boundary |
+| `\\A` | match the beginning of input|
+| `\\Z` | match the end of input|
+
+Metacharacters have a special meaning during pattern processing. Literals as we 
+learnt in lectures are actual strings that we match. Lets look at some examples.
+
+```{r}
+myVar = "7 days of 10mm rainfall in Ohio and 2 nights of 15mm rainfall in NYC"
+
+str_extract_all(myVar, regex('\\d'))
+```
+
+In the above example, metacharacter `\\d` identifies any number. In R, we need 
+to use two slashes (to escape the first slash).
+
+Similarly, to extract all two digit numbers, we can use `\\d` twice.
+
+```{r}
+myVar = "7 days of 10mm rainfall in Ohio and 2 nights of 15mm rainfall in NYC"
+str_extract_all(myVar, regex('\\d\\d'))
+```
+
+With a `+` as quantifier, we could extract all numbers
+
+```{r}
+myVar = "7 days of 10mm rainfall in Ohio and 2 nights of 15mm rainfall in NYC"
+str_extract_all(myVar, regex('\\d+'))
+```
+
+More examples:
+
+Use of `\\w`
+
+```{r}
+myVar = "7 days of 10mm rainfall in Ohio"
+
+str_extract_all(myVar, regex('\\w'))
+```
+
+With a `+` sign, we could extract all the words
+
+```{r}
+myVar = "7 days of 10mm rainfall in Ohio"
+
+str_extract_all(myVar, regex('\\w+'))
+```
+
+
+## 5) Phone numbers
+
+Lets try to create our phone number detector from last lab using `\\d`. 
+Note that these won't have international codes. Your output for given test case 
+should be `TRUE TRUE TRUE TRUE FALSE FALSE`
+
+Hint: The last string in the vector has more than 10 digits.
+
+```{r}
+phone_num = c(
+  "401-501-1111", 
+  "(401)501-1111", 
+  "401 501 1111", 
+  "4015011111", 
+  "+408-501-1111", 
+  "40850211111")
+
+```
+
+As some of you had questions on how to approach this problem, lets do it one 
+step at a time.
+
+a) Write code to detect three digit area code The output for this case should be 
+`TRUE TRUE FALSE FALSE`. Hint: Replace periods with solution `^[...]?\\d{...}[...]?$`
+
+```{r}
+test_case = c('401', '(401)', '4015', '+401')
+str_detect(test_case, '^[(]?\\d{3}[)]?$')
+```
+
+
+b) What happens if you don't place `^` and `$` at the beginning and end of the string? And what does `?` stand for?
+`?` is a quantifier that means zero or one (optional). If we don't place `^` and `$` at the beginning, then all 4 cases in `test_case` will evaluate to TRUE. This is because the code would be scanning for any occurrence of (for example) 3 digits in a row regardless of the order (for example, `+401` would be considered true because it has 401 even through it begins with something we don't want to include: +)
+
+c) To the previous expression make changes to detect first 6 numbers. Your output here should be TRUE TRUE TRUE TRUE FALSE FALSE
+
+```{r}
+test_case = c('401 501', '401-501', '(401)501', '401501', '+401501', '4011501')
+str_detect(test_case, '^[(]?\\d{3}[-) ]?\\d{3}$')
+```
+
+
+d) Now consider the actual problem. Modify solution to previous question to find a pattern for detecting phone numbers. Your output for given test case should be TRUE TRUE TRUE TRUE FALSE FALSE
+
+```{r}
+phone_num = c(
+  "401-501-1111", 
+  "(401)501-1111", 
+  "401 501 1111", 
+  "4015011111", 
+  "+408-501-1111", 
+  "40850211111")
+
+str_detect(phone_num, '^[(]?\\d{3}[-) ]?\\d{3}[- ]?\\d{4}$')
+```
+

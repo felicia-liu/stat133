@@ -1,0 +1,464 @@
+---
+title: "Lab 3: Basic Data Objects"
+subtitle: "Stat 133, Spring 2021"
+output: html_document
+urlcolor: blue
+---
+
+> ### Learning Objectives
+>
+> - Work with vectors of different data types
+> - Understand the concept of _atomic_ structures
+> - Learn how to subset and slice R vectors
+> - Understand the concept of _vectorization_
+> - Understand _recycling_ rules in R
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+data(starwars)
+variables <- c("name", "height", "mass", "sex", "homeworld")
+dat <- na.omit(starwars[ ,variables])
+```
+
+
+### General Instructions
+
+- Write your descriptions, explanations, and code in an `Rmd` (R markdown) file.
+- Name this file as `lab03-first-last.Rmd`, where `first` and `last` are your
+first and last names (e.g. `lab03-gaston-sanchez.Rmd`).
+- Knit your `Rmd` file as an html document (default option).
+- Submit your `Rmd` and `html` files to bCourses, in the corresponding lab assignment.
+
+
+
+## 1) Dataset `"starwars"`
+
+Last week we looked at a couple of approaches to manipulate tables and create 
+statistical graphics via `"dplyr"` and `"ggplot2"`. As you now know, the default 
+object that R provides to handle data tables is the so called `data.frame`. 
+It turns out that data frames are formed by a set of R vectors, which is the 
+main topic of today's session.
+
+In this lab, you are going to work with the same dataset from last week: the 
+data `starwars` from `"dplyr"`. Because you should have `"dplyr"` already 
+installed, the only thing you need to do---in order to use the functions---in 
+this package is to load it. This time however, we will focus on columns `name`, 
+`height`, `mass`, `sex`, and `homeworld`, and we will also remove rows that 
+contain missing values:
+
+
+```{r eval = FALSE}
+# include this chunk in your Rmd
+library(dplyr)
+data(starwars)
+variables <- c("name", "height", "mass", "sex", "homeworld")
+dat <- na.omit(starwars[ ,variables])
+```
+
+
+
+## 2) Vectors
+
+As we mention, data frames are made of vectors. Each column of a data frame 
+corresponds to an R vector. So let's "break down" the table `dat` into five 
+vectors:
+
+```{r}
+# creating 5 vectors (from columns in dat)
+name <- dat$name
+
+height <- dat$height
+
+mass <- dat$mass
+
+sex <- dat$sex
+
+homeworld <- dat$homeworld
+```
+
+Use the function `typeof()` to see the data type of each of the above vectors.
+
+```{r}
+typeof(name)
+typeof(height)
+typeof(mass)
+typeof(sex)
+typeof(homeworld)
+```
+
+
+### 2.1) Your turn: subsetting vectors
+
+Create a vector `four` by selecting the first four elements in `name`:
+
+```{r}
+four <- head(name, n = 4)
+```
+
+Single brackets `[ ]` are used to subset (i.e. subscript, split, slice) vectors.
+Without running the code, try to guess the output of the following commands, and 
+then run them to check your guess:
+
+- number one: `four[1]`
+
+```{r}
+# your code
+four[1]
+```
+
+- an index of zero: `four[0]`?
+
+```{r}
+# your code
+four[0]
+```
+
+- a negative index: `four[-1]`?
+
+```{r}
+# your code
+four[-1]
+```
+
+- various negative indices: `four[-c(1,2,3)]`?
+
+```{r}
+# your code
+four[-c(1,2,3)]
+```
+
+- an index greater than the length of the vector: `four[5]`?
+
+```{r}
+# your code
+four[5]
+```
+
+- repeated indices: `four[c(1,2,2,3,3,3)]`?
+
+```{r}
+# your code
+four[c(1,2,2,3,3,3)]
+```
+
+
+Often, you will need to generate vectors of numeric sequences, like the first 
+five elements `1:5`, or from the first till the last element `1:length(player)`. 
+R provides the colon operator `:`, and the functions `seq()`, and `rep()` 
+to create various types of sequences.
+
+
+### 2.2) Your turn: sequences and repetitions
+
+Figure out how to use `seq()`, `rep()`, `rev()`, and bracket notation, to extract:
+
+- all the even elements in `name`
+```{r}
+even_name <- name[c(FALSE, TRUE)]
+even_name
+```
+
+
+- all the odd elements in `height`
+```{r}
+odd_height <- height[c(TRUE, FALSE)]
+odd_height
+```
+
+
+- all multiples of 5 (e.g. 5, 10, 15, etc) of `sex`
+```{r}
+mult5_sex <- sex[c(FALSE, FALSE, FALSE, FALSE, TRUE)]
+mult5_sex
+```
+
+
+- elements in positions 10, 20, 30, 40, etc of `mass`
+```{r}
+mult10_mass <- mass[c(FALSE, FALSE, FALSE, FALSE, FALSE, FALSE,
+                      FALSE, FALSE, FALSE, TRUE)]
+mult10_mass
+```
+
+
+- all the even elements in `name` but this time in reverse order
+```{r}
+rev_even_name <- rev(even_name)
+rev_even_name
+```
+
+
+
+
+## 3) Logical Subsetting and Comparisons
+
+Another kind of subsetting/subscripting style is the so-called __logical subsetting__. This kind of subsetting typically takes place when making comparisons. 
+A __comparison operation__ occurs when you use comparison operators such as: 
+
+- `>` greater than
+- `>=` greater than or equal
+- `<` less than
+- `<=` less than or equal
+- `==` equal
+- `!=` different
+
+For example:
+
+```r
+height_four <- height[1:4]
+
+# elements greater than 100
+height_four[height_four > 100]
+
+# elements less than 100
+height_four[height_four < 100]
+
+# elements less than or equal to 10
+height_four[height_four <= 10]
+
+# elements different from 10
+height_four[height_four != 10]
+```
+
+In addition to using comparison operators, you can also use __logical operators__ to produce a logical vector. The most common type of logical operators are:
+
+- `&` AND
+- `|` OR
+- `!` negation
+
+Run the following commands to see what R does:
+
+```r
+# AND
+TRUE & TRUE
+TRUE & FALSE
+FALSE & FALSE
+
+# OR
+TRUE | TRUE
+TRUE | FALSE
+FALSE | FALSE
+
+# NOT
+!TRUE
+!FALSE
+```
+
+Logical operators allow you to combine several comparisons:
+
+```r
+# vectors for first 10 elements
+name10 <- name[1:10]
+height10 <- height[1:10]
+mass10 <- mass[1:10]
+sex10 <- sex[1:10]
+
+# names of first 10 individuals with mass greater than 70kg
+name10[mass10 > 70]
+
+# names of first 10 individuals with heights between 150 and 200 (exclusive)
+name10[height10 > 150 & height10 < 200]
+```
+
+
+### 3.1) Your turn: logical subsetting
+
+Write commands, using bracket notation, to answer the following questions 
+(you may need to use `is.na()`, `min()`, `max()`, `which()`, `which.min()`, `which.max()`):
+
+- name of individuals from homeworld Naboo
+
+```{r}
+# your code
+naboo_names <- name[homeworld == 'Naboo']
+naboo_names
+```
+
+- name of individuals from homeworlds Naboo or Corellia
+
+```{r}
+# your code
+naboo_corellia_names <- name[homeworld == 'Naboo' | homeworld == 'Corellia']
+naboo_corellia_names
+```
+
+- name of female individuals
+
+```{r}
+# your code
+female_names <- name[sex == 'female']
+female_names
+```
+
+- name of individuals with largest mass
+
+```{r}
+# your code
+largest_mass_name <- name[mass == max(mass)]
+largest_mass_name
+```
+
+- largest height of all females
+
+```{r}
+# your code
+largest_height_females <- max(height[sex == 'female'])
+largest_height_females
+```
+
+- name of individual(s) with height equal to the median height
+
+```{r}
+# your code
+name_height_med <- name[height == median(height)]
+name_height_med
+```
+
+- name of individual(s) with height of at most 180, and mass of at least 120 
+
+```{r}
+# your code
+name_180height_120mass <- name[height <= 180 & mass >= 120]
+name_180height_120mass
+```
+
+
+
+## 4) Factors
+
+As mentioned before, vectors are the most essential type of data structure
+in R. They are _atomic_ structures (can contain only one type of data):
+integers, real numbers, logical values, characters, complex numbers.
+
+Related to vectors, there is another important data structure in R called
+__factor__. Internally, an R `factor` is stored as an interger vector, and 
+most operations that apply to vectors also apply to factors. The conceptual 
+difference between a vector and a factor is that factors are data structures 
+exclusively designed to handle categorical data.
+
+
+### 4.1) Creating Factors
+
+Use `factor()` to create an object `sex_fac` by converting `sex` into a factor:
+
+```{r}
+sex_fac <- factor(sex)
+```
+
+If you have a factor, you can invoke `table()` to get a table with the 
+frequencies (i.e. counts) of the factor categories or _levels_:
+
+```{r}
+table(sex_fac)
+```
+
+
+
+### 4.2) Your turn: Manipulating Factors
+
+Because factors are internally stored as integers, you can manipulate factors
+as any other vector:
+
+```{r}
+sex_fac[1:5]
+```
+
+Practice manipulating `sex_fac` to get:
+
+- sex of individuals from homeworld Naboo
+
+```{r}
+# your code
+sex_from_naboo <- sex_fac[homeworld == 'Naboo']
+sex_from_naboo
+```
+
+- sex of individuals with mass > 80 kg
+
+```{r}
+# your code
+sex_mass_over80 <- sex_fac[mass > 80]
+sex_mass_over80
+```
+
+- use `table()` to get the frequencies (counts) of sex with height > 180
+
+```{r}
+# your code
+sex_height_over180 <- sex_fac[height > 180]
+table(sex_height_over180)
+```
+
+- use `table()` to get the frequencies (counts) of 'male' in each homeworld
+
+```{r}
+# your code
+males_for_homeworlds <- factor(homeworld)[sex_fac == 'male']
+table(males_for_homeworlds)
+```
+
+
+
+
+## 5) Matrices
+
+A vector can be extended into a 2-dimensional object in the form of a __matrix__ 
+(which is a 2-dimensional array).
+
+For instance, let's create a matrix with the `height` and `mass` values of the 
+first five individuals:
+
+```{r}
+# matrix with height and mass of first 5 individuals
+HM <- matrix(c(height[1:5], mass[1:5]), nrow = 5, ncol = 2)
+HM
+```
+
+You can give names to rows and columns with the functions `rownames()` and `colnames()`:
+
+```{r}
+rownames(HM) <- name[1:5]
+colnames(HM) <- c("height", "mass")
+HM
+```
+
+
+### 5.1) Your Turn
+
+- Use the column-binding function `cbind()` to create a matrix `MH` with columns `mass` and `height`, for the first 10 individuals.
+
+```{r}
+# your code
+MH <- cbind(height[1:10], mass[1:10])
+MH
+```
+
+- Use the function `matrix()` to create a matrix `females` with `mass` and `height` values for female individuals.
+
+```{r}
+# your code
+females <- matrix(c(mass[sex == 'female'], height[sex == 'female']),
+                  nrow = length(name[sex == 'female']), ncol = 2)
+females
+```
+
+- Give names to the rows and columns of the matrix `females` created above.
+
+```{r}
+# your code
+rownames(females) <- name[sex == 'female']
+colnames(females) <- c("mass", "height")
+females
+```
+
+- If you create a matrix `MHW` by combining `mass`, `height` and `homeworld` for all individuals, what is the resulting data type---returned by `typeof()`--- of `MHW`?
+
+```{r}
+# your code
+MHW <- matrix(c(mass, height, homeworld),
+                  nrow = length(name), ncol = 3)
+typeof(MHW)
+```
+
+

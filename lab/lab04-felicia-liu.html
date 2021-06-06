@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="data:text/css,%0A%40font%2Dface%20%7B%0Afont%2Dfamily%3A%20octicons%2Dlink%3B%0Asrc%3A%20url%28data%3Afont%2Fwoff%3Bcharset%3Dutf%2D8%3Bbase64%2Cd09GRgABAAAAAAZwABAAAAAACFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEU0lHAAAGaAAAAAgAAAAIAAAAAUdTVUIAAAZcAAAACgAAAAoAAQAAT1MvMgAAAyQAAABJAAAAYFYEU3RjbWFwAAADcAAAAEUAAACAAJThvmN2dCAAAATkAAAABAAAAAQAAAAAZnBnbQAAA7gAAACyAAABCUM%2B8IhnYXNwAAAGTAAAABAAAAAQABoAI2dseWYAAAFsAAABPAAAAZwcEq9taGVhZAAAAsgAAAA0AAAANgh4a91oaGVhAAADCAAAABoAAAAkCA8DRGhtdHgAAAL8AAAADAAAAAwGAACfbG9jYQAAAsAAAAAIAAAACABiATBtYXhwAAACqAAAABgAAAAgAA8ASm5hbWUAAAToAAABQgAAAlXu73sOcG9zdAAABiwAAAAeAAAAME3QpOBwcmVwAAAEbAAAAHYAAAB%2FaFGpk3jaTY6xa8JAGMW%2FO62BDi0tJLYQincXEypYIiGJjSgHniQ6umTsUEyLm5BV6NDBP8Tpts6F0v%2Bk%2F0an2i%2BitHDw3v2%2B9%2BDBKTzsJNnWJNTgHEy4BgG3EMI9DCEDOGEXzDADU5hBKMIgNPZqoD3SilVaXZCER3%2FI7AtxEJLtzzuZfI%2BVVkprxTlXShWKb3TBecG11rwoNlmmn1P2WYcJczl32etSpKnziC7lQyWe1smVPy%2FLt7Kc%2B0vWY%2FgAgIIEqAN9we0pwKXreiMasxvabDQMM4riO%2BqxM2ogwDGOZTXxwxDiycQIcoYFBLj5K3EIaSctAq2kTYiw%2Bymhce7vwM9jSqO8JyVd5RH9gyTt2%2BJ%2FyUmYlIR0s04n6%2B7Vm1ozezUeLEaUjhaDSuXHwVRgvLJn1tQ7xiuVv%2FocTRF42mNgZGBgYGbwZOBiAAFGJBIMAAizAFoAAABiAGIAznjaY2BkYGAA4in8zwXi%2BW2%2BMjCzMIDApSwvXzC97Z4Ig8N%2FBxYGZgcgl52BCSQKAA3jCV8CAABfAAAAAAQAAEB42mNgZGBg4f3vACQZQABIMjKgAmYAKEgBXgAAeNpjYGY6wTiBgZWBg2kmUxoDA4MPhGZMYzBi1AHygVLYQUCaawqDA4PChxhmh%2F8ODDEsvAwHgMKMIDnGL0x7gJQCAwMAJd4MFwAAAHjaY2BgYGaA4DAGRgYQkAHyGMF8NgYrIM3JIAGVYYDT%2BAEjAwuDFpBmA9KMDEwMCh9i%2Fv8H8sH0%2F4dQc1iAmAkALaUKLgAAAHjaTY9LDsIgEIbtgqHUPpDi3gPoBVyRTmTddOmqTXThEXqrob2gQ1FjwpDvfwCBdmdXC5AVKFu3e5MfNFJ29KTQT48Ob9%2FlqYwOGZxeUelN2U2R6%2BcArgtCJpauW7UQBqnFkUsjAY%2FkOU1cP%2BDAgvxwn1chZDwUbd6CFimGXwzwF6tPbFIcjEl%2BvvmM%2FbyA48e6tWrKArm4ZJlCbdsrxksL1AwWn%2FyBSJKpYbq8AXaaTb8AAHja28jAwOC00ZrBeQNDQOWO%2F%2FsdBBgYGRiYWYAEELEwMTE4uzo5Zzo5b2BxdnFOcALxNjA6b2ByTswC8jYwg0VlNuoCTWAMqNzMzsoK1rEhNqByEyerg5PMJlYuVueETKcd%2F89uBpnpvIEVomeHLoMsAAe1Id4AAAAAAAB42oWQT07CQBTGv0JBhagk7HQzKxca2sJCE1hDt4QF%2B9JOS0nbaaYDCQfwCJ7Au3AHj%2BLO13FMmm6cl7785vven0kBjHCBhfpYuNa5Ph1c0e2Xu3jEvWG7UdPDLZ4N92nOm%2BEBXuAbHmIMSRMs%2B4aUEd4Nd3CHD8NdvOLTsA2GL8M9PODbcL%2BhD7C1xoaHeLJSEao0FEW14ckxC%2BTU8TxvsY6X0eLPmRhry2WVioLpkrbp84LLQPGI7c6sOiUzpWIWS5GzlSgUzzLBSikOPFTOXqly7rqx0Z1Q5BAIoZBSFihQYQOOBEdkCOgXTOHA07HAGjGWiIjaPZNW13%2F%2Blm6S9FT7rLHFJ6fQbkATOG1j2OFMucKJJsxIVfQORl%2B9Jyda6Sl1dUYhSCm1dyClfoeDve4qMYdLEbfqHf3O%2FAdDumsjAAB42mNgYoAAZQYjBmyAGYQZmdhL8zLdDEydARfoAqIAAAABAAMABwAKABMAB%2F%2F%2FAA8AAQAAAAAAAAAAAAAAAAABAAAAAA%3D%3D%29%20format%28%27woff%27%29%3B%0A%7D%0Abody%20%7B%0A%2Dwebkit%2Dtext%2Dsize%2Dadjust%3A%20100%25%3B%0Atext%2Dsize%2Dadjust%3A%20100%25%3B%0Acolor%3A%20%23333%3B%0Afont%2Dfamily%3A%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20%22Segoe%20UI%22%2C%20Arial%2C%20freesans%2C%20sans%2Dserif%2C%20%22Apple%20Color%20Emoji%22%2C%20%22Segoe%20UI%20Emoji%22%2C%20%22Segoe%20UI%20Symbol%22%3B%0Afont%2Dsize%3A%2016px%3B%0Aline%2Dheight%3A%201%2E6%3B%0Aword%2Dwrap%3A%20break%2Dword%3B%0A%7D%0Aa%20%7B%0Abackground%2Dcolor%3A%20transparent%3B%0A%7D%0Aa%3Aactive%2C%0Aa%3Ahover%20%7B%0Aoutline%3A%200%3B%0A%7D%0Astrong%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Ah1%20%7B%0Afont%2Dsize%3A%202em%3B%0Amargin%3A%200%2E67em%200%3B%0A%7D%0Aimg%20%7B%0Aborder%3A%200%3B%0A%7D%0Ahr%20%7B%0Abox%2Dsizing%3A%20content%2Dbox%3B%0Aheight%3A%200%3B%0A%7D%0Apre%20%7B%0Aoverflow%3A%20auto%3B%0A%7D%0Acode%2C%0Akbd%2C%0Apre%20%7B%0Afont%2Dfamily%3A%20monospace%2C%20monospace%3B%0Afont%2Dsize%3A%201em%3B%0A%7D%0Ainput%20%7B%0Acolor%3A%20inherit%3B%0Afont%3A%20inherit%3B%0Amargin%3A%200%3B%0A%7D%0Ahtml%20input%5Bdisabled%5D%20%7B%0Acursor%3A%20default%3B%0A%7D%0Ainput%20%7B%0Aline%2Dheight%3A%20normal%3B%0A%7D%0Ainput%5Btype%3D%22checkbox%22%5D%20%7B%0Abox%2Dsizing%3A%20border%2Dbox%3B%0Apadding%3A%200%3B%0A%7D%0Atable%20%7B%0Aborder%2Dcollapse%3A%20collapse%3B%0Aborder%2Dspacing%3A%200%3B%0A%7D%0Atd%2C%0Ath%20%7B%0Apadding%3A%200%3B%0A%7D%0A%2A%20%7B%0Abox%2Dsizing%3A%20border%2Dbox%3B%0A%7D%0Ainput%20%7B%0Afont%3A%2013px%20%2F%201%2E4%20Helvetica%2C%20arial%2C%20nimbussansl%2C%20liberationsans%2C%20freesans%2C%20clean%2C%20sans%2Dserif%2C%20%22Apple%20Color%20Emoji%22%2C%20%22Segoe%20UI%20Emoji%22%2C%20%22Segoe%20UI%20Symbol%22%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%234078c0%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%2C%0Aa%3Aactive%20%7B%0Atext%2Ddecoration%3A%20underline%3B%0A%7D%0Ahr%20%7B%0Aheight%3A%200%3B%0Amargin%3A%2015px%200%3B%0Aoverflow%3A%20hidden%3B%0Abackground%3A%20transparent%3B%0Aborder%3A%200%3B%0Aborder%2Dbottom%3A%201px%20solid%20%23ddd%3B%0A%7D%0Ahr%3Abefore%20%7B%0Adisplay%3A%20table%3B%0Acontent%3A%20%22%22%3B%0A%7D%0Ahr%3Aafter%20%7B%0Adisplay%3A%20table%3B%0Aclear%3A%20both%3B%0Acontent%3A%20%22%22%3B%0A%7D%0Ah1%2C%0Ah2%2C%0Ah3%2C%0Ah4%2C%0Ah5%2C%0Ah6%20%7B%0Amargin%2Dtop%3A%2015px%3B%0Amargin%2Dbottom%3A%2015px%3B%0Aline%2Dheight%3A%201%2E1%3B%0A%7D%0Ah1%20%7B%0Afont%2Dsize%3A%2030px%3B%0A%7D%0Ah2%20%7B%0Afont%2Dsize%3A%2021px%3B%0A%7D%0Ah3%20%7B%0Afont%2Dsize%3A%2016px%3B%0A%7D%0Ah4%20%7B%0Afont%2Dsize%3A%2014px%3B%0A%7D%0Ah5%20%7B%0Afont%2Dsize%3A%2012px%3B%0A%7D%0Ah6%20%7B%0Afont%2Dsize%3A%2011px%3B%0A%7D%0Ablockquote%20%7B%0Amargin%3A%200%3B%0A%7D%0Aul%2C%0Aol%20%7B%0Apadding%3A%200%3B%0Amargin%2Dtop%3A%200%3B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Aol%20ol%2C%0Aul%20ol%20%7B%0Alist%2Dstyle%2Dtype%3A%20lower%2Droman%3B%0A%7D%0Aul%20ul%20ol%2C%0Aul%20ol%20ol%2C%0Aol%20ul%20ol%2C%0Aol%20ol%20ol%20%7B%0Alist%2Dstyle%2Dtype%3A%20lower%2Dalpha%3B%0A%7D%0Add%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20%22Liberation%20Mono%22%2C%20Menlo%2C%20Courier%2C%20monospace%3B%0Afont%2Dsize%3A%2012px%3B%0A%7D%0Apre%20%7B%0Amargin%2Dtop%3A%200%3B%0Amargin%2Dbottom%3A%200%3B%0Afont%3A%2012px%20Consolas%2C%20%22Liberation%20Mono%22%2C%20Menlo%2C%20Courier%2C%20monospace%3B%0A%7D%0A%2Eselect%3A%3A%2Dms%2Dexpand%20%7B%0Aopacity%3A%200%3B%0A%7D%0A%2Eocticon%20%7B%0Afont%3A%20normal%20normal%20normal%2016px%2F1%20octicons%2Dlink%3B%0Adisplay%3A%20inline%2Dblock%3B%0Atext%2Ddecoration%3A%20none%3B%0Atext%2Drendering%3A%20auto%3B%0A%2Dwebkit%2Dfont%2Dsmoothing%3A%20antialiased%3B%0A%2Dmoz%2Dosx%2Dfont%2Dsmoothing%3A%20grayscale%3B%0A%2Dwebkit%2Duser%2Dselect%3A%20none%3B%0A%2Dmoz%2Duser%2Dselect%3A%20none%3B%0A%2Dms%2Duser%2Dselect%3A%20none%3B%0Auser%2Dselect%3A%20none%3B%0A%7D%0A%2Eocticon%2Dlink%3Abefore%20%7B%0Acontent%3A%20%27%5Cf05c%27%3B%0A%7D%0A%2Emarkdown%2Dbody%3Abefore%20%7B%0Adisplay%3A%20table%3B%0Acontent%3A%20%22%22%3B%0A%7D%0A%2Emarkdown%2Dbody%3Aafter%20%7B%0Adisplay%3A%20table%3B%0Aclear%3A%20both%3B%0Acontent%3A%20%22%22%3B%0A%7D%0A%2Emarkdown%2Dbody%3E%2A%3Afirst%2Dchild%20%7B%0Amargin%2Dtop%3A%200%20%21important%3B%0A%7D%0A%2Emarkdown%2Dbody%3E%2A%3Alast%2Dchild%20%7B%0Amargin%2Dbottom%3A%200%20%21important%3B%0A%7D%0Aa%3Anot%28%5Bhref%5D%29%20%7B%0Acolor%3A%20inherit%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0A%2Eanchor%20%7B%0Adisplay%3A%20inline%2Dblock%3B%0Apadding%2Dright%3A%202px%3B%0Amargin%2Dleft%3A%20%2D18px%3B%0A%7D%0A%2Eanchor%3Afocus%20%7B%0Aoutline%3A%20none%3B%0A%7D%0Ah1%2C%0Ah2%2C%0Ah3%2C%0Ah4%2C%0Ah5%2C%0Ah6%20%7B%0Amargin%2Dtop%3A%201em%3B%0Amargin%2Dbottom%3A%2016px%3B%0Afont%2Dweight%3A%20bold%3B%0Aline%2Dheight%3A%201%2E4%3B%0A%7D%0Ah1%20%2Eocticon%2Dlink%2C%0Ah2%20%2Eocticon%2Dlink%2C%0Ah3%20%2Eocticon%2Dlink%2C%0Ah4%20%2Eocticon%2Dlink%2C%0Ah5%20%2Eocticon%2Dlink%2C%0Ah6%20%2Eocticon%2Dlink%20%7B%0Acolor%3A%20%23000%3B%0Avertical%2Dalign%3A%20middle%3B%0Avisibility%3A%20hidden%3B%0A%7D%0Ah1%3Ahover%20%2Eanchor%2C%0Ah2%3Ahover%20%2Eanchor%2C%0Ah3%3Ahover%20%2Eanchor%2C%0Ah4%3Ahover%20%2Eanchor%2C%0Ah5%3Ahover%20%2Eanchor%2C%0Ah6%3Ahover%20%2Eanchor%20%7B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Ah1%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%2C%0Ah2%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%2C%0Ah3%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%2C%0Ah4%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%2C%0Ah5%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%2C%0Ah6%3Ahover%20%2Eanchor%20%2Eocticon%2Dlink%20%7B%0Avisibility%3A%20visible%3B%0A%7D%0Ah1%20%7B%0Apadding%2Dbottom%3A%200%2E3em%3B%0Afont%2Dsize%3A%202%2E25em%3B%0Aline%2Dheight%3A%201%2E2%3B%0Aborder%2Dbottom%3A%201px%20solid%20%23eee%3B%0A%7D%0Ah1%20%2Eanchor%20%7B%0Aline%2Dheight%3A%201%3B%0A%7D%0Ah2%20%7B%0Apadding%2Dbottom%3A%200%2E3em%3B%0Afont%2Dsize%3A%201%2E75em%3B%0Aline%2Dheight%3A%201%2E225%3B%0Aborder%2Dbottom%3A%201px%20solid%20%23eee%3B%0A%7D%0Ah2%20%2Eanchor%20%7B%0Aline%2Dheight%3A%201%3B%0A%7D%0Ah3%20%7B%0Afont%2Dsize%3A%201%2E5em%3B%0Aline%2Dheight%3A%201%2E43%3B%0A%7D%0Ah3%20%2Eanchor%20%7B%0Aline%2Dheight%3A%201%2E2%3B%0A%7D%0Ah4%20%7B%0Afont%2Dsize%3A%201%2E25em%3B%0A%7D%0Ah4%20%2Eanchor%20%7B%0Aline%2Dheight%3A%201%2E2%3B%0A%7D%0Ah5%20%7B%0Afont%2Dsize%3A%201em%3B%0A%7D%0Ah5%20%2Eanchor%20%7B%0Aline%2Dheight%3A%201%2E1%3B%0A%7D%0Ah6%20%7B%0Afont%2Dsize%3A%201em%3B%0Acolor%3A%20%23777%3B%0A%7D%0Ah6%20%2Eanchor%20%7B%0Aline%2Dheight%3A%201%2E1%3B%0A%7D%0Ap%2C%0Ablockquote%2C%0Aul%2C%0Aol%2C%0Adl%2C%0Atable%2C%0Apre%20%7B%0Amargin%2Dtop%3A%200%3B%0Amargin%2Dbottom%3A%2016px%3B%0A%7D%0Ahr%20%7B%0Aheight%3A%204px%3B%0Apadding%3A%200%3B%0Amargin%3A%2016px%200%3B%0Abackground%2Dcolor%3A%20%23e7e7e7%3B%0Aborder%3A%200%20none%3B%0A%7D%0Aul%2C%0Aol%20%7B%0Apadding%2Dleft%3A%202em%3B%0A%7D%0Aul%20ul%2C%0Aul%20ol%2C%0Aol%20ol%2C%0Aol%20ul%20%7B%0Amargin%2Dtop%3A%200%3B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Ali%3Ep%20%7B%0Amargin%2Dtop%3A%2016px%3B%0A%7D%0Adl%20%7B%0Apadding%3A%200%3B%0A%7D%0Adl%20dt%20%7B%0Apadding%3A%200%3B%0Amargin%2Dtop%3A%2016px%3B%0Afont%2Dsize%3A%201em%3B%0Afont%2Dstyle%3A%20italic%3B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Adl%20dd%20%7B%0Apadding%3A%200%2016px%3B%0Amargin%2Dbottom%3A%2016px%3B%0A%7D%0Ablockquote%20%7B%0Apadding%3A%200%2015px%3B%0Acolor%3A%20%23777%3B%0Aborder%2Dleft%3A%204px%20solid%20%23ddd%3B%0A%7D%0Ablockquote%3E%3Afirst%2Dchild%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Ablockquote%3E%3Alast%2Dchild%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Atable%20%7B%0Adisplay%3A%20block%3B%0Awidth%3A%20100%25%3B%0Aoverflow%3A%20auto%3B%0Aword%2Dbreak%3A%20normal%3B%0Aword%2Dbreak%3A%20keep%2Dall%3B%0A%7D%0Atable%20th%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Atable%20th%2C%0Atable%20td%20%7B%0Apadding%3A%206px%2013px%3B%0Aborder%3A%201px%20solid%20%23ddd%3B%0A%7D%0Atable%20tr%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Aborder%2Dtop%3A%201px%20solid%20%23ccc%3B%0A%7D%0Atable%20tr%3Anth%2Dchild%282n%29%20%7B%0Abackground%2Dcolor%3A%20%23f8f8f8%3B%0A%7D%0Aimg%20%7B%0Amax%2Dwidth%3A%20100%25%3B%0Abox%2Dsizing%3A%20content%2Dbox%3B%0Abackground%2Dcolor%3A%20%23fff%3B%0A%7D%0Acode%20%7B%0Apadding%3A%200%3B%0Apadding%2Dtop%3A%200%2E2em%3B%0Apadding%2Dbottom%3A%200%2E2em%3B%0Amargin%3A%200%3B%0Afont%2Dsize%3A%2085%25%3B%0Abackground%2Dcolor%3A%20rgba%280%2C0%2C0%2C0%2E04%29%3B%0Aborder%2Dradius%3A%203px%3B%0A%7D%0Acode%3Abefore%2C%0Acode%3Aafter%20%7B%0Aletter%2Dspacing%3A%20%2D0%2E2em%3B%0Acontent%3A%20%22%5C00a0%22%3B%0A%7D%0Apre%3Ecode%20%7B%0Apadding%3A%200%3B%0Amargin%3A%200%3B%0Afont%2Dsize%3A%20100%25%3B%0Aword%2Dbreak%3A%20normal%3B%0Awhite%2Dspace%3A%20pre%3B%0Abackground%3A%20transparent%3B%0Aborder%3A%200%3B%0A%7D%0A%2Ehighlight%20%7B%0Amargin%2Dbottom%3A%2016px%3B%0A%7D%0A%2Ehighlight%20pre%2C%0Apre%20%7B%0Apadding%3A%2016px%3B%0Aoverflow%3A%20auto%3B%0Afont%2Dsize%3A%2085%25%3B%0Aline%2Dheight%3A%201%2E45%3B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0A%7D%0A%2Ehighlight%20pre%20%7B%0Amargin%2Dbottom%3A%200%3B%0Aword%2Dbreak%3A%20normal%3B%0A%7D%0Apre%20%7B%0Aword%2Dwrap%3A%20normal%3B%0A%7D%0Apre%20code%20%7B%0Adisplay%3A%20inline%3B%0Amax%2Dwidth%3A%20initial%3B%0Apadding%3A%200%3B%0Amargin%3A%200%3B%0Aoverflow%3A%20initial%3B%0Aline%2Dheight%3A%20inherit%3B%0Aword%2Dwrap%3A%20normal%3B%0Abackground%2Dcolor%3A%20transparent%3B%0Aborder%3A%200%3B%0A%7D%0Apre%20code%3Abefore%2C%0Apre%20code%3Aafter%20%7B%0Acontent%3A%20normal%3B%0A%7D%0Akbd%20%7B%0Adisplay%3A%20inline%2Dblock%3B%0Apadding%3A%203px%205px%3B%0Afont%2Dsize%3A%2011px%3B%0Aline%2Dheight%3A%2010px%3B%0Acolor%3A%20%23555%3B%0Avertical%2Dalign%3A%20middle%3B%0Abackground%2Dcolor%3A%20%23fcfcfc%3B%0Aborder%3A%20solid%201px%20%23ccc%3B%0Aborder%2Dbottom%2Dcolor%3A%20%23bbb%3B%0Aborder%2Dradius%3A%203px%3B%0Abox%2Dshadow%3A%20inset%200%20%2D1px%200%20%23bbb%3B%0A%7D%0A%2Epl%2Dc%20%7B%0Acolor%3A%20%23969896%3B%0A%7D%0A%2Epl%2Dc1%2C%0A%2Epl%2Ds%20%2Epl%2Dv%20%7B%0Acolor%3A%20%230086b3%3B%0A%7D%0A%2Epl%2De%2C%0A%2Epl%2Den%20%7B%0Acolor%3A%20%23795da3%3B%0A%7D%0A%2Epl%2Ds%20%2Epl%2Ds1%2C%0A%2Epl%2Dsmi%20%7B%0Acolor%3A%20%23333%3B%0A%7D%0A%2Epl%2Dent%20%7B%0Acolor%3A%20%2363a35c%3B%0A%7D%0A%2Epl%2Dk%20%7B%0Acolor%3A%20%23a71d5d%3B%0A%7D%0A%2Epl%2Dpds%2C%0A%2Epl%2Ds%2C%0A%2Epl%2Ds%20%2Epl%2Dpse%20%2Epl%2Ds1%2C%0A%2Epl%2Dsr%2C%0A%2Epl%2Dsr%20%2Epl%2Dcce%2C%0A%2Epl%2Dsr%20%2Epl%2Dsra%2C%0A%2Epl%2Dsr%20%2Epl%2Dsre%20%7B%0Acolor%3A%20%23183691%3B%0A%7D%0A%2Epl%2Dv%20%7B%0Acolor%3A%20%23ed6a43%3B%0A%7D%0A%2Epl%2Did%20%7B%0Acolor%3A%20%23b52a1d%3B%0A%7D%0A%2Epl%2Dii%20%7B%0Abackground%2Dcolor%3A%20%23b52a1d%3B%0Acolor%3A%20%23f8f8f8%3B%0A%7D%0A%2Epl%2Dsr%20%2Epl%2Dcce%20%7B%0Acolor%3A%20%2363a35c%3B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0A%2Epl%2Dml%20%7B%0Acolor%3A%20%23693a17%3B%0A%7D%0A%2Epl%2Dmh%2C%0A%2Epl%2Dmh%20%2Epl%2Den%2C%0A%2Epl%2Dms%20%7B%0Acolor%3A%20%231d3e81%3B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0A%2Epl%2Dmq%20%7B%0Acolor%3A%20%23008080%3B%0A%7D%0A%2Epl%2Dmi%20%7B%0Acolor%3A%20%23333%3B%0Afont%2Dstyle%3A%20italic%3B%0A%7D%0A%2Epl%2Dmb%20%7B%0Acolor%3A%20%23333%3B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0A%2Epl%2Dmd%20%7B%0Abackground%2Dcolor%3A%20%23ffecec%3B%0Acolor%3A%20%23bd2c00%3B%0A%7D%0A%2Epl%2Dmi1%20%7B%0Abackground%2Dcolor%3A%20%23eaffea%3B%0Acolor%3A%20%2355a532%3B%0A%7D%0A%2Epl%2Dmdr%20%7B%0Acolor%3A%20%23795da3%3B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0A%2Epl%2Dmo%20%7B%0Acolor%3A%20%231d3e81%3B%0A%7D%0Akbd%20%7B%0Adisplay%3A%20inline%2Dblock%3B%0Apadding%3A%203px%205px%3B%0Afont%3A%2011px%20Consolas%2C%20%22Liberation%20Mono%22%2C%20Menlo%2C%20Courier%2C%20monospace%3B%0Aline%2Dheight%3A%2010px%3B%0Acolor%3A%20%23555%3B%0Avertical%2Dalign%3A%20middle%3B%0Abackground%2Dcolor%3A%20%23fcfcfc%3B%0Aborder%3A%20solid%201px%20%23ccc%3B%0Aborder%2Dbottom%2Dcolor%3A%20%23bbb%3B%0Aborder%2Dradius%3A%203px%3B%0Abox%2Dshadow%3A%20inset%200%20%2D1px%200%20%23bbb%3B%0A%7D%0A%2Etask%2Dlist%2Ditem%20%7B%0Alist%2Dstyle%2Dtype%3A%20none%3B%0A%7D%0A%2Etask%2Dlist%2Ditem%2B%2Etask%2Dlist%2Ditem%20%7B%0Amargin%2Dtop%3A%203px%3B%0A%7D%0A%2Etask%2Dlist%2Ditem%20input%20%7B%0Amargin%3A%200%200%2E35em%200%2E25em%20%2D1%2E6em%3B%0Avertical%2Dalign%3A%20middle%3B%0A%7D%0A%3Achecked%2B%2Eradio%2Dlabel%20%7B%0Az%2Dindex%3A%201%3B%0Aposition%3A%20relative%3B%0Aborder%2Dcolor%3A%20%234078c0%3B%0A%7D%0A%2EsourceLine%20%7B%0Adisplay%3A%20inline%2Dblock%3B%0A%7D%0Acode%20%2Ekw%20%7B%20color%3A%20%23000000%3B%20%7D%0Acode%20%2Edt%20%7B%20color%3A%20%23ed6a43%3B%20%7D%0Acode%20%2Edv%20%7B%20color%3A%20%23009999%3B%20%7D%0Acode%20%2Ebn%20%7B%20color%3A%20%23009999%3B%20%7D%0Acode%20%2Efl%20%7B%20color%3A%20%23009999%3B%20%7D%0Acode%20%2Ech%20%7B%20color%3A%20%23009999%3B%20%7D%0Acode%20%2Est%20%7B%20color%3A%20%23183691%3B%20%7D%0Acode%20%2Eco%20%7B%20color%3A%20%23969896%3B%20%7D%0Acode%20%2Eot%20%7B%20color%3A%20%230086b3%3B%20%7D%0Acode%20%2Eal%20%7B%20color%3A%20%23a61717%3B%20%7D%0Acode%20%2Efu%20%7B%20color%3A%20%2363a35c%3B%20%7D%0Acode%20%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%0Acode%20%2Ewa%20%7B%20color%3A%20%23000000%3B%20%7D%0Acode%20%2Ecn%20%7B%20color%3A%20%23008080%3B%20%7D%0Acode%20%2Esc%20%7B%20color%3A%20%23008080%3B%20%7D%0Acode%20%2Evs%20%7B%20color%3A%20%23183691%3B%20%7D%0Acode%20%2Ess%20%7B%20color%3A%20%23183691%3B%20%7D%0Acode%20%2Eim%20%7B%20color%3A%20%23000000%3B%20%7D%0Acode%20%2Eva%20%7Bcolor%3A%20%23008080%3B%20%7D%0Acode%20%2Ecf%20%7B%20color%3A%20%23000000%3B%20%7D%0Acode%20%2Eop%20%7B%20color%3A%20%23000000%3B%20%7D%0Acode%20%2Ebu%20%7B%20color%3A%20%23000000%3B%20%7D%0Acode%20%2Eex%20%7B%20color%3A%20%23000000%3B%20%7D%0Acode%20%2Epp%20%7B%20color%3A%20%23999999%3B%20%7D%0Acode%20%2Eat%20%7B%20color%3A%20%23008080%3B%20%7D%0Acode%20%2Edo%20%7B%20color%3A%20%23969896%3B%20%7D%0Acode%20%2Ean%20%7B%20color%3A%20%23008080%3B%20%7D%0Acode%20%2Ecv%20%7B%20color%3A%20%23008080%3B%20%7D%0Acode%20%2Ein%20%7B%20color%3A%20%23008080%3B%20%7D%0A">
+<style>
+body {
+  box-sizing: border-box;
+  min-width: 200px;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 45px;
+  padding-top: 0px;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1 id="lab-4-more-data-tables">Lab 4: More Data Tables</h1>
+<blockquote>
+<h3 id="learning-objectives">Learning Objectives</h3>
+<ul>
+<li>How to import data tables in R</li>
+<li>Get to know base reading tables functions</li>
+<li>Pipes with <code>&quot;dplyr&quot;</code></li>
+</ul>
+</blockquote>
+<h3 id="general-instructions">General Instructions</h3>
+<ul>
+<li>Write your descriptions, explanations, and code in an <code>Rmd</code> (R markdown) file.</li>
+<li>Name this file as <code>lab04-first-last.Rmd</code>, where <code>first</code> and <code>last</code> are your first and last names (e.g. <code>lab04-gaston-sanchez.Rmd</code>).</li>
+<li>Knit your <code>Rmd</code> file as an html document (default option).</li>
+<li>Submit your <code>Rmd</code> and <code>html</code> files to bCourses, in the corresponding lab assignment.</li>
+</ul>
+<h2 id="1-importing-data-tables">1) Importing Data Tables</h2>
+<p>Data sets come in many different presentations. One common format is that of a data table—like a spreadsheet—although you can find data in other formats (especially when the data is in its raw version). However, once you get to the analysis stage, you will likely be dealing with some sort of tabular format.</p>
+<p>Because data tables are so ubiquituous, it is fundamental that you learn how to import them in R. In the first part of today’s lab, we are going to review various aspects that have to do with reading in tables in R.</p>
+<p>We will talk about the following functions (and packages)</p>
+<ul>
+<li><code>read.table()</code></li>
+<li><code>read.csv()</code></li>
+<li><code>read.delim()</code></li>
+<li><code>read.fwf()</code></li>
+<li>Optional: R package <code>&quot;readr&quot;</code></li>
+</ul>
+<h2 id="2-abalone-data-set">2) Abalone Data Set</h2>
+<p>The first data set to consider is the <strong>Abalone Data Set</strong> that is part of the <a href="http://archive.ics.uci.edu/ml/datasets/Abalone">UCI Machine Learning Repository</a></p>
+<p>The location of the data file is:</p>
+<p><a href="http://archive.ics.uci.edu/ml/machine-learning-databases/abalone/abalone.data">http://archive.ics.uci.edu/ml/machine-learning-databases/abalone/abalone.data</a></p>
+<p>The location of the data dictionary (description of the data) is:</p>
+<p><a href="http://archive.ics.uci.edu/ml/machine-learning-databases/abalone/abalone.names">http://archive.ics.uci.edu/ml/machine-learning-databases/abalone/abalone.names</a></p>
+<p>Use a text editor (e.g. the one in Rstudio) to look at both the dataset file <code>abalone.data</code>, and the file with its description <code>abalone.names</code>, and answer the following questions:</p>
+<ul>
+<li>What’s the character delimiter?</li>
+<li>Is there a row for column names?</li>
+<li>Are there any missing values? If yes, how are they encoded?</li>
+<li>What are the data types of each column?</li>
+</ul>
+<h3 id="21-getting-a-local-copy-of-the-data">2.1) Getting a Local Copy of the Data</h3>
+<p>One basic way to read this file in R, is by passing the url location of the file directly to any of the <code>read.table()</code> functions:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;http://archive.ics.uci.edu/ml/machine-learning-databases/abalone/abalone.data&quot;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>abalone <span class="ot">&lt;-</span> <span class="fu">read.table</span>(url, <span class="at">sep =</span> <span class="st">&quot;,&quot;</span>)</span></code></pre></div>
+<p>My suggestion when reading datasets from the Web, is to always try to get a local copy of the data file in your machine (as long as you have enough free space to save it in your computer). To do this, you can use the function <code>download.file()</code> and specify the url address, and the name of the file that will be created in your computer. For instance, to save the abalone data file in <strong>your working directory</strong>, type the following commands on the console:</p>
+<p>Now that you have a local copy of the dataset, you can read it with <code>read.table()</code> like so:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># reading data from your working directory</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>abalone <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;abalone.data&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;,&quot;</span>)</span></code></pre></div>
+<p>Once you read a data table, you may want to start looking at its contents, usually taking a peek at a few rows. This can be done with <code>head()</code> and/or with <code>tail()</code>:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(abalone)</span></code></pre></div>
+<pre><code>##   V1    V2    V3    V4     V5     V6     V7    V8 V9
+## 1  M 0.455 0.365 0.095 0.5140 0.2245 0.1010 0.150 15
+## 2  M 0.350 0.265 0.090 0.2255 0.0995 0.0485 0.070  7
+## 3  F 0.530 0.420 0.135 0.6770 0.2565 0.1415 0.210  9
+## 4  M 0.440 0.365 0.125 0.5160 0.2155 0.1140 0.155 10
+## 5  I 0.330 0.255 0.080 0.2050 0.0895 0.0395 0.055  7
+## 6  I 0.425 0.300 0.095 0.3515 0.1410 0.0775 0.120  8</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(abalone)</span></code></pre></div>
+<pre><code>##      V1    V2    V3    V4     V5     V6     V7     V8 V9
+## 4172  M 0.560 0.430 0.155 0.8675 0.4000 0.1720 0.2290  8
+## 4173  F 0.565 0.450 0.165 0.8870 0.3700 0.2390 0.2490 11
+## 4174  M 0.590 0.440 0.135 0.9660 0.4390 0.2145 0.2605 10
+## 4175  M 0.600 0.475 0.205 1.1760 0.5255 0.2875 0.3080  9
+## 4176  F 0.625 0.485 0.150 1.0945 0.5310 0.2610 0.2960 10
+## 4177  M 0.710 0.555 0.195 1.9485 0.9455 0.3765 0.4950 12</code></pre>
+<p>Likewise, you may also want to examine how R has decided to take care of the storage details (what data type is used for each column?). Use the function <code>str()</code> to check the structure of the data frame:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check data frame&#39;s structure</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(abalone, <span class="at">vec.len =</span> <span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    4177 obs. of  9 variables:
+##  $ V1: chr  &quot;M&quot; ...
+##  $ V2: num  0.455 0.35 ...
+##  $ V3: num  0.365 0.265 ...
+##  $ V4: num  0.095 0.09 ...
+##  $ V5: num  0.514 ...
+##  $ V6: num  0.224 ...
+##  $ V7: num  0.101 0.0485 ...
+##  $ V8: num  0.15 0.07 ...
+##  $ V9: int  15 7 ...</code></pre>
+<h3 id="22-detailed-information-about-the-columns">2.2) Detailed information about the columns</h3>
+<p>So far we have been able to read the data file in R. But we are missing a few things. First, we don’t have names for the columns. Second, it would be nice if we could specify the data types of each column instead of letting R guess how to handle each data type.</p>
+<p>According to the description of the Abalone data set, the columns represent these variables:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Data Type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sex</td>
+<td>nominal</td>
+</tr>
+<tr class="even">
+<td>Length</td>
+<td>continuous</td>
+</tr>
+<tr class="odd">
+<td>Diameter</td>
+<td>continuous</td>
+</tr>
+<tr class="even">
+<td>Height</td>
+<td>continuous</td>
+</tr>
+<tr class="odd">
+<td>Whole weight</td>
+<td>continuous</td>
+</tr>
+<tr class="even">
+<td>Shucked weight</td>
+<td>continuous</td>
+</tr>
+<tr class="odd">
+<td>Viscera weight</td>
+<td>continuous</td>
+</tr>
+<tr class="even">
+<td>Shell weight</td>
+<td>continuous</td>
+</tr>
+<tr class="odd">
+<td>Rings</td>
+<td>integer</td>
+</tr>
+</tbody>
+</table>
+<h3 id="23-your-turn">2.3) Your Turn</h3>
+<ul>
+<li><p>Create a vector <code>column_names</code> for the name of each column. Use the variable names displayed in the section “7. Attributes Information”:</p>
+<ul>
+<li><code>sex</code></li>
+<li><code>length</code></li>
+<li><code>diameter</code></li>
+<li><code>height</code></li>
+<li><code>whole</code></li>
+<li><code>shucked</code></li>
+<li><code>viscera</code></li>
+<li><code>shell</code></li>
+<li><code>rings</code></li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>column_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;sex&#39;</span>, <span class="st">&#39;length&#39;</span>, <span class="st">&#39;diameter&#39;</span>, <span class="st">&#39;height&#39;</span>, <span class="st">&#39;whole&#39;</span>, <span class="st">&#39;shucked&#39;</span>,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&#39;viscera&#39;</span>, <span class="st">&#39;shell&#39;</span>, <span class="st">&#39;rings&#39;</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>column_names</span></code></pre></div>
+<pre><code>## [1] &quot;sex&quot;      &quot;length&quot;   &quot;diameter&quot; &quot;height&quot;   &quot;whole&quot;    &quot;shucked&quot;  &quot;viscera&quot; 
+## [8] &quot;shell&quot;    &quot;rings&quot;</code></pre>
+<ul>
+<li>Create another vector <code>column_types</code> with R data types (e.g. <code>character</code>, <code>real</code>, <code>integer</code>). Match the R data types with the suggested type in “7. Attributes Information” (nominal = <code>character</code>, continuous = <code>real</code>, integer = <code>integer</code>).</li>
+</ul>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>column_types <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">sex =</span> <span class="st">&#39;character&#39;</span>, <span class="at">length =</span> <span class="st">&#39;real&#39;</span>, <span class="at">diameter =</span> <span class="st">&#39;real&#39;</span>, </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">height =</span> <span class="st">&#39;real&#39;</span>, <span class="at">whole =</span> <span class="st">&#39;real&#39;</span>, <span class="at">shucked =</span> <span class="st">&#39;real&#39;</span>,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">viscera =</span> <span class="st">&#39;real&#39;</span>, <span class="at">shell =</span> <span class="st">&#39;real&#39;</span>, <span class="at">rings =</span> <span class="st">&#39;integer&#39;</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>column_types</span></code></pre></div>
+<pre><code>##         sex      length    diameter      height       whole     shucked 
+## &quot;character&quot;      &quot;real&quot;      &quot;real&quot;      &quot;real&quot;      &quot;real&quot;      &quot;real&quot; 
+##     viscera       shell       rings 
+##      &quot;real&quot;      &quot;real&quot;   &quot;integer&quot;</code></pre>
+<ul>
+<li>Optionally, you could also specify a type “factor” for the variable <code>sex</code> since this is supposed to be in nominal scale (i.e. it is a categorical variable). Also note that the variable <code>rings</code> is supposed to be integers, therefore we can choose an <code>integer</code> vector for this column.</li>
+</ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>sex_factor <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">sex =</span> <span class="st">&#39;factor&#39;</span>, <span class="at">length =</span> <span class="st">&#39;real&#39;</span>, <span class="at">diameter =</span> <span class="st">&#39;real&#39;</span>, </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">height =</span> <span class="st">&#39;real&#39;</span>, <span class="at">whole =</span> <span class="st">&#39;real&#39;</span>, <span class="at">shucked =</span> <span class="st">&#39;real&#39;</span>,</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">viscera =</span> <span class="st">&#39;real&#39;</span>, <span class="at">shell =</span> <span class="st">&#39;real&#39;</span>, <span class="at">rings =</span> <span class="st">&#39;integer&#39;</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>sex_factor</span></code></pre></div>
+<pre><code>##       sex    length  diameter    height     whole   shucked   viscera     shell 
+##  &quot;factor&quot;    &quot;real&quot;    &quot;real&quot;    &quot;real&quot;    &quot;real&quot;    &quot;real&quot;    &quot;real&quot;    &quot;real&quot; 
+##     rings 
+## &quot;integer&quot;</code></pre>
+<ul>
+<li>Look at the documentation of the function <code>read.table()</code> and try to read the <code>abalone.data</code> table in R. Find out which arguments you need to specify so that you pass your vectors <code>column_names</code> and <code>column_types</code> to <code>read.table()</code>. Read in the data as <code>abalone</code>, and then check its structure with <code>str()</code>.</li>
+</ul>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>abalone  <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">&#39;abalone.data&#39;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">&#39;,&#39;</span>,</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">col.names =</span> column_names, <span class="at">colClasses =</span> column_types)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(abalone, <span class="at">vec.len =</span> <span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    4176 obs. of  9 variables:
+##  $ sex     : chr  &quot;M&quot; ...
+##  $ length  : num  0.35 0.53 ...
+##  $ diameter: num  0.265 0.42 ...
+##  $ height  : num  0.09 0.135 ...
+##  $ whole   : num  0.226 ...
+##  $ shucked : num  0.0995 ...
+##  $ viscera : num  0.0485 ...
+##  $ shell   : num  0.07 0.21 ...
+##  $ rings   : int  7 9 ...</code></pre>
+<ul>
+<li>Now re-read <code>abalone.data</code> with the <code>read.csv()</code> function. Name this data as <code>abalone2</code>, and check its structure with <code>str()</code>.</li>
+</ul>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>abalone2 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&#39;abalone.data&#39;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(abalone2, <span class="at">vec.len =</span> <span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    4176 obs. of  9 variables:
+##  $ M      : chr  &quot;M&quot; ...
+##  $ X0.455 : num  0.35 0.53 ...
+##  $ X0.365 : num  0.265 0.42 ...
+##  $ X0.095 : num  0.09 0.135 ...
+##  $ X0.514 : num  0.226 ...
+##  $ X0.2245: num  0.0995 ...
+##  $ X0.101 : num  0.0485 ...
+##  $ X0.15  : num  0.07 0.21 ...
+##  $ X15    : int  7 9 ...</code></pre>
+<ul>
+<li>Look at the documentation of the function <code>read.table()</code> and find how to read just the first 10 lines in <code>abalone.data</code>? Name this data as <code>abalone10</code>, and check its structure with <code>str()</code>.</li>
+</ul>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>abalone10 <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">&#39;abalone.data&#39;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">&#39;,&#39;</span>,</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">col.names =</span> column_names, <span class="at">colClasses =</span> column_types,</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">nrows =</span> <span class="dv">10</span>)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>abalone10</span></code></pre></div>
+<pre><code>##    sex length diameter height  whole shucked viscera shell rings
+## 1    M  0.350    0.265  0.090 0.2255  0.0995  0.0485 0.070     7
+## 2    F  0.530    0.420  0.135 0.6770  0.2565  0.1415 0.210     9
+## 3    M  0.440    0.365  0.125 0.5160  0.2155  0.1140 0.155    10
+## 4    I  0.330    0.255  0.080 0.2050  0.0895  0.0395 0.055     7
+## 5    I  0.425    0.300  0.095 0.3515  0.1410  0.0775 0.120     8
+## 6    F  0.530    0.415  0.150 0.7775  0.2370  0.1415 0.330    20
+## 7    F  0.545    0.425  0.125 0.7680  0.2940  0.1495 0.260    16
+## 8    M  0.475    0.370  0.125 0.5095  0.2165  0.1125 0.165     9
+## 9    F  0.550    0.440  0.150 0.8945  0.3145  0.1510 0.320    19
+## 10   F  0.525    0.380  0.140 0.6065  0.1940  0.1475 0.210    14</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(abalone10, <span class="at">vec.len =</span> <span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    10 obs. of  9 variables:
+##  $ sex     : chr  &quot;M&quot; ...
+##  $ length  : num  0.35 0.53 ...
+##  $ diameter: num  0.265 0.42 ...
+##  $ height  : num  0.09 0.135 ...
+##  $ whole   : num  0.226 ...
+##  $ shucked : num  0.0995 ...
+##  $ viscera : num  0.0485 ...
+##  $ shell   : num  0.07 0.21 ...
+##  $ rings   : int  7 9 ...</code></pre>
+<ul>
+<li>Look at the documentation of the function <code>read.table()</code> and find how to skip the first 10 lines in <code>abalone.data</code>, in order to read the next 10 lines (lines 11-20)? Name this data as <code>abalone20</code>, and check its structure with <code>str()</code>.</li>
+</ul>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>abalone20 <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">&#39;abalone.data&#39;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">&#39;,&#39;</span>,</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">col.names =</span> column_names, <span class="at">colClasses =</span> column_types,</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">skip =</span> <span class="dv">10</span>, <span class="at">nrows =</span> <span class="dv">10</span>)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>abalone20</span></code></pre></div>
+<pre><code>##    sex length diameter height  whole shucked viscera shell rings
+## 1    M  0.430    0.350  0.110 0.4060  0.1675  0.0810 0.135    10
+## 2    M  0.490    0.380  0.135 0.5415  0.2175  0.0950 0.190    11
+## 3    F  0.535    0.405  0.145 0.6845  0.2725  0.1710 0.205    10
+## 4    F  0.470    0.355  0.100 0.4755  0.1675  0.0805 0.185    10
+## 5    M  0.500    0.400  0.130 0.6645  0.2580  0.1330 0.240    12
+## 6    I  0.355    0.280  0.085 0.2905  0.0950  0.0395 0.115     7
+## 7    F  0.440    0.340  0.100 0.4510  0.1880  0.0870 0.130    10
+## 8    M  0.365    0.295  0.080 0.2555  0.0970  0.0430 0.100     7
+## 9    M  0.450    0.320  0.100 0.3810  0.1705  0.0750 0.115     9
+## 10   M  0.355    0.280  0.095 0.2455  0.0955  0.0620 0.075    11</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(abalone20, <span class="at">vec.len =</span> <span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    10 obs. of  9 variables:
+##  $ sex     : chr  &quot;M&quot; ...
+##  $ length  : num  0.43 0.49 ...
+##  $ diameter: num  0.35 0.38 ...
+##  $ height  : num  0.11 0.135 ...
+##  $ whole   : num  0.406 ...
+##  $ shucked : num  0.168 ...
+##  $ viscera : num  0.081 0.095 ...
+##  $ shell   : num  0.135 0.19 ...
+##  $ rings   : int  10 11 ...</code></pre>
+<ul>
+<li>Look at the documentation of the function <code>read.table()</code> and find how to import just the first four columns of <code>abalone.data</code>. Name this data as <code>aba4</code>, and check its structure with <code>str()</code>.</li>
+</ul>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>aba4 <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">&#39;abalone.data&#39;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">&#39;,&#39;</span>,</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">col.names =</span> column_names, </span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">colClasses =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;character&quot;</span>, <span class="dv">1</span>), </span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>                                  <span class="fu">rep</span>(<span class="st">&quot;double&quot;</span>, <span class="dv">3</span>),</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>                                  <span class="fu">rep</span>(<span class="st">&quot;NULL&quot;</span>, <span class="dv">5</span>)))</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(aba4, <span class="at">vec.len =</span> <span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    4176 obs. of  4 variables:
+##  $ sex     : chr  &quot;M&quot; ...
+##  $ length  : num  0.35 0.53 ...
+##  $ diameter: num  0.265 0.42 ...
+##  $ height  : num  0.09 0.135 ...</code></pre>
+<ul>
+<li>How would you import the first, the third, and the fifth columns of <code>abalone.data</code>. Name this data as <code>aba3</code>, and check its structure with <code>str()</code>.</li>
+</ul>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>aba3 <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">&#39;abalone.data&#39;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">&#39;,&#39;</span>,</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">col.names =</span> column_names, </span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">colClasses =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;character&quot;</span>, <span class="dv">1</span>), </span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>                                  <span class="fu">rep</span>(<span class="st">&quot;NULL&quot;</span>, <span class="dv">1</span>), <span class="fu">rep</span>(<span class="st">&quot;double&quot;</span>, <span class="dv">1</span>),</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>                                  <span class="fu">rep</span>(<span class="st">&quot;NULL&quot;</span>, <span class="dv">1</span>), <span class="fu">rep</span>(<span class="st">&quot;double&quot;</span>, <span class="dv">1</span>),</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>                                  <span class="fu">rep</span>(<span class="st">&quot;NULL&quot;</span>, <span class="dv">4</span>)))</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(aba3, <span class="at">vec.len =</span> <span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    4176 obs. of  3 variables:
+##  $ sex     : chr  &quot;M&quot; ...
+##  $ diameter: num  0.265 0.42 ...
+##  $ whole   : num  0.226 ...</code></pre>
+<ul>
+<li>Use <code>summary()</code> on <code>abalone</code> to get summary statistics of the columns</li>
+</ul>
+<p>Your output does not have to be in the same format of the table below. The important thing is that you begin learning how to manipulate columns (or vectors) of a data.frame.</p>
+<pre><code>       Length Diam  Height  Whole  Shucked  Viscera    Shell    Rings
+Min    0.075  0.055 0.000   0.002    0.001    0.001    0.002        1
+Max    0.815  0.650 1.130   2.826    1.488    0.760    1.005       29
+Mean   0.524  0.408 0.140   0.829    0.359    0.181    0.239    9.934</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>abalone <span class="sc">%&gt;%</span> <span class="fu">summary</span>()</span></code></pre></div>
+<pre><code>##      sex                length         diameter          height      
+##  Length:4176        Min.   :0.075   Min.   :0.0550   Min.   :0.0000  
+##  Class :character   1st Qu.:0.450   1st Qu.:0.3500   1st Qu.:0.1150  
+##  Mode  :character   Median :0.545   Median :0.4250   Median :0.1400  
+##                     Mean   :0.524   Mean   :0.4079   Mean   :0.1395  
+##                     3rd Qu.:0.615   3rd Qu.:0.4800   3rd Qu.:0.1650  
+##                     Max.   :0.815   Max.   :0.6500   Max.   :1.1300  
+##      whole           shucked          viscera            shell       
+##  Min.   :0.0020   Min.   :0.0010   Min.   :0.00050   Min.   :0.0015  
+##  1st Qu.:0.4415   1st Qu.:0.1860   1st Qu.:0.09337   1st Qu.:0.1300  
+##  Median :0.7997   Median :0.3360   Median :0.17100   Median :0.2340  
+##  Mean   :0.8288   Mean   :0.3594   Mean   :0.18061   Mean   :0.2389  
+##  3rd Qu.:1.1533   3rd Qu.:0.5020   3rd Qu.:0.25300   3rd Qu.:0.3290  
+##  Max.   :2.8255   Max.   :1.4880   Max.   :0.76000   Max.   :1.0050  
+##      rings       
+##  Min.   : 1.000  
+##  1st Qu.: 8.000  
+##  Median : 9.000  
+##  Mean   : 9.932  
+##  3rd Qu.:11.000  
+##  Max.   :29.000</code></pre>
+<ul>
+<li>Use the dollar operator <code>$</code> to select at least three columns, and pass them to functions such as <code>min()</code>, <code>max()</code>, etc, to compute descriptive statistics</li>
+</ul>
+<!-- -->
+
+<pre><code>       length diam  height  whole  shucked  viscera  shell  rings
+Min    0.075  0.055 0.000   0.002    0.001    0.001    0.002        1
+Max    0.815  0.650 1.130   2.826    1.488    0.760    1.005       29
+Mean   0.524  0.408 0.140   0.829    0.359    0.181    0.239    9.934
+SD     0.120  0.099 0.042   0.490    0.222    0.110    0.139    3.224</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(abalone<span class="sc">$</span>length)</span></code></pre></div>
+<pre><code>## [1] 0.075</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(abalone<span class="sc">$</span>height)</span></code></pre></div>
+<pre><code>## [1] 1.13</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(abalone<span class="sc">$</span>shucked)</span></code></pre></div>
+<pre><code>## [1] 0.3593998</code></pre>
+<ul>
+<li>Use <code>summary()</code> and dollar operator <code>$</code> to select columns sex, length, and diameter from <code>abalone</code>, and obtain summary statistics.</li>
+</ul>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(abalone<span class="sc">$</span>sex)</span></code></pre></div>
+<pre><code>##    Length     Class      Mode 
+##      4176 character character</code></pre>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(abalone<span class="sc">$</span>length)</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   0.075   0.450   0.545   0.524   0.615   0.815</code></pre>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(abalone<span class="sc">$</span>diameter)</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##  0.0550  0.3500  0.4250  0.4079  0.4800  0.6500</code></pre>
+<ul>
+<li>Use <code>hist()</code> to plot histograms of length, and diameter (use dollar operator <code>$</code> to select the corresponding column).</li>
+</ul>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="at">x =</span> abalone<span class="sc">$</span>length)</span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="at">x =</span> abalone<span class="sc">$</span>diameter)</span></code></pre></div>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAqAAAAHgCAMAAABNUi8GAAAAz1BMVEUAAAAAADoAAGYAOjoAOmYAOpAAZpAAZrY6AAA6ADo6AGY6OgA6Ojo6OmY6OpA6ZpA6ZrY6kLY6kNtmAABmADpmOgBmOjpmOpBmZmZmkJBmkLZmkNtmtrZmtttmtv+QOgCQZgCQZjqQkGaQkLaQtpCQttuQtv+Q29uQ2/+2ZgC2Zjq2ZpC2kDq2kGa2tpC225C227a229u22/+2/7a2///T09PbkDrbkGbbtmbbtpDb25Db27bb29vb/7bb////tmb/25D/27b//7b//9v///8pN87mAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAWGUlEQVR4nO2dC3vjxnVAofWq4mabxhW9cdPWUuLateg2TbrZInbSiFqK//83BcDgMeAQIMF53AvinO/zWoSIewe8ZwczQyyQ7QEUk0k3AGAMBAXVICioBkFBNQgKqkFQUA2CgmoQFFSDoKAaBAXVICioBkFBNQgKqkFQUA2CgmoQFFSDoKAaBAXVICioBkFBNQgKqkFQUA2CgmoQFFSDoKAaBAXVICioBkFBNQgKqkFQUA2CgmoQVC8v756kmyDPFQr6+pjdPpv/37UvrF//16fQCX9cZdmXh1s32Zsjidz2DPH511mW/cp6bxnw/N2rZMEPNT2LE/Tzh2PeeLEtTMruD7d6CvqyKqPab54saIRDTc+1C+pw3Bsv8uzmyLnYU9Bi9/95990qezgRcDwEgirkWA/65/dZdvOrj2XRCsq6/VycQb/418qV1x+z7O1TVc7Cte8+ZG8+7n/+ULzvl4V3u3V29/P77Oab/Z9Xxbu6NG2AKmSjaLtfqccfi7eUSa3NTeO69EXKH6oGNE25+fK5et/9y7sfzN+xcgzx9nurBx1rXRuiOdR2Q3d0M2IZgubV6bKsVlO1esutcaE07H23+fZ5a35daFcoYHjfqG3oAtiCdvuZzfUu3ea6cVb6+sdqnzrZ20/V+/5ST5JMA6tQZvex1nUh6kPtNrRHJ1KWC7lOQRtqQct+5nn/UzVQNOe9YoRnvL2v7Ll7ft003t5+3P9/sdc/PJdvuq8Kfl/um31Tv7/CDtCd4q39Sj+KUD/VjWg2G8P6e2dvP9Y/b8ruzeye96wvGvhjK+ho66wQ5lD7McujkynLhSxC0KI8b/+3/m1btU/Ni03T8xhBm0HfX3//vgxQbC9cMn+aMlth9s24wDr11/sVv7p56t7YbDaC9vcuUxahq1xl/LzcvPtQ9XvftyGqBrZD2KHW2SGq/ewN1tHNhkUIaraYIV9VtabOpVrNzz3XXn/XBCh73339ZyeoHcAWtNuvkbD6Zbe5ac/h3lWCeuZuus7X31evHtrJXjcGHWmdHaJqgb3h+GxON9cp6OEY9PMHU6P/3LfdSlXz4uT50PxsC1oa/fY//roeFNQO0D/FN/sV8ey/A83mdshxsHe1aZtZgpYL9f+yst69sU7xg62zQ1RHZG9AUBUcXQf9/O37LGvPrqd6UGPibljQgR7U2s/uQa3Np3pQ+xT88u5pa53WW0HHWmeHaHrQdgOCqmBoof71t92Ic3gMWpVw24wL7wcEHRiDWvuVk6SH+h3W5mNj0FbQpq/cmzcXgr6s+g2sdh9rnRWif7IoQVAVuIIWFf3n6jxfTZ3LIg3P4pse9Pb58+PwGHRgFm/tVwr6pp7FW5uPzeJbQcuJ1Tf7z2vTyd589+6HTbnVamDTgw63rgtRR3Y2zItFCLr/sRvabbPxddB2DDo6STpYybTHoN0kyWBGFL1J0pG92zRNO+vJTb0S0ISy5nwDrbNCmEO1NiCoCo6d4n8qR6C/LL9Cqb42+lh/lfNvZodi0z99dGbxb7/PTX2PCmoFOJjFm/163yR1m3vfJFl712fiz79bNV8+mYtFqh9f/3uVffFNfxY/2LouRH2o3QYEnTMbdV+xcLndHkH31Qn0y3qlXBcIukfQfftF+QxPf0sAQcvR3qq+1gnUgaCgGgQF1SAoqAZBQTUICqpBUFANgoJqEBRUg6CgGgQF1SAoqAZBQTUICqpBUFANgoJqEBRUg6CgGgQF1SAoqAZBQTUICqpBUFANgoJqEBRUg6CgGgQF1SAoqAZBQTUICqpBUFANgoJqEBRUg6CgGgQF1SAoqAZBQTUICqpBUFANgs6UbALSbfVh1o1fMtn/nc2sazzrxi8ZBAXVICioBkFBNQgKqkFQUA2CgmoQFFSDoKAaBAXVICioBkFBNQgKqkFQUA2CgmoQFFSDoKAaBAXVICioBkFBNQgKqkHQY7w+mn/H+uZTpObAuSDoEfLs3vywbX4AKRDU5fWx1TK/fY7QGDgfBHXZrR+aH7ec5IVBUBd6UEUg6BHyrO5CGYOKg6DH2K3NLJ7+UxwEBdUgKKgGQY/BQr0aEPQILNTrAUFdWGZSBIK6DC/UX8fdpmcFgrqc0YPO+rOYFQh6hNML9bP+LGYFgh7j5EL9rD8LeaY8ugNBFYRbGlOsQ1AF4ZYGgjpMa/wmy+6qxfqHgTfM+rOQB0Edpk2SirHnJrsrx6JMkmKAoA6Tl5m2N097lpkigaAOkxfqzRL90BX1s/4s5EFQB3pQTSCow2VjUOs7JY9wcAiCOjCL1wSCOrAOqgkEdUBQTSCoA4JqAkEdEFQTCOqAoJpAUAcE1QSCOiCoJhDUAUE1gaAOCKoJBHVAUE0gqAOCagJBHRBUEwjqgKCaQFAHBNUEgjogqCYQ1AFBNYGgDgiqCQR1QFBNIKgDgmoCQR0QVBMI6oCgmkBQBwTVBII6IKgmENQBQTWBoA4IqgkEdUDQ+MS5rzeCKgh3HZzvEoI6IGh8ENQDBI0PgnqAoPFBUA8QND4I6gGCxgdBPUDQ+CCoBwgaHwT1AEHjg6AeIGh8ENQDBI0PgnowrfHVEz4KBh7jhaBHQVAPpj0nKasfj7TNeE7S+SCoB5OfNGfgSXMTQFAPpjS+elangWd1TgBBPaAHjQ+CejBxDFp3oYxBp4CgHkxr/G5tZvED/SeCHgVBPWAdND4I6gGCxgdBPWChPj4I6gEL9fFBUA9YZooPgnoQZqG++4fdwRp2RSCoB/Sg8UFQD1iojw+CesBCfXwQ1APWQeODoB4gaHwQ1INpjd8Uk/eXVZbdPAUJtxAQ1IO28cXw8u7Umys/3z31FpwGwkEHgnpgNT4vZj8Dk3PDbl38elNpzDLTBBDUg37jxx0t+816LZQr6ieAoB4cNj4fuxSk7D1zetCpIKgHvcZvCzvLTnJomXO3fvOp6kK3Q7OkWX8WsUBQD7rGl4vwxsyh8/feKFwwOJ2a9WcRCwT1wJrFD64dXRIOOhDUAxbq44OgHliN3xQn+MGrQKaHgwYE9aBr/KYagO7WJ5frzwsHLQjqgTUGNV8OjcyQpoSDDgT1oG18czVyjqChQVAPusabq5FfVl6D0Fl/FrFAUA+sxpeXKQ1fpzQ5HDQgqAcsM8UHQT1A0PggqAdd40/eNWRaOGhBUA+sdVAvM51w0CIu6PlIf1Qu1jqo33dIB+GgQ1zQ898p/VG5OAv1gcJBB4J6YC3Ue33HeRgOOhDUg65J2yxAF6rwCOVBUA/sf9XJLD4OCOoB66DxQVAPEDQ+COqB1aTiJH/7vOGC5eAgqAfWJOnmKb999lwOVXiE8iCoB73rQct/7c71oMFBUA96C/WloFxRHxwE9cDpQTeDN6edFA46ENSDwzFo7rdcr/AI5UFQD/qzeK6ojwGCesA6aHwQ1AMEjQ+CesB38fFBUA8Om+S3yoSgx0BQD5wmbbj1TWgQ1AOnSSzUBwdBPXCaxFedwUFQDw6bxN3twoOgHjizeK9vOhck6IR/y4ugHrAOeiFxBIkRdEmCnrz7iMIjjASCpsFdqB/xL29uEM7z4hE0EYf/7HjsaqbmHrd7HuSFoKmwrgc1Zg6pt+/dfIRHISJoGrpT/FfmQruRhXp6UAsETYPTg45dUd+e/xmDImgielfUF3/mo1csn1wsVXiEkUDQNBxeUe+3To+gnoLECHo1gioMpxgETQML9ReCoGmYdOsbFuo7EDQNU259wzKTBYKmYcqtb4YX6jXfhT8SCJqGKbe+oQe1QNA0TLr1DQv1HQiahmm3vmGhvgVB08Ctby4EQdPAQv2FIGgaemPQM3lZDQ4DFB5hJBA0DVOeNHfGRfcKjzASCJoGa5J0+h/E15N3etA9gqZi2s3Dduty/o6gewRNxdQmbYppPoLuETQVk5uUZ/cIukfQVJgmTXkW98vqCwRF0FRYgp670PT6OPxtk8IjjASCpuECQU+HWwIImgYEvRAETQOCXgiCpgFBLwRB04CgF4KgaWgEPX1ruwnhlgCCpoHL7S4EQdOAoDZR7uuNoD4gqI24INL5pQvggqA24oJI55cugAuC2ogLIp1fugAuCGojLoh0fukCuCCojbgg0vmlC+CCoDbigkjnly6AC4LaiAsinV+6AC4IaiMuiHR+6QK4IKiNuCDS+aUL4IKgNuKCSOeXLoALgtqICyKdX7oALghqIy6IdH7pArggqI24INL5pQvggqA24oJI55cugAuC2ogLIp1fugAuCGojLoh0fukCuCCojbgg0vmlC+CCoDbigkjnly6AC4LaiAsinV+6AC4IaiMuiHR+6QK4IKiNuCDS+aUL4IKgNuKCSOeXLoALgtqICyKdX7oALghqIy6IdH7pArggqI24INL5pQvggqA24oJI55cugAuC2ogLIp1fugAuCGojLoh0fukCuExr0uvjiVs0KjzCKYgLIp1fugAuk5qUZ/UtbrfZwL1uFR7hFMQFkc4vXQCXKU2ybsGcl49E9AynEHFBpPNLF8BlSpOsx30NPXlW4RFOQVwQ6fzSBXChB7URF0Q6v3QBXCaOQesulDEogiZiWpOahy0M9J8I6iuIdH7pAriwDmojLoh0fukCuCCojbgg0vmlC+DCQr2NuCDS+aUL4MJCvY24INL5pQvgwjKTjbgg0vmlC+ASZqG+e7xVsIaJIC6IdH7pArjQg9qICyKdX7oALizU24gLIp1fugAuLNTbiAsinV+6AC5LWAcVfkIsgvqwCEFlq46gPkxrUl50MtUwNJ/T5XYzEkQ6v3SpXKZNkm6eimHo3R5BETQV05eZXh+LKRKCImgaLlmo39w+IyiCpuGihfrNHYIiaBqmjUFrLXfroeuZFB4hgi5H0ParpNdHBI3xVvH80qVyYR00etUR1AcEjV51BPUBQaNXHUF9QNDoVZ+ToBNIVTzV4cIwI0FmlD9V8VSHC8N1CiKdP1XxVIcLw3UKIp0/VfFUhwvDdQoinT9V8VSHC8N1CiKdP1XxVIcLw3UKIp0/VfFUhwvDdQoinT9V8VSHC8N1CiKdP1XxVIcLw3UKIp0/VfFUhwvDdQoinT9V8VSHC8N1CiKdP1XxVIcLw3UKIp0/VfFUhwvDdQoinT9V8VSHC8N1CiKdP1XxVIcLw3UKIp0/VfFUhwvDdQoinT9V8VSHG8sU45ZgcxJEOn+qOqsON5ZJukBLz5+qzqrDjWWSLtDS86eqs+pwY5mkC7T0/KnqrDrcWCbpAi09f6o6qw43lkm6QEvPn6rOqsONZZIu0NLzp6qz6nBjmaQLtPT8qeqsOtxYJukCLT1/qjqrDjeWSbpAS8+fqs6qw41lki7Q0vOnqrPqcGOZpAu09Pyp6qwqXJQv2K9UEOn8YYQ5rYSqcHMq0NLzhxHmtBKqws2pQEvPH0aY00qoCjenAi09fxhhTiuhKtycCrT0/GGEOa2EqnBzKtDS84cR5rQSqsLNqUBLzx9GmNNKqAo3pwItPX8YYU4roSrcnAq09PxhhDmthKpwcyrQ0vOHEea0EqrCzalAS88fRpjTSqgKN6cCLT1/GGFOK6Eq3JwKtPT8YYQ5rcSkd78+mgs1Bp51jKALyj8BLyWmvDnP7s0P2+YHr3BHdo/xqV+pIDPK76XEhPe+PrZa5rfP54cTvoZOvkBLzz9NyTOMGmC3fmh+3PZP8uO9+ZSzAVwhF7pp5Jnw3jN6UICwTByD1l3o4BgUICzTut/d2vTZ9J+QCJV3nAVoQFBQDYKCahAUVIOgoBoEBdUgKKgGQUE1ugSV/coYppBKiUR5ziNOa6JEnU/QOTVVLs95LL1ASz9+wTznsfQCLf34BfOcx9ILtPTjF8xzHksv0NKPXzDPeSy9QEs/fsE857H0Ai39+AXznMfSC7T04xfMcx5LL9DSj18wD8BFICioBkFBNQgKqkFQUA2CgmoQFFSDoKAaBAXVICioBkFBNQgKqkFQUI0KQbdZdvPUvXz5xdBDRC6OWj2eJMRNd3tNzfvtDhO0YBPk/qt2VHNj17uwQfcvqyAxR9Eg6LY45G132Lv14FNuLo36+lj8kAf4MHtNzYt2bgMYenD8hQQhBO1FfXkX4i/SQdBt0czdOrKhCgQ1t77fNAe6HXkM06VRX1blvctz77i9oLv1fbnFu0AHx1/2dgEE7UfdBvk73w9qXvh/qOMoELRvzza7D/JpHnHSv7dzgwYQ9DBofvvbAIL2o+Zh+rle0FC98jgaBK0O1LIyjKCHUYu/+d5x3aC5/yn+IGjxMsQYtB91849BxuC9oNs3f1qHGdiPoUBQ07FZ3VsQQZ2oIR5Nchh0G6JA/aDliTOEoL2ou3UZcRP2+PNyKBbgDDLOcgTdBpoj9a1/ffSWqR+0fAJVcEHrTd6fa1/QG+ccFQEFgqY5xQd5tNORcUOAga0dtHoR/hRvNq0eBt9+QVAzFPUPOo4GQQ9nHjEmSXmQwdKRmVeAqttB8/rmht5VP9ZU71lNL6gpU+ypkgJBD5dZwgjaj5r7V9wJaqrl31jn+IP0oPGbah7duoBTvLtQHXyh/mUVaLLZa2rpkfX80jBBm8Bho1ZO+U+SDr6oCHT8o2gQtPnKsJkRBvpLaUWtT5wBvvXpNXUT4lx8GHQf6qvO+E3dBvr+eAwVggIMgaCgGgQF1SAoqAZBQTUICqpBUFANgoJqEBRUg6CgGgQF1SAoqAZBQTUICqpBUFANgoJqEBRUg6CgGgQF1SAoqAZBQTUICqpBUFANgoJqEBRUg6CgGgSNyu7rEDexWTIIOgH3VovmDm+DbOybF21vnk683bwt7v025waCTmCqoJs3f/r6L+0+593q9hyHlwSCTmCioMXbi1N8e6s6BL0EBD2H+uaFL6vfrOpzdr2l0qm+C+Fu/e9rc4/D3GwwglYByrsWftuc4tto5fvvy8e1dTuVrwqj6wi7r74N8tCoGYOgZ1De/rV8ZMDLqvrjvttSGrct/CofuLZbl4+zq/8r37Vb3/7NCFo+AGeb1YL2olWPyijvqd3t9LC3Iyx9koWgp9l99WRO7+ZGzYVO7ZZCJ3OP4WoGVPea62pDIV3zLEszNNgYQfvR6j+6naq3dC9i3x9WPQh6HtvyPFzf6t2MJasthU5mY+WYOeeb35vNu+pRV+aW0dYsvovW/NHuVPXJ9ouFg6BnUIwI3/yh7POqJ1qUfzZbWkGLH1pBrQd1lJOkN5/ynqBttJ6gzU5m0GC9WDgIeprWpLYHbbcM96CGQtDC514P2o/W70H3ZtrVe7FwEPQ0lV/brB2D3j63W/pj0IeuJ93X275+bnwuZz6VfV00S9B2JzMGtV4sHAQ9jekqqzWg8ikstVvVlv4svl53qp4RWE2Jiln839b1pL2ZxVvRLEGtne731gsElW7AHKievbIpe8LfdIuW1Zb+OmizMFquYpb95OtjZqbxvXXQLpotaLvTplkHLV4gKILGhYtFfEFQUA2CgmoQFFSDoKAaBAXVICioBkFBNQgKqkFQUA2CgmoQFFSDoKAaBAXVICioBkFBNQgKqkFQUA2CgmoQFFSDoKAaBAXVICioBkFBNX8Hgkre/9Ca9c4AAAAASUVORK5CYII=" /><!-- --></p>
+<h2 id="3-more-dplyr">3) More <code>&quot;dplyr&quot;</code></h2>
+<p>This part of the lab involves working the pipe operator <code>%&gt;%</code> which allows you write function calls in a more human-readable way. This becomes extremely useful in <code>&quot;dplyr&quot;</code> operations that require many steps.</p>
+<p>The behavior of <code>&quot;dplyr&quot;</code> is functional in the sense that function calls don’t have side-effects. This implies that you must always save their results in order to keep them in an object (in memory).</p>
+<p>The “ugly” side of this functional behavior is that it doesn’t lead to particularly elegant code, especially if you want to do many operations at once. You either have to do it step-by-step:</p>
+<p>Or if you don’t want to name the intermediate results, you need to wrap the function calls inside each other:</p>
+<p>This is difficult to read because the order of the operations is from inside to out. Thus, the arguments are a long way away from the function. To get around this problem, <code>&quot;dplyr&quot;</code> provides the <code>%&gt;%</code> operator from <code>&quot;magrittr&quot;</code>.</p>
+<p><code>x %&gt;% f(y)</code> turns into <code>f(x, y)</code> so you can use it to rewrite multiple operations that you can read left-to-right, top-to-bottom:</p>
+<h3 id="31-your-turn">3.1) Your Turn:</h3>
+<p>Use <code>&quot;dplyr&quot;</code> functions and the piper operator <code>&quot;%&gt;%&quot;</code> to perform the following operations:</p>
+<ul>
+<li>slice the data to get the first 5 rows</li>
+</ul>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>abalone <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span></code></pre></div>
+<pre><code>##   sex length diameter height  whole shucked viscera shell rings
+## 1   M  0.350    0.265  0.090 0.2255  0.0995  0.0485 0.070     7
+## 2   F  0.530    0.420  0.135 0.6770  0.2565  0.1415 0.210     9
+## 3   M  0.440    0.365  0.125 0.5160  0.2155  0.1140 0.155    10
+## 4   I  0.330    0.255  0.080 0.2050  0.0895  0.0395 0.055     7
+## 5   I  0.425    0.300  0.095 0.3515  0.1410  0.0775 0.120     8</code></pre>
+<ul>
+<li>slice the data to get the first 5 rows, arranged by height</li>
+</ul>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>abalone <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(height)</span></code></pre></div>
+<pre><code>##   sex length diameter height  whole shucked viscera shell rings
+## 1   I  0.330    0.255  0.080 0.2050  0.0895  0.0395 0.055     7
+## 2   M  0.350    0.265  0.090 0.2255  0.0995  0.0485 0.070     7
+## 3   I  0.425    0.300  0.095 0.3515  0.1410  0.0775 0.120     8
+## 4   M  0.440    0.365  0.125 0.5160  0.2155  0.1140 0.155    10
+## 5   F  0.530    0.420  0.135 0.6770  0.2565  0.1415 0.210     9</code></pre>
+<ul>
+<li>create a data frame <code>male_female</code> by filtering the data with Male and Female abalones, and display its dimensions with <code>dim()</code></li>
+</ul>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>male_female <span class="ot">&lt;-</span> abalone <span class="sc">%&gt;%</span> <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">&#39;M&#39;</span> <span class="sc">|</span> sex <span class="sc">==</span> <span class="st">&#39;F&#39;</span>)</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(male_female)</span></code></pre></div>
+<pre><code>## [1] 2834    9</code></pre>
+<ul>
+<li>create a data frame <code>rings1</code> by filtering the data with those abalones having 25 Rings or more, containing columns about their sex, and rings (in that order).</li>
+</ul>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>rings1 <span class="ot">&lt;-</span> abalone <span class="sc">%&gt;%</span> <span class="fu">filter</span>(rings <span class="sc">&gt;=</span> <span class="dv">25</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="st">&#39;sex&#39;</span>, <span class="st">&#39;rings&#39;</span>)</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>rings1</span></code></pre></div>
+<pre><code>##   sex rings
+## 1   M    26
+## 2   F    29
+## 3   M    27
+## 4   F    25
+## 5   F    27</code></pre>
+<ul>
+<li>create a data frame <code>rings2</code> by filter the data with those infant abalones with more than 3 Rings and less than 6, containing columns sex, rings, and diameter, with rows arranged by diameter in increasing order.</li>
+</ul>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>rings2 <span class="ot">&lt;-</span> abalone <span class="sc">%&gt;%</span> <span class="fu">filter</span>(rings <span class="sc">&gt;</span> <span class="dv">3</span> <span class="sc">&amp;</span> rings <span class="sc">&lt;</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">&#39;sex&#39;</span>, <span class="st">&#39;rings&#39;</span>, <span class="st">&#39;diameter&#39;</span>) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(diameter)</span></code></pre></div>
+<ul>
+<li>Compute the median length, and median height, grouped by number of rings, of infant abalones only.</li>
+</ul>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>abalone <span class="sc">%&gt;%</span> <span class="fu">filter</span>(rings <span class="sc">&gt;</span> <span class="dv">3</span> <span class="sc">&amp;</span> rings <span class="sc">&lt;</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(rings) <span class="sc">%&gt;%</span></span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">median_length =</span> <span class="fu">median</span>(length), <span class="at">median_height =</span> <span class="fu">median</span>(height))</span></code></pre></div>
+<pre><code>## # A tibble: 2 x 3
+##   rings median_length median_height
+## * &lt;int&gt;         &lt;dbl&gt;         &lt;dbl&gt;
+## 1     4         0.225         0.055
+## 2     5         0.28          0.07</code></pre>
+<h2 id="4-optional-pittsburgh-bridges-data-set">4) Optional: Pittsburgh Bridges Data Set</h2>
+<p>This part of the lab is provided as an optional challenge to give you more practice importing data tables, and manipulating data frames with <code>&quot;dplyr&quot;</code> and the piper operator.</p>
+<p>The data set is part of the UCI Machine Learning Repository:</p>
+<p><a href="http://archive.ics.uci.edu/ml/datasets/Pittsburgh+Bridges">http://archive.ics.uci.edu/ml/datasets/Pittsburgh+Bridges</a></p>
+<p>The data Description is here:</p>
+<p><a href="http://archive.ics.uci.edu/ml/machine-learning-databases/bridges/bridges.names">http://archive.ics.uci.edu/ml/machine-learning-databases/bridges/bridges.names</a></p>
+<p>The Data file is here:</p>
+<p><a href="http://archive.ics.uci.edu/ml/machine-learning-databases/bridges/bridges.data.version1">http://archive.ics.uci.edu/ml/machine-learning-databases/bridges/bridges.data.version1</a></p>
+<h3 id="41-your-turn">4.1) Your Turn</h3>
+<p>Read the description, and take a look at the data set:</p>
+<ul>
+<li><p>Are there column names?</p></li>
+<li><p>What is the field separator?</p></li>
+<li><p>Are there any missing values?</p></li>
+<li><p>What is the character for missing values (if any)?</p></li>
+<li><p>What is the data type of each variable (i.e. column)?</p></li>
+<li><p>Download a copy of the data to your computer (use <code>download.file()</code>) and save it in a file named <code>bridges.data.version1</code></p></li>
+</ul>
+<h3 id="42-reading-the-data">4.2) Reading the Data</h3>
+<ul>
+<li>Create a vector of column names</li>
+</ul>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span></code></pre></div>
+<ul>
+<li>Create a vector of column types</li>
+</ul>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span></code></pre></div>
+<ul>
+<li>Use the function <code>read.table()</code> to import the data. Name it <code>bridges</code>.</li>
+</ul>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span></code></pre></div>
+<h3 id="43-research-questions">4.3) Research Questions</h3>
+<p>Use <code>&quot;dplyr&quot;</code> functions and the piper operator to find:</p>
+<ul>
+<li>Year of the oldest bridge</li>
+</ul>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span></code></pre></div>
+<ul>
+<li>Year of the most recent erected bridge</li>
+</ul>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span></code></pre></div>
+<ul>
+<li>Frequency of bridges by purpose</li>
+</ul>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span></code></pre></div>
+<ul>
+<li>Frequency of materials</li>
+</ul>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span></code></pre></div>
+<ul>
+<li>Average length of the bridges</li>
+</ul>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span></code></pre></div>
+<ul>
+<li>Plot a timeline: year -vs- length</li>
+</ul>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code</span></span></code></pre></div>
+
+</body>
+</html>

@@ -1,0 +1,158 @@
+Lab 05 - Felicia Liu
+February 23, 2021
+
+2) Lab Directory
+Open (or launch) the command line. If you use Windows, open GitBash.
+
+Use the command pwd to see what's your current directory
+$ pwd
+
+Use mkdir to create a new directory stat133-lab05
+$ mkdir stat133-lab05
+
+Change directory to stat133-lab05
+$ cd stat133-lab05
+
+Use the command curl to download the following text file:
+curl -O http://textfiles.com/food/bread.txt
+
+Use the command ls to list the contents in your current directory
+$ ls
+
+Use the command curl to download these other text files:
+http://textfiles.com/food/btaco.txt
+http://textfiles.com/food/1st_aid.txt
+http://textfiles.com/food/beesherb.txt
+http://textfiles.com/food/bakebred.txt
+$ curl -O http://textfiles.com/food/btaco.txt
+$ curl -O http://textfiles.com/food/1st_aid.txt
+$ curl -O http://textfiles.com/food/beesherb.txt
+$ curl -O http://textfiles.com/food/bakebred.txt
+
+Use the command curl to download the following csv files:
+http://archive.ics.uci.edu/ml/machine-learning-databases/forest-fires/forestfires.csv
+http://web.pdx.edu/~gerbing/data/cars.csv
+http://web.pdx.edu/~gerbing/data/color.csv
+http://web.pdx.edu/~gerbing/data/snow.csv
+http://web.pdx.edu/~gerbing/data/mid1.csv
+http://web.pdx.edu/~gerbing/data/mid2.csv
+http://web.pdx.edu/~gerbing/data/minutes1.csv
+http://web.pdx.edu/~gerbing/data/minutes2.csv
+$ curl -O http://archive.ics.uci.edu/ml/machine-learning-databases/forest-fires/forestfires.csv
+$ curl -O http://web.pdx.edu/~gerbing/data/cars.csv
+$ curl -O http://web.pdx.edu/~gerbing/data/color.csv
+$ curl -O http://web.pdx.edu/~gerbing/data/snow.csv
+$ curl -O http://web.pdx.edu/~gerbing/data/mid1.csv
+$ curl -O http://web.pdx.edu/~gerbing/data/mid2.csv
+$ curl -O http://web.pdx.edu/~gerbing/data/minutes1.csv
+$ curl -O http://web.pdx.edu/~gerbing/data/minutes2.csv
+
+2.1) Inspecting a Directory
+Use the command ls to list the contents in your current directory
+$ ls
+
+Now try ls -l to list the contents in your current directory in long format
+$ ls -l
+
+Look at the man documentation of ls to find out how to list the contents in reverse order
+$ ls -r
+
+How would you list the contents in long format arranged by time?
+$ ls -l -t
+
+Find out how to use the wildcard * to list all the files with extension .txt
+$ ls *.txt
+
+Use the wildcard * to list all the files with extension .csv in reverse order
+$ ls *.csv -r
+
+You can use the character ? to represent a single character: e.g. ls mid?.csv. Find out how to use the wilcard ? to list .csv files with names made of 4 characters (e.g. mid1.csv, snow.csv)
+$ ls ????.csv
+
+The command ls *[1]*.csv should list .csv files with names containing the number 1 (e.g. mid1.csv, minutes1.csv). Adapt the command to list .csv files with names containing the number 2.
+$ ls *[2]*.csv
+
+Find out how to list files with names containing any number.
+$ ls *[[:digit:]]*
+
+Invoke the command history and see what happens
+$ history
+
+2.2) Moving Files
+Inside stat133-lab05 create a directory data
+$ mkdir data
+
+Change directory to data
+$ cd data
+
+Create a directory txt-files
+$ mkdir txt-files
+
+Create a directory csv-files
+$ mkdir csv-files
+
+Use the command mv to move the bread.txt file to the folder txt-files. Without changing directories, use ls to confirm that bread.txt is now inside txt-files.
+$ mv bread.txt ~/stat133-lab05/data/txt-files
+$ ls ~/stat133-lab05/data/txt-files
+
+Use the wildcard * to move all the .txt files to the directory txt-files. Without changing directories, use ls to confirm that all the .txt files are inside txt-files.
+$ mv *.txt ~/stat133-lab05/data/txt-files
+$ ls ~/stat133-lab05/data/txt-files
+
+Use the wildcard * to move all the .csv files to the directory csv-files. Without changing directories, use ls to confirm that all the .csv files are inside csv-files.
+$ mv *.csv ~/stat133-lab05/data/csv-files
+$ ls ~/stat133-lab05/data/csv-files
+
+2.3) Copying Files
+Go back to the parent directory stat133-lab05
+
+Create a directory copies
+$ mkdir copies
+
+Use the command cp to copy the bread.txt file (the one inside the folder txt-files) to the copies directory
+$ cp bread.txt bread-copy.txt
+$ mv bread-copy.txt ~/stat133-lab05/copies
+
+Without changing directories, use ls to confirm that bread.txt is now inside copies.
+$ ls ~/stat133-lab05/copies
+
+Use the wildcard * to copy all the .txt files in the directory copies
+$ cp *.txt ~/stat133-lab05/copies
+
+Without changing directories, use ls to confirm that all the .txt files are now inside copies.
+$ ls ~/stat133-lab05/copies
+
+Use the wildcard * to copy all the .csv files in the directory copies
+$ cp *.csv ~/stat133-lab05/copies
+
+2.4) Renaming and Deleting Files
+Change to the directory copies
+$ cd ..
+$ cd ..
+$ cd copies
+
+Use the command mv to rename the file bread.txt as bread-recipe.
+$ mv bread.txt bread-recipe
+
+Rename the file cars.csv as autos.csv
+$ mv cars.csv autos.csv
+
+Rename the file btaco.txt as breakfast-taco.txt
+$ mv btaco.txt breakast-taco.txt
+
+Change to the parent directory (i.e. stat133-lab05)
+$ cd ..
+
+Rename the directory copies as copy-files
+$ mv copies copy-files
+
+Find out how to use the rm command to delete the .csv files that are in copy-files
+$ rm *.csv
+
+Find out how to use the rm command to delete the directory copy-files
+$ rm -r copy-files
+
+List the contents of the directory txt-files displaying the results in reverse (alphabetical) order
+$ cd data
+$ cd txt-files
+$ ls -r

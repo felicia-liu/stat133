@@ -1,0 +1,86 @@
+---
+title: "Lab 13: Calling on APIs"
+author: "Felicia Liu"
+date: "4/29/2021"
+output: html_document
+---
+
+```{r}
+library(httr)
+library(xml2)
+library(rvest)
+library(rjson)
+library(stringr)
+library(leaflet)
+```
+# 1) HTTP
+
+```{r}
+r <- GET("https://httpbin.org/get")
+```
+
+# 1.1) Your turn
+
+Using `curl` makes the output more condensed compared to the response of `r`.
+
+# 2) JSON
+
+# 2.2) A free advice API
+
+```{r}
+req_url <- "https://api.adviceslip.com/advice"
+
+a_random_advice <- req_url %>%
+  GET() %>%
+  content(as="text") %>%
+  fromJSON()
+
+print(a_random_advice$slip)
+```
+# 2.3) Your turn
+
+Checked out the listed API's.
+
+# 3) Earthquake Catalog
+
+# 3.1) Your turn
+
+1) 
+
+2) 
+
+```{r}
+curl https://ipapi.co/8.8.8.8/json/
+
+{
+"ip" : "8.8.8.8"
+"city" : "Mountain View"
+"region" : "California"
+"region_code" : "CA"
+"country_code" : "US"
+"country_code_iso3" : "USA"
+"country_name" : "United States"
+"country_capital" : "Washington"
+"country_tld" : ".us"
+"continent_code" : "NA"
+"in_eu" : false
+"postal" : "94035"
+"latitude" : 37.386
+"longitude" : -122.0838
+"timezone" : "America/Los_Angeles"
+"utc_offset" : "-0700"
+"country_calling_code" : "+1"
+"currency" : "USD"
+"currency_name" : "Dollar"
+"languages" : "en-US,es-US,haw"
+"asn" : "AS15169"
+"org" : "Google LLC"
+}
+```
+
+3)
+
+```{r}
+
+```
+

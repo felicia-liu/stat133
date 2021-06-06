@@ -1,0 +1,415 @@
+---
+title: "Lab 10: Regular Expressions 1"
+subtitle: "Stat 133, Spring 2021"
+output: 
+  github_document:
+    keep_html: true
+urlcolor: blue
+---
+
+> ### Learning Objectives:
+>
+> - Get started with `stringi` and `stringr`
+> - Get to know the basics of Regex :
+> - `Anchors`
+> - `Character classes`
+> - `Quantifiers`
+> - `Symbols`
+> - Use regex with dataframes
+
+
+### General Instructions
+
+- Write your descriptions and code in an `Rmd` (R markdown) file.
+- Name this file as `lab10-first-last.Rmd`, where `first` and `last` are your
+first and last names (e.g. `lab10-gaston-sanchez.Rmd`).
+- Knit your `Rmd` file as an html document (default option).
+- Submit your `Rmd` and `html` files to bCourses, in the corresponding lab assignment.
+
+
+## 1) Introduction
+
+**Regular expression** also known as **Regex** is a tool for describing patterns in strings. The package associated with regex in R are stringr and stringi. Regex is also commonly used in other languages with perhaps slight syntactic changes.
+
+But before we introduce you to regex, let's work with string functions in R.
+
+
+### 1.1) stringi and stringr functions
+
+> `str_detect()` helps detect string patterns in a string. Ensure you have installed stringi and stringr packages. 
+
+```{r}
+library(stringr)
+
+city = "Berkeley"
+str_detect(city, "kele")
+```
+
+We could pass a vector of cities as an arguement.
+
+```{r}
+city = c("Berkeley", "New York City", "Palo Alto", "New Delhi")
+str_detect(city, "New")
+```
+
+> str_extract() helps extract a substring from a string and str_locate() helps with the start and end points of a pattern.
+
+```{r}
+city = "Berkeley"
+str_extract(city, "ley")
+str_locate(city, 'ley')
+```
+
+```{r}
+city = c("Berkeley", "New York City", "Palo Alto", "New Delhi")
+str_extract(city, "el")
+```
+
+> str_sub() returns a substring of a string given start and end position.
+
+```{r}
+city = c("Berkeley", "New York City", "Palo Alto", "New Delhi")
+str_sub(city, start = 6, end = 8)
+```
+
+
+### 1.2) Your turn
+
+#### 1.2.a) 
+
+Print only those cities that start with `"New"` from `city`. Hint: Using `str_detect()`, we could create a mask (a vector of `TRUE` and `FALSE`) that could then be subsetted to get the city names starting with `"New"`.
+
+```{r}
+# your code
+city = c("Berkeley", "New York City", "Palo Alto", "New Delhi")
+city[str_detect(city, "New")]
+```
+
+#### 1.2.b)
+
+Using `str_match()` explained in cheatsheet, check if `city` has any matches for `Berkeley`.
+
+```{r}
+# your code
+city = c("Berkeley", "New York City", "Palo Alto", "New Delhi")
+str_match(city, "Berkeley")
+```
+
+
+
+## 2) Using regex
+
+Consider the question above where we printed cities starting with `"New"`. Using regex, we could do it more directly.
+
+To let R know that we are passing regex instead of a substring, we use `regex()`.
+
+```{r}
+str_extract(city, regex("el"))
+```
+
+```{r}
+str_extract(city, regex("^New [a-zA-Z]*"))
+```
+
+> In the second example, `^` symbol is an anchor that matches any string starting with `"New"`. `[a-zA-Z]` is a set of characters that could appear and `*` is the quantifier, which specifies how many of those characters in square bracket appear.
+
+
+### 2.1) Anchors
+
+Anchors help us assert the position, i.e., the beginning or end of the string.
+
+|Anchor |Description| Example| 
+|----------|---------|---------|
+| `^` | Matches any string starting with a substring | `^New` |
+| `$` | Matches any string ending with a substring | `y$` |
+|Exact Match `^$` | Matches the string that starts and ends with substring | `^Hi There$` |
+
+
+```{r}
+banks = c("Bank of America", "Bank of the West", "Citibank", 
+          "TD Bank", "Bank of England", "People\'s United Bank")
+
+#banks starting with Bank
+str_detect(banks, regex("^Bank"))
+
+#banks ending with Bank (note: citibank is False as b is lowercase)
+str_detect(banks, regex("Bank$"))
+
+#bank called "TD Bank"
+str_detect(banks, regex("^TD Bank$"))
+
+str_detect(banks, "TD Bank")
+```
+
+
+### 2.2) Character Classes
+
+Character classes match any characters given a class
+
+| Character Class | Match |
+|-----------------|-------|
+| `[aeiou]` | Matches vowels |
+| `[0-9]` | Matches digits |
+| `[a-z]` | Matches lower case letters |
+| `[A-Z]` | Matches upper case letters |
+| `[a-zA-Z]` | Matches both lower and upper case letters |
+| `[a-g]` | Matches characters a through g | 
+
+In this example, we will try to print the names of banks starting with `"Bank"`
+
+```{r}
+#Note the whitespace after Z in the regular expression
+str_extract(banks, regex("^Bank[a-zA-Z ]*"))
+
+#Without the whitespace after Z, it will not give us the desired output
+str_extract(banks, regex("^Bank[a-zA-Z]*"))
+```
+
+> In the previous example, `*` acted as a quantifier. It means any number of the group within square brackets could appear after `"Bank"`.  Refer next section on quantifiers. 
+
+
+### 2.3) Quantifiers
+
+Quantifiers quantify the number of instances of a character, group or character class. Your quantifier should be placed after the character/group/character class that is being quantified.
+
+|Quantifier|Description|
+|----------|----------|
+| `P*` | 0 or more instances of P|
+| `P+` | 1 or more instances of P|
+| `P?` | 0 or 1 instance of P|
+| `P{m}` | Exactly m instances of P|
+| `P{m,}` | At least m instances of P|
+| `P{m,n}` | Between m and n instances of P|
+
+Let us try to print bank names that have less than 10 characters in them. 
+
+```{r}
+str_extract(banks,regex("^[a-zA-Z ]{1,9}$"))
+```
+
+> Notice that white space is included after `A-Z`
+> Also note that we need to use anchors `^ $`, otherwise the first 10 characters of all banks will be printed.
+
+
+### 2.4) Logical Operators
+
+| Operator | Usage | Example | Explanation |
+|----------|-------|---------|-------------|
+| `^`  | Not | `[^A-Za-z0-9]` | Identifies characters that are not alphanumeric |
+|` \|` | Or  | `(Apple\|Orange)` | Identifies cases that have Apple or Oranges or both |
+
+There is no AND operation in regex.
+
+```{r}
+print(banks)
+
+#Detect all bank names containing Bank or bank
+str_detect(banks, regex("Bank|bank"))
+
+#Detect all bank names containg special characters excluding whitespace
+str_detect(banks, regex("[^A-z0-9 ]"))
+
+```
+
+
+
+## 3) More examples
+
+```{r}
+# cities ending with y
+str_detect(city, regex("y$"))
+
+#List the names of first 10 nba players 
+# with college name starting with "University"
+library(dplyr)
+nba = read.csv("C:/Users/felic/nba2018-players.csv")
+
+nba %>% 
+  filter(str_detect(college, regex("^University"))) %>% 
+  select(player) %>% 
+  head(10)
+
+# List the names of colleges of nba players containing 
+# special characters (don't consider whitespace and , 
+# as special character here)
+nba %>% 
+  filter(str_detect(college, regex("[^A-Za-z, ]"))) %>% 
+  select(college)
+```
+
+Let us try to print bank names with 3 words in them. We create groups for each word and make them repeat 3 times. 
+
+> The first group is ([a-zA-Z']* ){2}. Here {2} refers to the number of times the group is repeated. [a-zA-Z']* means characters and ' can appear any number of times. A whitespace is included because after the first two words, a whitespace appears. 
+> the second group is ([a-zA-Z]*){1}. We repeat this group only once. Note that we don't have whitespace in this group.
+
+```{r}
+str_extract(banks, regex("^([a-zA-Z']* ){2}([a-zA-Z]*){1}$"))
+```
+
+
+### 3.1) Your turn
+
+#### 3.1.a)
+
+Using `nba` dataframe, print names of Players containing `Marcus`
+
+```{r}
+# your code
+nba %>% 
+  filter(str_detect(player, regex("Marcus"))) %>% 
+  select(player)
+```
+
+#### 3.1.b)
+
+Using `nba` dataframe, print names of Universities that contain `California` or `Los Angeles` in them.
+
+```{r}
+# your code
+nba %>% 
+  filter(str_detect(college, regex("California|Los Angeles"))) %>% 
+  select(college) 
+```
+
+#### 3.1.c)
+
+Consider the variable below `myVar`. Using str_detect and regular expression, detect those strings that contain at least one `z` and a maximum of three `z`. Your output should be `TRUE TRUE TRUE FALSE`
+
+```{r}
+myVar = c("bizarre", "bizzarre", "bizzzarrre", "bizzzzare")
+```
+
+```{r}
+# your code
+str_detect(myVar, regex("[z]{1,3}[^z]{4,}"))
+str_detect(myVar, regex("biz{1,3}a"))
+```
+
+#### 3.1.d)
+
+Consider the output of ls statement from command line. We have stored it in `file_names`, a vector containing file names. Detect file names that start with `STAT154` and have extension `.csv`
+\
+Expected Output: `TRUE FALSE FALSE TRUE FALSE TRUE`
+
+```{r}
+file_names = c(
+  "STAT154nba.csv", 
+  "test0102_STAT154.csv", 
+  "STAT154myfile.csv.tmp", 
+  "STAT154_lab.csv", 
+  "STAT154_HW.pdf", 
+  "STAT154_test0102.csv")
+```
+
+```{r}
+# your code
+str_detect(file_names,
+           regex("^([STAT154]){1,}([a-zA-Z0-9|[:punct:]]*)[.csv]$"))
+```
+
+#### 3.1.e)
+
+For the variable `newVar`, identify strings that start with a number. Your output should be `TRUE FALSE TRUE TRUE FALSE`. 
+
+```{r}
+newVar = c(
+  "1 Student(s)", 
+  "None but 1 Student(s)", 
+  "5 Students", 
+  "120! Students", 
+  "Two Students")
+```
+
+```{r}
+# your code
+str_detect(newVar, regex("^[0-9]"))
+```
+
+#### 3.1.f)
+
+Detect phone numbers from a given list. Note that these won't have international codes. Your output for given test case should be `TRUE TRUE TRUE TRUE FALSE FALSE`
+Hint: The last string in the vector has more than 10 digits.
+
+```{r}
+phone_num = c(
+  "401-501-1111", 
+  "(401)501-1111", 
+  "401 501 1111", 
+  "4015011111", 
+  "+408-501-1111", 
+  "40850211111")
+```
+
+```{r}
+# your code
+str_detect(phone_num, regex("^([1-9|\\(]){1}[0-9{9}|[:punct:]{2,3}]"))
+```
+
+#### 3.1.g)
+
+In the solution you gave above, can you think of cases where your expression would fail to detect an incorrect phone number? If yes, how could you improve it?
+
+```{r}
+# No code, but some text
+# Yes, one example would be that a phone number with the format (xxx)-xxx-xxxx would have 4 punctuations (2 parenthesis and 2 dashes) and therefore would not work with my current code. In order to improve it, I could expand the current quantifier {2,3} to include 4.
+```
+
+#### 3.1.h)
+
+In column of a dataframe, we have stored strings that tell us if someone likes orange juice, apple juice etc. Extract the names of students who like orange juice or oranges. Expected Output: Annie Harry
+Hint: Use `str_detect` before using `str_extract()`
+
+```{r}
+myVar = c(
+  "Annie likes Orange juice", "Sonny likes Apple juice", 
+  "Katy dislikes Orange juice", "Harry likes Oranges", 
+  "Charlie likes Apple juice", "Margo like Orange Pie")
+
+df = data.frame(myVar)
+
+mask <- str_detect(df[, 1], regex(" likes Orange"))
+#mask <- c(TRUE, FALSE, FALSE, TRUE, FALSE, FALSE)
+```
+
+```{r}
+# your code
+str_extract(df[mask, ], regex("[A-z]+"))
+```
+
+
+
+## 4) Using Apply 
+
+Apply functions are useful when you want to apply a certain operation to all the rows of a list or dataframe. In the example below, we will only consider the case of a data frame. Note that this idea would be useful for your next lab. Here we apply `str_locate()` to locate area code from phone numbers. Using the output of `str_locate()`, we could then extract the area code.
+
+```{r}
+phone_num = c(
+  "401-501-1111", 
+  "(401)501-1111", 
+  "401 501 1111", 
+  "401-5011111", 
+  "+408-501-1111")
+
+code_pos = lapply(
+  phone_num, 
+  function(x) str_locate(x, pattern = regex('[0-9]{3}[- )]*')))
+
+# Use substring() to extract the area code by sharing the start 
+# and end position with the function as arguments.
+code_pos = do.call(rbind, code_pos)
+substring(phone_num, code_pos[,1], code_pos[,2]-1)
+```
+
+
+### 4.1) Your Turn
+
+Using the idea above, from the `nba` dataframe, pull the last names of all 
+NBA players. Find the frequencies of all the last names. _Hint:_ Use `str_locate()` and `substring()`. Eg: str_locate(nba$player, ...). Alternatively, you may choose to try this with lapply() but this is slightly tricky.
+
+```{r}
+# your code
+location_last_name <- str_locate(nba$player, regex("(?<=\\s)[:alpha:]")) 
+last_names <- str_sub(nba$player, location_last_name[ , 1])
+frequencies <- table(last_names)
+frequencies
+```

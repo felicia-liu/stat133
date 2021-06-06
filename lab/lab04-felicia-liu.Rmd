@@ -1,1 +1,555 @@
+---
+title: "Lab 4: More Data Tables"
+subtitle: "Stat 133, Fall 2020"
+output: 
+  github_document:
+    keep_html: true
+urlcolor: blue
+---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(ggplot2)
+```
+
+> ### Learning Objectives
+>
+> - How to import data tables in R
+> - Get to know base reading tables functions
+> - Pipes with `"dplyr"`
+
+
+### General Instructions
+
+- Write your descriptions, explanations, and code in an `Rmd` (R markdown) file.
+- Name this file as `lab04-first-last.Rmd`, where `first` and `last` are your
+first and last names (e.g. `lab04-gaston-sanchez.Rmd`).
+- Knit your `Rmd` file as an html document (default option).
+- Submit your `Rmd` and `html` files to bCourses, in the corresponding lab assignment.
+
+
+
+## 1) Importing Data Tables
+
+Data sets come in many different presentations. One common format is that of a 
+data table---like a spreadsheet---although you can find data in other formats 
+(especially when the data is in its raw version). However, once you get to the 
+analysis stage, you will likely be dealing with some sort of tabular format.
+
+Because data tables are so ubiquituous, it is fundamental that you learn how to
+import them in R. In the first part of today's lab, we are going to review 
+various aspects that have to do with reading in tables in R.
+
+We will talk about the following functions (and packages)
+
+- `read.table()`
+- `read.csv()`
+- `read.delim()`
+- `read.fwf()`
+- Optional: R package `"readr"`
+
+
+
+## 2) Abalone Data Set
+
+The first data set to consider is the __Abalone Data Set__ that is part of the
+[UCI Machine Learning Repository](http://archive.ics.uci.edu/ml/datasets/Abalone)
+
+The location of the data file is:
+
+[http://archive.ics.uci.edu/ml/machine-learning-databases/abalone/abalone.data](http://archive.ics.uci.edu/ml/machine-learning-databases/abalone/abalone.data)
+
+The location of the data dictionary (description of the data) is:
+
+[http://archive.ics.uci.edu/ml/machine-learning-databases/abalone/abalone.names](http://archive.ics.uci.edu/ml/machine-learning-databases/abalone/abalone.names)
+
+Use a text editor (e.g. the one in Rstudio) to look at both the dataset file `abalone.data`, and the file with its description `abalone.names`, and answer 
+the following questions:
+
+- What's the character delimiter?
+- Is there a row for column names?
+- Are there any missing values? If yes, how are they encoded?
+- What are the data types of each column?
+
+
+### 2.1) Getting a Local Copy of the Data
+
+One basic way to read this file in R, is by passing the url location of the 
+file directly to any of the `read.table()` functions:
+
+```{r}
+url <- "http://archive.ics.uci.edu/ml/machine-learning-databases/abalone/abalone.data"
+abalone <- read.table(url, sep = ",")
+```
+
+
+My suggestion when reading datasets from the Web, is to always try to get a local
+copy of the data file in your machine (as long as you have enough free space
+to save it in your computer). To do this, you can use the function `download.file()`
+and specify the url address, and the name of the file that will be created in
+your computer. For instance, to save the abalone data file in __your working 
+directory__, type the following commands on the console:
+
+Now that you have a local copy of the dataset, you can read it with 
+`read.table()` like so:
+
+```{r}
+# reading data from your working directory
+abalone <- read.table("abalone.data", sep = ",")
+```
+
+
+Once you read a data table, you may want to start looking at its contents,
+usually taking a peek at a few rows. This can be done with `head()` and/or 
+with `tail()`:
+
+```{r}
+head(abalone)
+```
+
+
+```{r}
+tail(abalone)
+```
+
+
+Likewise, you may also want to examine how R has decided to take care of the
+storage details (what data type is used for each column?). Use the function
+`str()` to check the structure of the data frame:
+
+```{r}
+# check data frame's structure
+str(abalone, vec.len = 1)
+```
+
+
+
+### 2.2) Detailed information about the columns 
+
+So far we have been able to read the data file in R. But we are missing a few 
+things. First, we don't have names for the columns. Second, it would be nice
+if we could specify the data types of each column instead of letting R guess
+how to handle each data type.
+
+According to the description of the Abalone data set, the columns represent 
+these variables:
+
+| Name           | Data Type  |
+|----------------|------------|
+| Sex		     | nominal    |
+| Length		 | continuous |
+| Diameter	     | continuous |
+| Height		 | continuous |
+| Whole weight	 | continuous |
+| Shucked weight | continuous |
+| Viscera weight | continuous |
+| Shell weight   | continuous |
+| Rings		     | integer    |
+
+
+### 2.3) Your Turn
+
+- Create a vector `column_names` for the name of each column. Use the variable names displayed in the section "7. Attributes Information":
+
+    + `sex`
+    + `length`
+    + `diameter`
+    + `height`
+    + `whole`
+    + `shucked`
+    + `viscera`
+    + `shell`
+    + `rings`
+
+```{r}
+# your code
+column_names <- c('sex', 'length', 'diameter', 'height', 'whole', 'shucked',
+                  'viscera', 'shell', 'rings')
+column_names
+```
+
+
+- Create another vector `column_types` with R data types (e.g. `character`, `real`, `integer`). Match the R data types with the suggested type in "7. Attributes Information"  (nominal = `character`, continuous = `real`, integer = `integer`).
+
+```{r}
+# your code
+column_types <- c(sex = 'character', length = 'real', diameter = 'real', 
+                 height = 'real', whole = 'real', shucked = 'real',
+                 viscera = 'real', shell = 'real', rings = 'integer')
+column_types
+```
+
+- Optionally, you could also specify a type "factor" for the variable `sex` since
+this is supposed to be in nominal scale (i.e. it is a categorical variable). 
+Also note that the variable `rings` is supposed to be integers, therefore we 
+can choose an `integer` vector for this column.
+
+```{r}
+# your code
+sex_factor <- c(sex = 'factor', length = 'real', diameter = 'real', 
+                 height = 'real', whole = 'real', shucked = 'real',
+                 viscera = 'real', shell = 'real', rings = 'integer')
+sex_factor
+```
+
+
+- Look at the documentation of the function `read.table()` and try to read the `abalone.data` table in R. Find out which arguments you need to specify so that you pass your vectors `column_names` and `column_types` to `read.table()`. Read in the data as `abalone`, and then check its structure with `str()`.
+
+```{r}
+# your code
+abalone  <- read.table(file = 'abalone.data', header = TRUE, sep = ',',
+                       col.names = column_names, colClasses = column_types)
+str(abalone, vec.len = 1)
+```
+
+
+- Now re-read `abalone.data` with the `read.csv()` function. Name this data as `abalone2`, and check its structure with `str()`.
+
+```{r}
+# your code
+abalone2 <- read.csv('abalone.data', header = TRUE)
+
+str(abalone2, vec.len = 1)
+```
+
+
+- Look at the documentation of the function `read.table()` and find how to read just the first 10 lines in `abalone.data`? Name this data as 
+`abalone10`, and check its structure with `str()`.
+
+```{r}
+# your code
+abalone10 <- read.table(file = 'abalone.data', header = TRUE, sep = ',',
+                       col.names = column_names, colClasses = column_types,
+                       nrows = 10)
+abalone10
+
+str(abalone10, vec.len = 1)
+```
+
+
+- Look at the documentation of the function `read.table()` and find how to skip the first 10 lines in `abalone.data`, in order to read the next 10 lines (lines 11-20)? Name this data as `abalone20`, and check its structure with `str()`.
+
+```{r}
+# your code
+abalone20 <- read.table(file = 'abalone.data', header = TRUE, sep = ',',
+                       col.names = column_names, colClasses = column_types,
+                       skip = 10, nrows = 10)
+abalone20
+
+str(abalone20, vec.len = 1)
+```
+
+
+- Look at the documentation of the function `read.table()` and find how to 
+import  just the first four columns of `abalone.data`. Name this data as `aba4`,
+and check its structure with `str()`.
+
+```{r}
+# your code
+aba4 <- read.table(file = 'abalone.data', header = TRUE, sep = ',',
+                   col.names = column_names, 
+                   colClasses = c(rep("character", 1), 
+                                  rep("double", 3),
+                                  rep("NULL", 5)))
+
+str(aba4, vec.len = 1)
+```
+
+
+- How would you import the first, the third, and the fifth columns of 
+`abalone.data`. Name this data as `aba3`, and check its structure with `str()`.
+
+```{r}
+# your code
+aba3 <- read.table(file = 'abalone.data', header = TRUE, sep = ',',
+                   col.names = column_names, 
+                   colClasses = c(rep("character", 1), 
+                                  rep("NULL", 1), rep("double", 1),
+                                  rep("NULL", 1), rep("double", 1),
+                                  rep("NULL", 4)))
+
+str(aba3, vec.len = 1)
+```
+
+
+- Use `summary()` on `abalone` to get summary statistics of the columns
+
+Your output does not have to be in the 
+same format of the table below. The important thing is that you begin learning 
+how to manipulate columns (or vectors) of a data.frame.
+
+```
+       Length Diam  Height  Whole  Shucked  Viscera    Shell    Rings
+Min	   0.075  0.055	0.000   0.002	 0.001    0.001	   0.002	    1
+Max	   0.815  0.650	1.130   2.826	 1.488    0.760	   1.005	   29
+Mean   0.524  0.408	0.140   0.829	 0.359    0.181	   0.239	9.934
+```
+
+```{r}
+# your code
+abalone %>% summary()
+```
+
+- Use the dollar operator `$` to select at least three columns, 
+and pass them to functions such as `min()`, `max()`, etc, to compute 
+descriptive statistics
+
+```
+       length diam  height  whole  shucked  viscera  shell  rings
+Min	   0.075  0.055	0.000   0.002	 0.001    0.001	   0.002	    1
+Max	   0.815  0.650	1.130   2.826	 1.488    0.760	   1.005	   29
+Mean   0.524  0.408	0.140   0.829	 0.359    0.181	   0.239	9.934
+SD	   0.120  0.099	0.042   0.490	 0.222    0.110	   0.139	3.224
+```
+
+```{r}
+# your code
+min(abalone$length)
+max(abalone$height)
+mean(abalone$shucked)
+```
+
+
+- Use `summary()` and dollar operator `$` to select columns sex, length, and
+diameter from `abalone`, and obtain summary statistics.
+
+```{r}
+# your code
+summary(abalone$sex)
+summary(abalone$length)
+summary(abalone$diameter)
+```
+
+- Use `hist()` to plot histograms of length, and diameter (use dollar operator 
+`$` to select the corresponding column).
+
+```{r}
+# your code
+hist(x = abalone$length)
+
+hist(x = abalone$diameter)
+```
+
+
+
+
+## 3) More `"dplyr"`
+
+This part of the lab involves working the pipe operator `%>%` which 
+allows you write function calls in a more human-readable way. This becomes
+extremely useful in `"dplyr"` operations that require many steps.
+
+The behavior of `"dplyr"` is functional in the sense that function calls don't 
+have side-effects. This implies that you must always save their results in order 
+to keep them in an object (in memory). 
+
+The "ugly" side of this functional behavior is that it doesn't lead to 
+particularly elegant code, especially if you want to do many operations at once. 
+You either have to do it step-by-step:
+
+```{r echo = FALSE, eval = FALSE}
+# manipulation step-by-step
+dat1 <- group_by(abalone, sex)
+dat2 <- select(dat1, sex, length, diameter, height)
+dat3 <- summarise(dat2,
+  avg_length = mean(length, na.rm = TRUE),
+  avg_diam = mean(diameter, na.rm = TRUE),
+  avg_height = mean(height, na.rm = TRUE))
+dat4 <- arrange(dat3, avg_height)
+dat4
+```
+
+Or if you don't want to name the intermediate results, you need to wrap the 
+function calls inside each other:
+
+```{r echo = FALSE, eval = FALSE}
+# inside-out style (hard to read)
+arrange(
+  summarise(
+    select(
+      group_by(abalone, sex),
+      sex, length, diameter, height
+    ),
+    avg_length = mean(length, na.rm = TRUE),
+    avg_diam = mean(diameter, na.rm = TRUE),
+    avg_height = mean(height, na.rm = TRUE)
+  ),
+  avg_height
+)
+```
+
+This is difficult to read because the order of the operations is from inside 
+to out. Thus, the arguments are a long way away from the function. 
+To get around this problem, `"dplyr"` provides the `%>%` operator from 
+`"magrittr"`.
+
+`x %>% f(y)` turns into `f(x, y)` so you can use it to rewrite multiple 
+operations that you can read left-to-right, top-to-bottom:
+
+```{r echo = FALSE, eval = FALSE}
+# using %>%
+abalone %>% 
+  group_by(sex) %>%
+  select(sex, length, diameter, height) %>%
+  summarise(
+    avg_length = mean(length, na.rm = TRUE),
+    avg_diam = mean(diameter, na.rm = TRUE),
+    avg_height = mean(height, na.rm = TRUE)) %>%
+  arrange(avg_height)
+```
+
+
+### 3.1) Your Turn: 
+
+Use `"dplyr"` functions and the piper operator `"%>%"` to perform the following 
+operations:
+
+- slice the data to get the first 5 rows
+
+```{r}
+# your code
+abalone %>% slice(1:5)
+```
+
+- slice the data to get the first 5 rows, arranged by height
+
+```{r}
+# your code
+abalone %>% slice(1:5) %>% arrange(height)
+```
+
+- create a data frame `male_female` by filtering the data with Male and Female abalones, and display its dimensions with `dim()`
+
+```{r}
+# your code
+male_female <- abalone %>% filter(sex == 'M' | sex == 'F')
+dim(male_female)
+```
+
+- create a data frame `rings1` by filtering the data with those abalones having 25 Rings or more, containing columns about their sex, and rings (in that order).
+
+```{r}
+# your code
+rings1 <- abalone %>% filter(rings >= 25) %>% select('sex', 'rings')
+rings1
+```
+
+- create a data frame `rings2` by filter the data with those infant abalones with more than 3 Rings and less than 6, containing columns sex, rings, and diameter,
+with rows arranged by diameter in increasing order.
+
+```{r}
+# your code
+rings2 <- abalone %>% filter(rings > 3 & rings < 6) %>% 
+  select('sex', 'rings', 'diameter') %>% arrange(diameter)
+```
+
+
+- Compute the median length, and median height, grouped by number of rings, of infant abalones only.
+
+```{r}
+# your code
+abalone %>% filter(rings > 3 & rings < 6) %>% group_by(rings) %>%
+  summarize(median_length = median(length), median_height = median(height))
+```
+
+
+
+
+## 4) Optional: Pittsburgh Bridges Data Set 
+
+This part of the lab is provided as an optional challenge to give you more practice importing data tables, and manipulating data frames with `"dplyr"` and the piper operator.
+
+The data set is part of the UCI Machine Learning Repository:
+
+[http://archive.ics.uci.edu/ml/datasets/Pittsburgh+Bridges](http://archive.ics.uci.edu/ml/datasets/Pittsburgh+Bridges)
+
+The data Description is here:
+
+[http://archive.ics.uci.edu/ml/machine-learning-databases/bridges/bridges.names](http://archive.ics.uci.edu/ml/machine-learning-databases/bridges/bridges.names)
+
+The Data file is here:
+
+[http://archive.ics.uci.edu/ml/machine-learning-databases/bridges/bridges.data.version1](http://archive.ics.uci.edu/ml/machine-learning-databases/bridges/bridges.data.version1)
+
+
+### 4.1) Your Turn
+
+Read the description, and take a look at the data set:
+
+- Are there column names?
+
+- What is the field separator?
+
+- Are there any missing values?
+
+- What is the character for missing values (if any)?
+
+- What is the data type of each variable (i.e. column)?
+
+- Download a copy of the data to your computer (use `download.file()`)
+and save it in a file named `bridges.data.version1`
+
+
+
+### 4.2) Reading the Data
+
+- Create a vector of column names
+
+```{r}
+# your code
+```
+
+- Create a vector of column types
+
+```{r}
+# your code
+```
+
+- Use the function `read.table()` to import the data. Name it `bridges`.
+
+```{r}
+# your code
+```
+
+
+
+### 4.3) Research Questions
+
+Use `"dplyr"` functions and the piper operator to find:
+
+- Year of the oldest bridge
+
+```{r}
+# your code
+```
+
+- Year of the most recent erected bridge
+
+```{r}
+# your code
+```
+
+- Frequency of bridges by purpose
+
+```{r}
+# your code
+```
+
+- Frequency of materials
+
+```{r}
+# your code
+```
+
+- Average length of the bridges
+
+```{r}
+# your code
+```
+
+- Plot a timeline: year -vs- length
+
+```{r}
+# your code
+```
