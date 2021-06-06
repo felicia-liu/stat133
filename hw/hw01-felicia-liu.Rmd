@@ -1,1 +1,93 @@
+---
+title: "Warm Up 1"
+author: "Felicia Liu"
+date: "2/6/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Avar Kriss
+
+[Wookieepedia Link for Avar Kriss](https://starwars.fandom.com/wiki/Avar_Kriss)
+
+![Image of Avar Kriss](https://static.wikia.nocookie.net/starwars/images/9/95/AvarKriss.png/revision/latest/scale-to-width-down/500?cb=20200403184854)
+
+
+A famous quote by Avar Kriss:
+
+> "But I will say that every one of those lives is as important as any life on this world or any other. We must begin by believing it is possible to save everyone. If the will of the Force is otherwise, so be it, but I will not accept the idea of abandoning them without trying."
+
+Description | Value
+------------|-------
+Species     |Human
+Gender      |Female
+Hair Color  |Blonde
+Eye Color   |Brown
+Skin Color  |Light
+
+
+
+# Plush Confetti Cupcakes
+[Smitten Kitchen Recipe Link](https://smittenkitchen.com/2021/01/plush-vegan-confetti-cupcakes/)
+
+## List of Ingredients
+Cupcakes
+
+* 1 cups plus 7 tablespoons (190 grams) all-purpose flour
+* 3/4 cup (150 grams) granulated sugar
+* 1 1/2 teaspoons baking powder
+* 1/2 teaspoon fine sea or table salt
+* 1 cup (235 ml) unsweetened non-dairy milk such as soy, almond, or oat
+* 1/3 cup (80 ml) neutral oil or melted vegan butter
+* 1 tablespoon (15 ml) lemon juice
+* 1 1/2 teaspoons vanilla extract
+* 1/8 teaspoon almond extract
+* 1/4 to 1/3 cup rainbow sprinkles
+
+Topping
+
+* 8 ounces (1 cup) non-dairy cream cheese
+* 3/4 cup (90 grams) powdered sugar, sifted if lumpy
+* 1 teaspoon (5 ml) vanilla extract
+
+## Special Kitchen Tools Needed
+* Whisk
+* Flexible spatula
+* Cupcake tin
+
+### Cooking Steps
+**Make the cupcakes:** Heat the oven to *350 degrees F.* Place cupcake liners in a 12-cup standard tin. In a large bowl, whisk flour, sugar, baking powder, and salt together until well-mixed. Make a slight well in the center and add the non-dairy milk, oil, lemon juice, vanilla, and almond. Whisk the wet and dry ingredients together just until *no lumps remain.* Stir in sprinkles (the higher amount is shown here) with a flexible spatula.
+
+Divide batter between 12 cups; each will be 2/3 full.
+
+Bake for 15 to 20 minutes, until a toothpick inserted into the center of each cake comes out batter-free. Let cupcakes cool completely — this took about 5 minutes outside on a freezing day.
+
+**To finish:** Beat cream cheese with powdered sugar and vanilla until lightly whipped. Dollop about 1.5 tablespoons on each cupcake and spread it out in swirls. Finish with an extra pinch of sprinkles.
+
+**Do ahead:** Cupcakes keep in the fridge for several days, but *they won’t last that long.*
+
+![Image of Plush Confetti Cupcakes[^1] ](https://i1.wp.com/live.staticflickr.com/65535/50886121506_6438e29d55_z.jpg?resize=640%2C427&ssl=1)
+
+
+[^1]: Image from Smitten Kitchen
+
+
+# Euclidean Distance
+
+### Definition
+***
+The **Euclidean distance** between points **p** and **q** is the length of the line segment connecting them ($\overline{pq}$).
+
+In Cartesian coordinates, if **p** = (*p*~1~, *p*~2~,..., *p*~n~) and **q** = (*q*~1~, *q*~2~,..., *q*~n~) are two points in Euclidean *n*-space, then the distance (d) from **p** to **q**, or from **q** to **p** is given by the Pythagorean formula. 
+
+\[ \mathit{d}(\mathbf{p, q}) = \mathit{d}(\mathbf{q, p}) = \sqrt{(q_{1} - p_{1})^2 + (q_{1} - p_{1})^2 + \dots + (q_{n} - p_{n})^2} = \sqrt{\displaystyle\sum_{i=1}^{n} (q_{i} - p_{i})^2}.\]
+
+The position of a point in a Euclidean *n*-space is a Euclidean vector. So, **p** and **q** may be represented as Euclidean vectors, starting from the origin of the space (initial point) with their tips (terminal points) ending at the two points. The **Euclidean norm**, or **Euclidean length**, or **magnitude** of a vector measures the length of the vector:
+
+\[ \mathbf{\|p\|} = \sqrt{p_{1}^2 + p_{2}^2 + \dots + p_{n}^2} = \sqrt{\mathbf{p \cdot p}}, \]
+
+where the last expression involves the dot product.
 
