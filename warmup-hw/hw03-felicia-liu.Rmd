@@ -1,0 +1,108 @@
+---
+title: "Warmup 3: Data Visualization"
+author: "Felicia Liu"
+date: "3/13/2021"
+output: html_document
+---
+# 1) Describe four graphics
+
+1)
+```{r out.width='85%', echo = FALSE, fig.align = 'center', fig.cap="Energy Use (in kWh) by Month since August 2020"}
+knitr::include_graphics('warmup03-1.PNG')
+```
+
+
+This graph came from eversource.com, where I pay my energy bills. The graph shows my energy usage each month in kWh, starting from August 2020 to February 2021. The x-axis hence shows each month (August, September, October, etc.) and the y-axis shows kWh by a scale of 80 kWh (80 kWh, 160 kWh, 240 kWh, etc.). The graphic is a bar chart.
+
+I find this graph interesting because of how simple yet useful it is. By using bars to display my energy usage each month, it is extremely easy for me to know how much energy I used in a month, relative to the other months. For example, I can easily tell that my usage was highest in November compared to other months, and August was the lowest. I can tell whether or not the usage for a month falls within normal range of my energy usage by comparing the height of the bar with the height of other bars. I also like how the color of the most recent month's bar is a different color from the rest of the bars, so it's easier to tell which bar represents the latest energy usage.
+
+
+2)
+```{r out.width='85%', echo = FALSE, fig.align = 'center', fig.cap="Screen Time (in Hours and Minutes) by Day for the Past Week"}
+knitr::include_graphics('warmup03-2.PNG')
+```
+
+This graph comes from the settings app of my iPhone, under "Screen Time." The graph itself shows the amount of time (in hours) that I spent looking at my phone (or having something open on my phone). The data shows my screen time for the past week, beginning on Sunday, March 7, 2021 and ending on Saturday, March 13, 2021. The x-axis is the day of the week and the y-axis represents the screen time in hours. This graphic is a stacked bar chart, meaning that each bar breaks down into categories where I spent the most time (Social, Games, Information & Reading).  
+
+I find this graph interesting mainly because it is a stacked bar chart. For each day of the week, I am able to visualize what category I spend the most screen time on, what category I spend the least, and other relationships. Furthermore, the colors of the bars are chosen in a way that is easy to distinguish and avoids any confusion among the categories. I also appreciate the green dotted "avg" line that runs through all of the bars because it provides a standard that I can use to compare the screen times of each day with.
+
+
+3)
+```{r out.width='85%', echo = FALSE, fig.align = 'center', fig.cap="Step Count by Day for the Past Week"}
+knitr::include_graphics('warmup03-3.PNG')
+```
+
+This graph is from the health app on my phone, which tracks the number of steps that I take in a day. The data is from the past week, beginning on Sunday, March 7, 2021 and ending on Saturday, March 13, 2021. The x-axis shows the day of the week and the y-acis shows the number of steps by a scale of 2000 steps (2000 steps, 4000 steps, etc.). This graphic is also a bar chart. 
+
+I find this graph interesting because it conveys the appropriate information in a very minimalist manner. It is difficult to create a graph that is "simpler" or easier to understand than this one, in my opinion. The top of the graph also includes the week's average number of steps (in this case, it is 1003 steps), This bar chart also makes it easy for viewers to see how much they walked on a certain day, relative to the other days of the week - for example, I walked much more on Friday, March 12, 2021 than any other day of the week. 
+
+
+4)
+```{r out.width='85%', echo = FALSE, fig.align = 'center', fig.cap="Investment Account Returns (in Dollars) by Month since July 2020"}
+knitr::include_graphics('warmup03-4.PNG')
+```
+
+This graph is from Vanguard, where I have a financial investment account. The graph shows the investment returns in dollars, from July 2020 to March 2021. The x-axis shows the month and year (Jul 2020, Sep 2020, etc.) and the y-axis represents the net investment returns in dollars. This graphic is an area graph - essentially a line graph with the area below the line shaded in - that illustrates net returns. 
+
+I find this graph interesting because of the use of colors. Because the graph shows net returns, the area is shaded as red for negative net returns. On the other hand, positive net returns are shaded in as green. This way, it is easier for users to visually distinguish when net returns were negative and when they were positive. By using an area graph, it is also easier for viewers to have a clear understanding of the scale in which the returns are growing - for example, double the area means double the returns.
+
+# 2) Find a bad plot
+
+One bad plot that I found among the four from above is the following:
+
+```{r out.width='85%', echo = FALSE, fig.align = 'center', fig.cap="Investment Account Returns (in Dollars) by Month since July 2020"}
+knitr::include_graphics('warmup03-4.PNG')
+```
+
+In my opinion, this graph is bad because it is unclear. Although this graph shows viewers the net investment returns using an area graph, the actual returns for each month is vague. For example, if we look at Jan 2021, we are only able to estimate that the returns are a bit over $50, instead of the actual amount. This graphic is difficult to obtain accurate information from quickly, compared to labeling returns more clearly. One suggestion would be for there to be labels at points along the line where there is a slight peak or pivot in returns.
+
+Rule(s) from Wainer's paper that this graphic follows include:
+
+- Rule 2: Hide What Data You Do Show
+
+
+# 3) Replicate a Graph
+
+```{r}
+library(ggplot2)
+```
+
+```{r}
+day_of_week <- c("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat")
+count <- c(1082, 55, 89, 47, 831, 4836, 82)
+
+steps <- data.frame(day_of_week, count)
+```
+
+```{r}
+steps$day_of_week <- factor(steps$day_of_week, 
+                            levels = c("Sun", "Mon", "Tue", 
+                                       "Wed", "Thu", "Fri", "Sat"))
+
+ggplot(steps, aes(x = day_of_week, y = count)) +
+  geom_bar(stat = "identity", fill = "dark orange") + 
+  scale_y_continuous(breaks = seq(0, 6000, 2000), 
+                     limits = c(0, 6000), position = "right") +
+  labs(title = "Steps", subtitle = "AVERAGE\n1,003 steps\nMar 7-13, 2021") +
+  theme(plot.background = element_rect(fill = "black"),
+        panel.background = element_rect(fill = "black"),
+        axis.text.x = element_text(colour = "gray"),
+        axis.text.y = element_text(colour = "gray"),
+        plot.title = element_text(colour = "gray"), 
+        plot.subtitle = element_text(colour = "gray")) 
+  
+```
+
+## Alternative graphic of same data
+
+```{r}
+ggplot(steps, aes(x = day_of_week, y = count)) +
+  geom_point(color = "dark orange", size = 3) + 
+  scale_y_continuous(breaks = seq(0, 6000, 2000), 
+                     limits = c(0, 6000)) +
+  labs(title = "Steps", subtitle = "AVERAGE\n1,003 steps\nMar 7-13, 2021",
+       x = "Day", y = "Steps") 
+```
+
+This alternative display was made using the `geom_point()` function, which is also used to make scatter plots. Although there are not many ways to display two discrete variables, I believe that this is an equally efficient display as the original bar chart, because it provides the exact same information, just with "less ink," if we keep in mind the data-ink ratio. Furthermore, by using dots to represent the data points, we are able to visualize more clearly whether there are trends in the number of steps we take - for example, whether our step counts fall under a linear model, or curve like a quadratic model. Scatter plots allow for more mathematical analysis compared to bar charts while displaying the counts of each day just as well. 
+
