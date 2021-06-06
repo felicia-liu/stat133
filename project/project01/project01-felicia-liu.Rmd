@@ -1,1 +1,179 @@
+---
+title: "Project 1: Hurricanes Data"
+author: "Felicia Liu"
+date: "2/26/2021"
+output: html_document
+---
+
+```{r}
+#Loading in packages
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(maps)
+```
+
+
+```{r}
+#Importing Data in R
+
+col_names <- c("SID", "SEASON", "NUMBER", "BASIN", "SUBBASIN", 
+               "NAME", "ISO_TIME", "NATURE", "LAT", "LON", 
+               "WMO_WIND", "WMO_PRES", "WMO_AGENCY", "TRACK_TYPE", 
+               "DIST2LAND", "LANDFALL")
+
+col_types <- c("character", "integer", "integer", "character", "character",
+               "character", "character", "character", "double", "double",
+               "integer", "integer", "character", "character",
+               "integer", "integer")
+
+dat <- read.csv(file = "C:/Users/felic/Downloads/ibtracs.NA.list.v04r00.csv",
+                colClasses = c(col_types, rep("NULL", 147)),
+                stringsAsFactors = FALSE,
+                skip = 86272,
+                na.strings = c("", "MM", "NR"))
+
+colnames(dat) <- col_names
+
+```
+
+
+```{r}
+#Adding MONTH column
+
+dat$MONTH <- as.numeric(substr(dat$ISO_TIME, 6, 7))
+str(dat, vec.len = 1)
+```
+# Research Questions
+
+1) What is the “typical” number of major hurricanes (i.e. hurricanes of category 3, 4, and 5) that tend to occur per year?
+```{r}
+#Overall major hurricanes
+#Table of all major hurricanes, organized by year
+num_hurricanes <- dat %>% filter(WMO_WIND >= 96) %>% group_by(SID) %>%
+  distinct()
+
+#Bar plot of total number of major hurricanes, organized by year
+ggplot(num_hurricanes, aes(x = SEASON)) + geom_bar() +
+  labs(title = "Total Major Hurricane Count by Year from 1980-2020",
+       y = "Number of Hurricanes", x = "Year")
+
+#Average number of major hurricanes per year from 1980-2020
+average_hurricanes <- sum(count(num_hurricanes)$n)/(2020-1980+1)
+average_hurricanes
+```
+
+In order to find the overall "typical" number of major hurricanes (category 3, 4, and 5 hurricanes) per year, I began by filtering the original dataset, `dat`, for wind speeds greater than equal to 96 kt so that I would have only hurricanes categorized as 3 or higher. Next, I used the group_by() function to group the data by SID, since we are interested in seeing how many unique major hurricanes there are per year. I used the function distinct() next, in order to eliminate any repeat hurricane data. With this new dataset, I plotted a bar plot that shows the distribution of all major hurricanes from the year 1980-2020, organized by year to get a visual representation of hurricane count distribution. Lastly, I calculated the average number of major hurricanes per year from 1980 to 2020 by summing the number of category 3+ hurricanes, dividing that by the total number of years (41) and found it to be 26.60976 hurricanes per year.
+
+```{r}
+#Category 3 hurricanes
+#Table of category 3 hurricanes, organized by year
+cat3_hurricanes <- dat %>% filter(WMO_WIND >= 96 & WMO_WIND < 113) %>% 
+  group_by(SID) %>% distinct()
+
+#Bar plot of number of category 3 hurricanes, organized by year
+ggplot(cat3_hurricanes, aes(x = SEASON)) + geom_bar() +
+  labs(title = "Category 3 Hurricane Count by Year from 1980-2020",
+       y = "Number of Hurricanes", x = "Year")
+
+#Average number of category 3 hurricanes per year from 1980-2020
+avg_cat3_hurricanes <- sum(count(cat3_hurricanes)$n)/(2020-1980+1)
+avg_cat3_hurricanes
+```
+
+Similarly, I found the "typical" number of category 3 hurricanes by filtering the original data set for wind speeds greater than or equal to 96 and under 113 kt, which is the range for a hurricane to be categorized as 3. I grouped by year and used distinct() once again, for the same reason as above. I then plotted another bar plot of only category 3 hurricanes organized by year and noticed that the bar plot for category 3 hurricanes was very similar in shape and distribution as the overall bar plot of hurricanes numbers. From this, I concluded that there were probably the most category 3 hurricanes, because it seemed like the number of category 4 and 5 hurricanes made little difference to the overall shape of the bar plot distribution. Next, I calculated the average number of category 3 hurricanes per year from 1980 to 2020 by adding up the number of category 3 hurricanes and dividing by the total number of years (41). This average was 12.5122 hurricanes per year, which makes sense because the average number of major hurricanes in this same period was higher: 26.60976, which also includes category 4 and 5.
+
+```{r}
+#Category 4 hurricanes
+#Table of category 4 hurricanes, organized by year
+cat4_hurricanes <- dat %>% filter(WMO_WIND >= 113 & WMO_WIND < 137) %>%
+  group_by(SID) %>% distinct()
+
+#Bar plot of number of category 4 hurricanes, organized by year
+ggplot(cat4_hurricanes, aes(x = SEASON)) + geom_bar() +
+  labs(title = "Category 4 Hurricane Count by Year from 1980-2020",
+       y = "Number of Hurricanes", x = "Year")
+
+#Average number of category 4 hurricanes per year from 1980-2020
+avg_cat4_hurricanes <- sum(count(cat4_hurricanes)$n)/(2020-1980+1)
+avg_cat4_hurricanes
+```
+
+The bar plots and average number of hurricanes per year for categories 4 and 5 were produced and calculated in the exact same manner. For category 4 hurricanes, I filtered the original dataset by wind speeds greater than or equal to 113 and under 137 kt since that is the range for hurricanes to be categorized as 4. Similarly, I made a bar plot for the category 4 hurricanes and I noticed that there were fewer and shorter bars compared to the category 3 bar plot. This means that there were probably fewer category 4 hurricanes on average between 1980 and 2020, compared to category 3. Next, I found the average number of category 4 hurricanes per year to be 11.5122 by doing the same average calculation as the one for category 3, and the average calculated lines up with the observation that I made for my category 4 hurricane bar chart: there were fewer category 4 hurricanes than category 3 from 1980 to 2020. 
+
+```{r}
+#Category 5 hurricanes
+#Table of category 5 hurricanes, organized by year
+cat5_hurricanes <- dat %>% filter(WMO_WIND >= 137) %>% group_by(SID) %>%
+  distinct()
+
+#Bar plot of number of category 5 hurricanes, organized by year
+ggplot(cat5_hurricanes, aes(x = SEASON)) + geom_bar() +
+  labs(title = "Category 5 Hurricane Count by Year from 1980-2020",
+       y = "Number of Hurricanes", x = "Year")
+
+avg_cat5_hurricanes <- sum(count(cat5_hurricanes)$n)/(2020-1980+1)
+avg_cat5_hurricanes
+```
+
+For category 5 hurricanes, I filtered the original dataset for only wind speeds greater than or equal to 137 kt. I graphed a bar plot of only the category 5 hurricanes between 1980 and 2020 and noticed that there were significantly fewer and shorter bars compared to both the category 3 and 4 hurricane bar plots. From the plot itself, I concluded that there were the fewest category 5 hurricanes. Next, I calculated the average number of category 5 hurricanes in the same way that I calculated the average for categories 3 and 4, and this average was 2.585366 hurricanes per year between 1980 and 2020, which also matches up with my observation from the bar plots.
+
+In conclusion, the "typical" number of major hurricanes is the average: 26.60976 hurricanes per year. Meanwhile, the "typical" number of hurricanes by category is: 12.5122 category 3 hurricanes per year, 11.5122 category 4 hurricanes per year, and 2.585366 category 5 hurricanes per year.
+
+2) Which months are the top three most active (where most of the hurricanes tend to occur)?
+```{r}
+#Months with corresponding hurricane counts for each
+num_hurricane_by_month <- dat %>% group_by(MONTH) %>% summarize(count = n())
+
+#Months with corresponding hurricane counts for each, sorted from most hurricanes to least
+active_months_sorted <- num_hurricane_by_month %>% arrange(desc(count))
+
+#Top 3 months with the most hurricanes
+top_3_active <- head(active_months_sorted, 3)
+top_3_active
+```
+For this research question, I began with the original dataset, `dat`, and grouped the data by month since we are interested in seeing the number of hurricanes by month. I then summarized the data using summarize() and count(), to obtain the corresponding number of hurricanes for each month, and labeled it `num_hurricane_by_month`. Next, I sorted the table of hurricane counts by month from largest number of hurricanes to fewest, and labeled it `active_months_sorted`. Lastly, I used the head() function to obtain the top three rows of the table and named it `top_3_active`. This tibble, `top_3_active`, shows the three months that had the most hurricanes, in decreasing order. 
+
+```{r}
+ggplot(num_hurricane_by_month, aes(x = factor(MONTH), y = count)) + 
+  geom_point() +
+  labs(title = "Hurricane Count by Month from 1980-2020", x = "Month",
+                    y = "Number of Hurricanes")
+```
+
+As shown in the tibble `top_3_active` and the above graphic visual, which maps the number of hurricanes by month, the top three most active months are months 9, 8, and 10. I made this visualization so I would be able to more easily visualize the distribution of hurricane counts across the months that we had available data for. This graph highlights which months the hurricane count spikes occurred.
+
+In conclusion, the top three most active months are September, August, and October, in that order.
+
+3) During the analyzed period (1980-2020), are there any hurricanes that made U.S.landfall before June and after November?
+```{r}
+#Table of all hurricanes that made landfall before June and after November
+landfall_hurricanes <- dat %>% filter(DIST2LAND == 0) %>% 
+  filter(MONTH < 6 | MONTH > 11)
+
+#List of countries where hurricanes made landfall before June and after November,found using longitude and latitude values
+landfall_countries <- map.where(database = "world", landfall_hurricanes$LON,
+                 landfall_hurricanes$LAT) 
+
+#Shortened version of entire landfall_countries list
+head(landfall_countries, 50)
+```
+To answer the last research question, I began by making a new dataset (from the original `dat`) called `landfall_hurricanes`, which only included the hurricanes that made landfall before June and after November. To do this, I used the filter() function and specified for DIST2LAND == 0 (hurricanes that made landfall) and MONTH < 6 or MONTH > 11 (landfall before June and after November). Next, I used the `maps` package in R to get a list of countries where these hurricanes made landfall by using the longitude and latitude provided. I did this by using the function map.where() and inputting longitude values (`landfall_hurricanes$LON`) and latitude values (`landfal_hurricanes$LAT`). I labeled this list of countries `landfall_countries` and used the function head() to get a shortened version of the list. By studying `landfall_countries`, we can see that "USA" is included in the list, which means that there were hurricanes that made U.S.landfall before June and after November.
+
+```{r}
+#Data frame of the points that make up the outline of the U.S. 
+usa <- map_data("usa")
+
+#Map of U.S. with longitude and latitude points of U.S. landfall (before June and after November) plotted
+ggplot() + 
+  geom_polygon(data = usa, aes(x = long, y = lat, group = group), fill = "light blue") + 
+  geom_point(aes(x = landfall_hurricanes$LON, y = landfall_hurricanes$LAT)) +
+  labs(title = "Map of Hurricanes that made U.S. landfall before 
+       June and after November, from 1980-2020", x = "Longitude", 
+  y = "Latitude")
+```
+
+Furthermore, I created the above visual to better understand and picture the hurricanes that made U.S. landfall prior to June and after November. To do this, I first used the map_data() function to create a data frame of the points that make up the outline of the U.S. and called this data frame `usa`. I then used gglot function geom_polygon() to create the map of the U.S. as a polygon and filled in the shape with light blue to be able to better distinguish the map from the longitude and latitude points that I would be plotting. To plot the longitude and latitude points, I used the dataset `landfall_hurricanes` (which contained all hurricanes that made landfall in the specified months), and the ggplot function geom_point(), with longitude on the x-axis and latitude on the y-axis. By doing this, I was able to retrieve and plot only the longitude and latitude points of the hurricanes that made landfall in the U.S. during the specified months. 
+
+In conclusion, during the analyzed period between 1980 and 2020, there were hurricanes that made U.S. landfall before June and after November.
 
